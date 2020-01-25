@@ -16,3 +16,10 @@ development:
 test:
   <<: *default
   database: app_test  
+
+# Production
+production:
+  <<: *default
+  database: app_production
+  username: app
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
