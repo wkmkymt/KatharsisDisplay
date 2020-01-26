@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :users
   # Root
-  root to: "app#index"
+  root to: 'app#index'
+
+  # Devise
+  devise_for :users,
+    path: '', 
+    path_names: { 
+      sign_in: 'login', 
+      sign_out: 'logout',
+      registration: 'signup',
+      sign_up: '',
+    }
 end

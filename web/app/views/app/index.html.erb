@@ -1,2 +1,6 @@
-<h1>App#index</h1>
-<p>Find me in app/views/app/index.html.erb</p>
+<% if user_signed_in? %>
+  <p><%= link_to 'Logout', destroy_user_session_path %></p>
+  <p><%= link_to 'Profile', destroy_user_session_path %></p>
+<% else %>
+  <p><%= link_to 'Login', new_user_session_path %></p>
+<% end %>
