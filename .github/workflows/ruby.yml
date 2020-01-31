@@ -1,20 +1,53 @@
-name: Ruby
+name: Build
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
-
+    name: Build
     runs-on: ubuntu-latest
-
+    
+    env:
+      RAILS_ENV: test
+      
+    services:
+      postgres:
+        image: postgres:12
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Ruby 2.6
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.6.x
-    - name: Build and test with Rake
-      run: |
-        gem install bundler
-        bundle install --jobs 4 --retry 3
-        bundle exec rake
+      - uses: actions/checkout@v1
+
+      - name: Set up Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.5.7
+          
+      - name: Install PostgreSQL Client
+        run: sudo apt-get install libpq-dev
+      
+      - name: Cache gems
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: ${{ runner.os }}-gem-
+      
+      - name: Install bundler
+        run: gem install bundler:1.17.3
+        
+      - name: Bundle install
+        run: |
+          bundle config set path 'vendor/bundle'
+          bundle install --jobs 4 --retry 3
+
+      - name: Set up Database
+        run: |
+          cp config/database.yml.ci config/database.yml
+          bundle exec rails db:create
+          bundle exec rails db:schema:load
+      
+      - name: Run RSpec
+        run: bundle exec rspec
