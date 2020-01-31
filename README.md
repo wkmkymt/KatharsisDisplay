@@ -1,6 +1,6 @@
-# Kyoto Bar Sample
+# Katharsis Display
 
-This is sample application for Kyoto Bar system.
+Katharsis Display is System for Kyoto Bar.
 
 
 ## Set Up
