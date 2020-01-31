@@ -1,2 +1,0 @@
-# Base Image
-FROM postgres
