@@ -1,7 +1,6 @@
-# Katharsis Display
+# Katharsis Display ![](https://github.com/wkmkymt/test/workflows/Ruby/badge.svg)
 
 Katharsis Display is System for Kyoto Bar.
-
 
 ## Set Up
 
