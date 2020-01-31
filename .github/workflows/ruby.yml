@@ -45,7 +45,7 @@ jobs:
 
       - name: Set up Database
         run: |
-          cp config/database.yml.cl config/database.yml
+          cp config/database.yml.ci config/database.yml
           bundle exec rails db:create
           bundle exec rails db:schema:load
       
