@@ -1,0 +1,9 @@
+# Test
+test:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: postgres
+  password:
+  database: cl_test
+  pool: 5
