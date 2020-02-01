@@ -25,7 +25,9 @@ class User < ApplicationRecord
 
   # Review
   def review(other_user, rate, comment: "")
-    reviewing_relationships.create(reviewed_id: other_user.id, rate: rate, comment: comment)
+    unless self == other_user
+      reviewing_relationships.create(reviewed_id: other_user.id, rate: rate, comment: comment)
+    end
   end
 
   # Unreview
