@@ -49,6 +49,10 @@ group :development, :test do
 
   # RSpec
   gem 'rspec-rails', '~> 3.6'
+
+  #  Hirb
+  gem 'hirb'
+  gem 'hirb-unicode'
 end
 
 group :development do
