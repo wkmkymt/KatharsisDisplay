@@ -4,3 +4,23 @@
 <p>Email: <%= @user.email %></p>
 <p>Organization: <%= @user.organization %></p>
 <p>Comment: <%= @user.comment %></p>
+<p>Tag:
+  <ul>
+    <% @user.tag.each do |tag| %>
+      <li><%= tag.name %></li>
+    <% end %>
+  </ul>
+</p>
+<p>Reviewers:
+  <ul>
+    <% @user.reviewer_relationships.each do |review| %>
+      <li>
+        <ul>
+          <li>By: <%= review.reviewer.name %></li>
+          <li>Rate: <%= review.rate %></li>
+          <li>Rate: <%= review.comment %></li>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</p>
