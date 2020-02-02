@@ -9,6 +9,14 @@ CSV.foreach("db/seeds/users.csv") do |row|
   )
 end
 
+# Admin User
+User.create(
+  name: "admin",
+  email: "admin@test.com",
+  password: "password",
+  role: 1
+)
+
 # Shop
 CSV.foreach("db/seeds/shops.csv") do |row|
   Shop.create(
