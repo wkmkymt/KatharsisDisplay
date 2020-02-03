@@ -4,6 +4,7 @@
   <% if current_user.try(:admin?) %>
     <p><%= link_to 'Admin', admin_root_path %></p>
   <% end %>
+  <%= image_tag qrcode current_user.name %>
 <% else %>
   <p><%= link_to 'Login', new_user_session_path %></p>
 <% end %>
