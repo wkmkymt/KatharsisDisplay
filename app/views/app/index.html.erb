@@ -1,6 +1,9 @@
 <% if user_signed_in? %>
   <p><%= link_to 'Logout', destroy_user_session_path, method: :delete %></p>
   <p><%= link_to 'Profile', profile_path(current_user.id) %></p>
+  <% if current_user.try(:admin?) %>
+    <p><%= link_to 'Admin', admin_root_path %></p>
+  <% end %>
 <% else %>
   <p><%= link_to 'Login', new_user_session_path %></p>
 <% end %>
