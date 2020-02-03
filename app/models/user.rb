@@ -42,4 +42,10 @@ class User < ApplicationRecord
   def reviewing?(other_user)
     reviewing.include?(other_user)
   end
+
+  # Checkin / Out
+  def checkio(shop_id)
+    checkin.create(user_id: self.id, shop_id: shop_id)
+    update_attribute(:check_in, !self.check_in)
+  end
 end

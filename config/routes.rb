@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   # Profile
   get 'users/:user_id', to: 'users#show', as: 'profile'
+  post 'checkio', to: 'users#checkio', as: 'checkio'
 
   # Devise
   devise_for :users,
