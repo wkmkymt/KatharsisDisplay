@@ -39,6 +39,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Devise
 gem 'devise'
 
+# Active Admin
+gem 'activeadmin'
+
 # QRcode
 gem 'rqrcode'
 gem 'rqrcode_png'
