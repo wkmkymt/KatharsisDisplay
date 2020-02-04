@@ -17,6 +17,9 @@ ActiveAdmin.register User do
     column :comment
     column :role
     column :point
+    column 'Checkin' do |user|
+      user.check_in?
+    end
     column :created_at
     column :updated_at
     actions
@@ -32,6 +35,9 @@ ActiveAdmin.register User do
       row :comment
       row :role
       row :point
+      row 'Checkin' do |user|
+        user.check_in?
+      end
       row :created_at
       row :updated_at
     end
