@@ -1,13 +1,23 @@
 <% if user_signed_in? %>
-  <p><%= link_to 'Logout', destroy_user_session_path, method: :delete %></p>
-  <p><%= link_to 'Profile', profile_path(current_user.id) %></p>
   <% if current_user.try(:admin?) %>
     <p><%= link_to 'Admin', admin_root_path %></p>
   <% end %>
-  <% if current_user.try(:check_in?) %>
-    <p><%= link_to 'Check Out', checkio_path, method: :post %></p>
+  <p><%= link_to 'Profile', profile_path(current_user.id) %></p>
+  <p><%= link_to 'Logout', destroy_user_session_path, method: :delete %></p>
+  <% if current_user.check_in? %>
+    <h1><%= current_user.get_checkin_shop.name %></h1>
+    <p><%= link_to 'Check Out', checkout_path, method: :post %></p>
+    <p>Checkin Users
+      <ul>
+        <% current_user.get_checkin_shop.get_checkin_users.each do |user| %>
+          <% if user.id != current_user.id %>
+            <li><%= link_to user.name, profile_path(user.id) %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </p>
   <% else %>
-    <p><%= link_to 'Check In', checkio_path, method: :post %></p>
+    <p><%= link_to 'Check In', checkin_path, method: :post %></p>
   <% end %>
   <%= image_tag qrcode current_user.name %>
 <% else %>
