@@ -2,9 +2,9 @@ class User < ApplicationRecord
   # Attribute
   enum  role:  { user: 0, admin: 1 }
 
-  # Checkin -> Shop
-  has_many :checkin, dependent: :delete_all
-  has_many :shop, through: :checkin
+  # CheckinRecord -> Shop
+  has_many :checkin_record, dependent: :delete_all
+  has_many :shop, through: :checkin_record
 
   # Interest -> Tag
   has_many :interest, dependent: :delete_all
@@ -40,6 +40,35 @@ class User < ApplicationRecord
 
   # Is Reviewing?
   def reviewing?(other_user)
-    reviewing.include?(other_user)
+    reviewings.include?(other_user)
+  end
+
+  # Get Record Checked In
+  def get_checkin_record
+    checkin_record.where(check_in: 'in').first
+  end
+
+  # Get Shop Checked In
+  def get_checkin_shop
+    get_checkin_record.shop
+  end
+
+  # Check In?
+  def check_in?
+    get_checkin_record ? true : false
+  end
+
+  # Check In
+  def checkin(shop_id)
+    unless check_in?
+      checkin_record.create(user_id: self.id, shop_id: shop_id)
+    end
+  end
+
+  # Check Out
+  def checkout
+    if check_in?
+      get_checkin_record.checkout
+    end
   end
 end

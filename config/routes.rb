@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   # Profile
   get 'users/:user_id', to: 'users#show', as: 'profile'
 
+  # Check In/Out
+  post 'checkin', to: 'users#checkin', as: 'checkin'
+  post 'checkout', to: 'users#checkout', as: 'checkout'
+
   # Devise
   devise_for :users,
     path: '',

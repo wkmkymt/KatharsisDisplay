@@ -313,6 +313,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
+  chunky_png
   coffee-rails (~> 4.2)
   devise
   hirb

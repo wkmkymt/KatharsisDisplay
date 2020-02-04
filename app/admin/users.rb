@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   # Permit
-  permit_params :name, :email, :organization, :comment, :role, :point, :check_in
+  permit_params :name, :email, :organization, :comment, :role, :point
 
   # Index
   index do
@@ -17,7 +17,9 @@ ActiveAdmin.register User do
     column :comment
     column :role
     column :point
-    column :check_in
+    column 'Checkin' do |user|
+      user.check_in?
+    end
     column :created_at
     column :updated_at
     actions
@@ -33,7 +35,9 @@ ActiveAdmin.register User do
       row :comment
       row :role
       row :point
-      row :check_in
+      row 'Checkin' do |user|
+        user.check_in?
+      end
       row :created_at
       row :updated_at
     end
@@ -67,7 +71,6 @@ ActiveAdmin.register User do
       f.input :comment
       f.input :role
       f.input :point
-      f.input :check_in
     end
     f.actions
   end
