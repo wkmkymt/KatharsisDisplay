@@ -31,9 +31,9 @@ CSV.foreach("db/seeds/tags.csv") do |row|
   )
 end
 
-# Checkin
-CSV.foreach("db/seeds/checkins.csv") do |row|
-  Checkin.create(
+# Checkin Record
+CSV.foreach("db/seeds/checkin_records.csv") do |row|
+  CheckinRecord.create(
     user_id: row[0],
     shop_id: row[1],
     check_in: row[2],
