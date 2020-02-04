@@ -36,6 +36,7 @@ CSV.foreach("db/seeds/checkins.csv") do |row|
   Checkin.create(
     user_id: row[0],
     shop_id: row[1],
+    check_in: row[2],
   )
 end
 
