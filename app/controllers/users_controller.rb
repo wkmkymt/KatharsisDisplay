@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   # Profile
   def show
      @user = User.find(params[:user_id])
+
+     @review = Review.new
   end
 
   # Check In
