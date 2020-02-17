@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   # Profile
   get 'users/:user_id', to: 'users#show', as: 'profile'
 
+  # Review
+  resources :reviews, only: [:create]
+
   # Check In/Out
   post 'checkin', to: 'users#checkin', as: 'checkin'
   post 'checkout', to: 'users#checkout', as: 'checkout'
