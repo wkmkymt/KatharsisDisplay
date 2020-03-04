@@ -8,13 +8,13 @@ class UsersController < ApplicationController
 
   # Check In
   def checkin
-    current_user.checkin(1)
+    User.find(params[:user_id]).checkin(1)
     redirect_to root_path
   end
 
   # Check Out
   def checkout
-    current_user.checkout
+    User.find(params[:user_id]).checkout
     redirect_to root_path
   end
 end

@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   resources :reviews, only: [:create]
 
   # Check In/Out
-  post 'checkin', to: 'users#checkin', as: 'checkin'
-  post 'checkout', to: 'users#checkout', as: 'checkout'
+  get 'checkin', to: 'users#checkin', as: 'checkin'
+  get 'checkout', to: 'users#checkout', as: 'checkout'
 
   # Devise
   devise_for :users,

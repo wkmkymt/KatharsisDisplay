@@ -6,7 +6,6 @@
   <p><%= link_to 'Logout', destroy_user_session_path, method: :delete %></p>
   <% if current_user.check_in? %>
     <h1><%= current_user.get_checkin_shop.name %></h1>
-    <p><%= link_to 'Check Out', checkout_path, method: :post %></p>
     <p>Checkin Users
       <ul>
         <% current_user.get_checkin_shop.get_checkin_users.each do |user| %>
@@ -16,10 +15,8 @@
         <% end %>
       </ul>
     </p>
-  <% else %>
-    <p><%= link_to 'Check In', checkin_path, method: :post %></p>
   <% end %>
-  <%= image_tag qrcode current_user.name %>
+  <%= image_tag qrcode checkin_url(current_user.id) %>
 <% else %>
   <p><%= link_to 'Login', new_user_session_path %></p>
 <% end %>
