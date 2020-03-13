@@ -14,23 +14,7 @@
     <script src="js/scroll.js"></script>
     <link rel="stylesheet" href="css/swiper.css">
 	</head>
-
 	<body>
-  <!--
-  <header id="luxbar" class="luxbar-fixed">
-    <input type="checkbox" class="luxbar-checkbox" id="luxbar-checkbox"/>
-    <div class="luxbar-menu luxbar-menu-right luxbar-menu-material-bluegrey">
-        <ul class="luxbar-navigation">
-            <li class="luxbar-header">
-                <a href="#" class="luxbar-brand"><img src="img/logo_small.png"></a>
-                <label class="luxbar-hamburger luxbar-hamburger-doublespin" 
-                id="luxbar-hamburger" for="luxbar-checkbox"> <span></span> </label>
-            </li>
-            <li class="luxbar-item"><a href="#">Home</a></li>
-        </ul>
-    </div>
-  </header>
--->
 
 	<section>
 		<div class="container">
@@ -40,9 +24,16 @@
           <div class="swiper-slide">
             <section class="bg_blue displayprof">
               <div class="wrap">
-                <h1 class="h_center">User A</h1>
-                <div class="center_img"><img src="./img/prof.jpeg" class="libigimg"></div>
-                <p>就活を辞めて、大学を卒業した後も世界中を旅をしながら生きています！</p>
+                <div class="post_profimg"><div class="mainimgframe"><img src="./img/prof.jpg"></div></div>
+                <div class="prof_body">
+                  <div class="under"><h1>京大 太郎</h1></div>
+                  <h2>@京都大学総合人間学部</h2>
+                  <h2>#創&nbsp;&nbsp;#食</h2>
+                </div>
+                <div class="clearfix"></div>
+                <div class="prof_msg">
+                  <p>"就活を辞めて、大学を卒業した後も世界中を旅をしながら生きています！"</p>
+                </div>
               </div>
             </section>
           </div>
@@ -50,7 +41,16 @@
           <div class="swiper-slide">
             <section class="bg_purple displayprof">
               <div class="wrap">
-                <h1 class="h_center">User B</h1>
+                <div class="post_profimg"><div class="mainimgframe"><img src="./img/prof2.jpg"></div></div>
+                <div class="prof_body">
+                  <div class="under"><h1>堅留 シスオ</h1></div>
+                  <h2>@京都大学大学院工学研究科</h2>
+                  <h2>#食</h2>
+                </div>
+                <div class="clearfix"></div>
+                <div class="prof_msg">
+                  <p>"食べるのが好き"</p>
+                </div>
               </div>
             </section>
           </div>
@@ -58,7 +58,16 @@
         <div class="swiper-slide">
             <section class="bg_yellow displayprof">
               <div class="wrap">
-                <h1 class="h_center">User C</h1>
+                <div class="post_profimg"><div class="mainimgframe"><img src="./img/prof3.jpg"></div></div>
+                <div class="prof_body">
+                  <div class="under"><h1>京大 花子</h1></div>
+                  <h2>@株式会社スゴイコンサルティング</h2>
+                  <h2>#創&nbsp;&nbsp;#人</h2>
+                </div>
+                <div class="clearfix"></div>
+                <div class="prof_msg">
+                  <p>"留学！ボランティア活動！勉強会！インターンシップ！起業！"</p>
+                </div>
               </div>
             </section>
         </div>
@@ -82,6 +91,7 @@
         //},
         loop: true,
         loopedSlides: 3,
+        
         autoplay: {
           delay: 2000,
           disableOnInteraction: false
@@ -97,9 +107,3 @@
         },
       });
     </script>
-
-<script type="text/javascript">
-  $('#movie_2').click(function() {
-    $('#mv').attr('src','https://www.youtube.com/embed/dqrE9DbsiHI?controls=0&amp;disablekb=0&amp;loop=1&amp;rel=0&amp;showinfo=0&amp;enablejsapi=1&amp;widgetid=1&amp;autoplay=1&amp;rel=0&amp;mute=1&amp;playlist=dqrE9DbsiHI')
-  })
-</script>
