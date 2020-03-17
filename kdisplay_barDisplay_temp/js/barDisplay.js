@@ -3,28 +3,30 @@ $(function(){
 
     var person = {
         name: 'Bob',
-        org: '総合人間学部',
+        org: '京都大学総合人間学部',
         tag: ['創', '食'],
         msg: "メッセージだよ",
-        color: "blue",
     };
     visitorList.push(person);
-
     var person = {
         name: 'Bob2',
-        org: '総合人間学部',
+        org: '株式会社スゴイコンサルティング',
         tag: ['人', '食'],
-        msg: "メッセージだよ",
-        color: "purple",
+        msg: "メッセージだね〜",
     };
-    visitorList.push(person);
 
+    colorList =["blue", "purple"];
+    $('.swiper-wrapper').empty();
+    var i = 0;
     for (visitor of visitorList) {
         var slide = $(document.createElement('div'));
         $(slide).attr('class', 'swiper-slide')
 
         var section = $(document.createElement('section'));
-        $(section).attr('class', 'displayprof bg_'+ visitor.color)
+        console.log(i);
+        console.log(i % colorList.length);
+        var color = colorList[i % colorList.length];
+        $(section).attr('class', 'displayprof bg_'+ color)
         $(slide).append(section);
 
         var wrap = $(document.createElement('div'));
@@ -61,8 +63,8 @@ $(function(){
 
         var prof_tag = $(document.createElement('h2'));
         var temp = "";
-        for(i of visitor.tag) {
-            temp+="#" + i + " ";
+        for(eachtag of visitor.tag) {
+            temp+="#" + eachtag + " ";
         }
         prof_tag.html(temp);
         $(prof_body).append(prof_tag);
@@ -80,12 +82,29 @@ $(function(){
         $(prof_msg).append(prof_msg_p);
 
         $('.swiper-wrapper').append(slide);
+        i++;
     }
 
-    var script = document.createElement('script');
-    script.setAttribute("type", "text/javascript");
-    script.setAttribute("src", "js/swiper.js");
-    var body = document.getElementsByTagName("body")[0];
-    body.appendChild(script);
-
+    //要素生成後に下記を処理
+    var swiper = new Swiper('.swiper-container', {
+        //navigation: {
+          //nextEl: '.swiper-button-next',
+          //prevEl: '.swiper-button-prev',
+        //},
+        loop: true,
+        loopedSlides: 3,
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false
+        },
+        speed: 800,
+        //slidesPerView: 'auto',
+        slidesPerView: 1,
+        spaceBetween: 0,
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'bullets',
+          clickable: true,
+        },
+      });
 });
