@@ -40,6 +40,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Devise
 gem 'devise'
 
+# rolify
+gem 'rolify'
+
 # Active Admin
 gem 'activeadmin'
 
