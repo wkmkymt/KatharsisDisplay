@@ -14,7 +14,6 @@ User.create(
   name: "admin",
   email: "admin@test.com",
   password: "password",
-  role: 1
 )
 
 # Shop
