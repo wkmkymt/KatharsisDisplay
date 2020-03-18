@@ -26,6 +26,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # Role
+  after_create :assign_default_role
+
+  def assign_default_role
+    self.add_role(:guest) if self.roles.blank?
+  end
+
   # Review
   def review(other_user, rate, comment: "")
     unless self == other_user

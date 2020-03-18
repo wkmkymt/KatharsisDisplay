@@ -2,19 +2,21 @@ require "csv"
 
 # User
 CSV.foreach("db/seeds/users.csv") do |row|
-  User.create(
+  user = User.create(
     name: row[0],
     email: row[1],
     password: "password",
   )
+  user.add_role "guest"
 end
 
 # Admin User
-User.create(
+admin = User.create(
   name: "admin",
   email: "admin@test.com",
   password: "password",
 )
+admin.add_role "admin"
 
 # Shop
 CSV.foreach("db/seeds/shops.csv") do |row|

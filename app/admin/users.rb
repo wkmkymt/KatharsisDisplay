@@ -15,7 +15,7 @@ ActiveAdmin.register User do
       end
     end
     column :comment
-    column :role
+    column :roles
     column :point
     column 'Checkin' do |user|
       user.check_in?
@@ -33,7 +33,7 @@ ActiveAdmin.register User do
       row :email
       row :organization
       row :comment
-      row :role
+      row :roles
       row :point
       row 'Checkin' do |user|
         user.check_in?
@@ -69,7 +69,7 @@ ActiveAdmin.register User do
       f.input :email
       f.input :organization
       f.input :comment
-      f.input :role
+      f.input :roles
       f.input :point
     end
     f.actions
