@@ -25,8 +25,6 @@ $(function(){
         $(slide).attr('class', 'swiper-slide')
 
         var section = $(document.createElement('section'));
-        console.log(i);
-        console.log(i % colorList.length);
         var color = colorList[i % colorList.length];
         $(section).attr('class', 'displayprof bg_'+ color)
         $(slide).append(section);
