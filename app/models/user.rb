@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  # Attribute
-  enum  role:  { user: 0, admin: 1 }
+  # Rollify
+  rolify
 
   # CheckinRecord -> Shop
   has_many :checkin_record, dependent: :delete_all
