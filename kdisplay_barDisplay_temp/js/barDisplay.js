@@ -1,4 +1,5 @@
 $(function(){
+    //visitorListに客の情報を読み込めば動作する。
     var visitorList = []
 
     var person = {
@@ -14,6 +15,7 @@ $(function(){
         tag: ['人', '食'],
         msg: "メッセージだね〜",
     };
+    visitorList.push(person);
 
     colorList =["blue", "purple"];
     $('.swiper-wrapper').empty();
@@ -87,24 +89,13 @@ $(function(){
 
     //要素生成後に下記を処理
     var swiper = new Swiper('.swiper-container', {
-        //navigation: {
-          //nextEl: '.swiper-button-next',
-          //prevEl: '.swiper-button-prev',
-        //},
         loop: true,
-        loopedSlides: 3,
         autoplay: {
           delay: 2000,
           disableOnInteraction: false
         },
         speed: 800,
-        //slidesPerView: 'auto',
         slidesPerView: 1,
         spaceBetween: 0,
-        pagination: {
-          el: '.swiper-pagination',
-          type: 'bullets',
-          clickable: true,
-        },
       });
 });
