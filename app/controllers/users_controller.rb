@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:checkin, :checkout]
+  before_action :authorize_staff, only: [:checkin, :checkout]
+
   # Profile
   def show
      @user = User.find(params[:user_id])
@@ -17,4 +20,10 @@ class UsersController < ApplicationController
     User.find(params[:user_id]).checkout
     redirect_to root_path
   end
+
+  private
+    # Authorize
+    def authorize_staff
+      authorize User
+    end
 end
