@@ -18,6 +18,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def authenticate_admin_user!
-    raise SecurityError unless current_user.try(:admin?)
+    raise SecurityError unless current_user.has_role? :admin
   end
 end
