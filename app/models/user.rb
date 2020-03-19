@@ -62,6 +62,8 @@ class User < ApplicationRecord
   def checkin(shop_id)
     unless check_in?
       checkin_record.create(user_id: self.id, shop_id: shop_id)
+      self.point += 1
+      self.save
     end
   end
 
