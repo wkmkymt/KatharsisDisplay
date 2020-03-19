@@ -43,6 +43,9 @@ gem 'devise'
 # rolify
 gem 'rolify'
 
+# Pundit
+gem 'pundit'
+
 # Active Admin
 gem 'activeadmin'
 
