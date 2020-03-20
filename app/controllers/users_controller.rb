@@ -11,7 +11,11 @@ class UsersController < ApplicationController
 
   # Check In
   def checkin
-    User.find(params[:user_id]).checkin(1)
+    user = User.find(params[:user_id])
+    user.checkin(1)
+
+    DisplayChannel.broadcast_to('checkin', user)
+
     redirect_to root_path
   end
 
