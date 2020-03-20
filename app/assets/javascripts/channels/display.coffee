@@ -1,5 +1,6 @@
 App.display = App.cable.subscriptions.create "DisplayChannel",
   connected: ->
+    console.log("Display Channnel is connected!")
     return
 
   disconnected: ->
@@ -7,7 +8,11 @@ App.display = App.cable.subscriptions.create "DisplayChannel",
 
   received: (data) ->
     console.log(data)
-    li = document.createElement('li')
-    li.textContent = data.name
-    document.getElementById('prof').appendChild(li)
+
+    if data.code == 'checkin'
+      addProf(data.user, data.tags)
+
+    if data.code == 'checkout'
+      removeProf(data.userid)
+
     return

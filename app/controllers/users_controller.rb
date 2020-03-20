@@ -9,19 +9,41 @@ class UsersController < ApplicationController
      @review = Review.new
   end
 
+  # Display
+  def display
+    @users = Shop.find(1).get_checkin_users
+
+    DisplayChannel.broadcast_to('master', @users)
+
+    render layout: 'display'
+  end
+
   # Check In
   def checkin
     user = User.find(params[:user_id])
-    user.checkin(1)
 
-    DisplayChannel.broadcast_to('checkin', user)
+    unless user.check_in?
+      user.checkin(1)
+      DisplayChannel.broadcast_to('master',
+        code: 'checkin',
+        user: user,
+        tags: user.tag,
+      )
+    end
 
     redirect_to root_path
   end
 
   # Check Out
   def checkout
-    User.find(params[:user_id]).checkout
+    user = User.find(params[:user_id])
+    user.checkout
+
+    DisplayChannel.broadcast_to('master',
+      code: 'checkout',
+      userid: user.id,
+    )
+
     redirect_to root_path
   end
 

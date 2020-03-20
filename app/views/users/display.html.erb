@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <% @users.each do |user| %>
+      <div class="prof_<%= user.id %> swiper-slide">
+        <section class="displayprof bg_blue">
+          <div class="wrap">
+            <div class="post_profimg">
+              <div class="mainimgframe">
+                <img src="" alt="">
+              </div>
+            </div>
+
+            <div class="prof_body">
+              <div class="under">
+                <h1><%= user.name %></h1>
+              </div>
+              <h2><%= user.organization %></h2>
+              <h2>
+                <% user.tag.each do |tag| %>
+                  #<%= tag.name %>　
+                <% end %>
+              </h2>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="prof_msg">
+              <p>"<%= user.comment %>"</p>
+            </div>
+          </div>
+        </section>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<ul>
+  <% @users.each do |user| %>
+  <li><%= user.name %></li>
+  <% end %>
+</ul>
+
+<%= javascript_include_tag 'swiper/swiper.js' %>
+<%= javascript_include_tag 'displays.js' %>
