@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   # Profile
   get 'users/:user_id', to: 'users#show', as: 'profile'
 
+  # Display
+  get 'display', to: 'users#display', as: 'display'
+
   # Review
   resources :reviews, only: [:create]
 
