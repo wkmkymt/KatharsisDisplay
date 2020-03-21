@@ -36,11 +36,8 @@
   </div>
 </div>
 
-<ul>
-  <% @users.each do |user| %>
-  <li><%= user.name %></li>
-  <% end %>
-</ul>
+<%= stylesheet_link_tag 'swiper/swiper' %>
+<%= stylesheet_link_tag 'displays' %>
 
-<%= javascript_include_tag 'swiper/swiper.js' %>
-<%= javascript_include_tag 'displays.js' %>
+<%= javascript_include_tag 'swiper/swiper' %>
+<%= javascript_include_tag 'displays' %>

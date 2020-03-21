@@ -7,8 +7,6 @@ App.display = App.cable.subscriptions.create "DisplayChannel",
     return
 
   received: (data) ->
-    console.log(data)
-
     if data.code == 'checkin'
       addProf(data.user, data.tags)
 
