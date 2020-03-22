@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:checkin, :checkout]
   before_action :authorize_staff, only: [:checkin, :checkout]
 
+  rescue_from Pundit::NotAuthorizedError, with: :not_authorized
+
   # Profile
   def show
      @user = User.find(params[:user_id])
@@ -51,5 +53,10 @@ class UsersController < ApplicationController
     # Authorize
     def authorize_staff
       authorize User
+    end
+
+    # Not Authorized
+    def not_authorized
+      redirect_to request.referrer || root_path
     end
 end
