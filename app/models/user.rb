@@ -25,6 +25,9 @@ class User < ApplicationRecord
   # Color
   has_one :color
 
+  # Profile Image
+  has_one :photo
+
   # Devise
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
