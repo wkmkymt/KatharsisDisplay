@@ -22,6 +22,12 @@ class User < ApplicationRecord
                                     dependent:   :destroy
   has_many :reviewers, through: :reviewer_relationships, source: :reviewer
 
+  # Color
+  has_one :color
+
+  # Profile Image
+  has_one :photo
+
   # Devise
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

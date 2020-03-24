@@ -50,3 +50,19 @@ CSV.foreach("db/seeds/reviews.csv") do |row|
     comment: row[3],
   )
 end
+
+# Color
+CSV.foreach("db/seeds/colors.csv") do |row|
+  Color.create(
+    name: row[0],
+    user_id: row[1],
+  )
+end
+
+# Photo
+CSV.foreach("db/seeds/photos.csv") do |row|
+  Photo.create(
+    image: File.open("./app/assets/images/prof/" + row[0]),
+    user_id: row[1],
+  )
+end
