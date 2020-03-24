@@ -58,3 +58,11 @@ CSV.foreach("db/seeds/reviews.csv") do |row|
     comment: row[3],
   )
 end
+
+# Color
+CSV.foreach("db/seeds/colors.csv") do |row|
+  Color.create(
+    name: row[0],
+    user_id: row[1],
+  )
+end
