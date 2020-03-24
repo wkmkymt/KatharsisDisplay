@@ -7,7 +7,7 @@ ActiveAdmin.register Photo do
     selectable_column
     column :id
     column :image do |photo|
-      image_tag photo.image.url
+      image_tag photo.image.thumb.url
     end
     column :user_id
     actions
