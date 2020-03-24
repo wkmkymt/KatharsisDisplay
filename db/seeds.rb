@@ -2,20 +2,13 @@ require "csv"
 
 # User
 CSV.foreach("db/seeds/users.csv") do |row|
-  User.create(
+  user = User.create(
     name: row[0],
     email: row[1],
     password: "password",
   )
+  user.add_role "guest"
 end
-
-# Admin User
-User.create(
-  name: "admin",
-  email: "admin@test.com",
-  password: "password",
-  role: 1
-)
 
 # Shop
 CSV.foreach("db/seeds/shops.csv") do |row|
@@ -55,5 +48,21 @@ CSV.foreach("db/seeds/reviews.csv") do |row|
     reviewed_id: row[1],
     rate: row[2],
     comment: row[3],
+  )
+end
+
+# Color
+CSV.foreach("db/seeds/colors.csv") do |row|
+  Color.create(
+    name: row[0],
+    user_id: row[1],
+  )
+end
+
+# Photo
+CSV.foreach("db/seeds/photos.csv") do |row|
+  Photo.create(
+    image: File.open("./app/assets/images/prof/" + row[0]),
+    user_id: row[1],
   )
 end

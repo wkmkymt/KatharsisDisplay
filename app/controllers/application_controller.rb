@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  # Pundit
+  include Pundit
+
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -18,6 +21,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def authenticate_admin_user!
-    raise SecurityError unless current_user.try(:admin?)
+    raise SecurityError unless current_user.has_role? :admin
   end
 end

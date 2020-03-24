@@ -4,6 +4,6 @@ class Shop < ApplicationRecord
 
   # Get Users Checked In
   def get_checkin_users
-    checkin_record.where(check_in: 'in').joins(:user).select("users.*")
+    user.joins(:checkin_record).where('checkin_records.check_in', 'in').uniq
   end
 end

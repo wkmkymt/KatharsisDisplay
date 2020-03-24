@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'sassc', '< 2.2.0'
@@ -37,8 +37,17 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# jQuery
+gem 'jquery-rails'
+
 # Devise
 gem 'devise'
+
+# rolify
+gem 'rolify'
+
+# Pundit
+gem 'pundit'
 
 # Active Admin
 gem 'activeadmin'
@@ -47,6 +56,12 @@ gem 'activeadmin'
 gem 'rqrcode'
 gem 'rqrcode_png'
 gem 'chunky_png'
+
+# Carrier Wave
+gem 'carrierwave'
+
+# Mini Magick
+gem 'mini_magick'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -84,6 +99,10 @@ group :test do
 
   # Web Drivers
   gem 'webdrivers', '~> 3.0'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

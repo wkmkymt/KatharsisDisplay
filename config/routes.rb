@@ -5,12 +5,15 @@ Rails.application.routes.draw do
   # Profile
   get 'users/:user_id', to: 'users#show', as: 'profile'
 
+  # Display
+  get 'display', to: 'users#display', as: 'display'
+
   # Review
   resources :reviews, only: [:create]
 
   # Check In/Out
-  post 'checkin', to: 'users#checkin', as: 'checkin'
-  post 'checkout', to: 'users#checkout', as: 'checkout'
+  get 'checkin/:user_id', to: 'users#checkin', as: 'checkin'
+  get 'checkout/:user_id', to: 'users#checkout', as: 'checkout'
 
   # Devise
   devise_for :users,

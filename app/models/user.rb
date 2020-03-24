@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  # Attribute
-  enum  role:  { user: 0, admin: 1 }
+  # Rollify
+  rolify
 
   # CheckinRecord -> Shop
   has_many :checkin_record, dependent: :delete_all
@@ -22,9 +22,22 @@ class User < ApplicationRecord
                                     dependent:   :destroy
   has_many :reviewers, through: :reviewer_relationships, source: :reviewer
 
+  # Color
+  has_one :color
+
+  # Profile Image
+  has_one :photo
+
   # Devise
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  # Role
+  after_create :assign_default_role
+
+  def assign_default_role
+    self.add_role(:guest) if self.roles.blank?
+  end
 
   # Review
   def review(other_user, rate, comment: "")
@@ -62,6 +75,8 @@ class User < ApplicationRecord
   def checkin(shop_id)
     unless check_in?
       checkin_record.create(user_id: self.id, shop_id: shop_id)
+      self.point += 1
+      self.save
     end
   end
 
