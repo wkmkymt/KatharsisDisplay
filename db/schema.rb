@@ -97,7 +97,6 @@ ActiveRecord::Schema.define(version: 2020_03_24_085722) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "role", default: 0, null: false
     t.integer "point", default: 0, null: false
     t.integer "gender"
     t.date "birthday"
