@@ -66,3 +66,11 @@ CSV.foreach("db/seeds/colors.csv") do |row|
     user_id: row[1],
   )
 end
+
+# Photo
+CSV.foreach("db/seeds/photos.csv") do |row|
+  Photo.create(
+    image: File.open("./app/assets/images/prof/" + row[0]),
+    user_id: row[1],
+  )
+end
