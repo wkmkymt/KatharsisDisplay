@@ -1,0 +1,15 @@
+current directory: /Users/e45395/Documents/GitHub/KatharsisDisplay/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+/Users/e45395/.rvm/rubies/ruby-2.5.7/bin/ruby -I /Users/e45395/.rvm/rubies/ruby-2.5.7/lib/ruby/site_ruby/2.5.0 -r ./siteconf20200325-54623-ud2ptk.rb extconf.rb
+creating Makefile
+
+current directory: /Users/e45395/Documents/GitHub/KatharsisDisplay/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/e45395/Documents/GitHub/KatharsisDisplay/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/e45395/Documents/GitHub/KatharsisDisplay/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 cruby.bundle ./.gem.20200325-54623-1d0qvqk/skiptrace/internal
