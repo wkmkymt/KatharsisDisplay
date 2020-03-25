@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # Attribute
+  enum  gender:  { man: 0, woman: 1 }
+
   # Rollify
   rolify
 
@@ -23,7 +26,7 @@ class User < ApplicationRecord
   has_many :reviewers, through: :reviewer_relationships, source: :reviewer
 
   # Color
-  has_one :color
+  belongs_to :color
 
   # Devise
   devise :database_authenticatable, :registerable,
