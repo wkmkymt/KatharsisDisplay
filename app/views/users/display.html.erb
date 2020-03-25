@@ -26,7 +26,7 @@
             <div class="clearfix"></div>
 
             <div class="prof_msg">
-              <p>"<%= user.comment %>"</p>
+              <p><% if user.comment? %>"<%= user.comment %>"<% end %></p>
             </div>
           </div>
         </section>
