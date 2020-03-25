@@ -25,6 +25,13 @@ Rails.application.routes.draw do
       sign_up: '',
     }
 
+  # Profile Image
+  resources :users do
+    member do
+      get 'show_profimg'
+    end
+  end
+
   # Admin
   ActiveAdmin.routes(self)
 end

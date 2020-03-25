@@ -11,6 +11,12 @@ class UsersController < ApplicationController
      @review = Review.new
   end
 
+  # Profile Image
+  def show_profimg
+    @user = User.find(params[:user_id])
+    send_data(@user.profimg)
+  end
+
   # Display
   def display
     @users = Shop.find(1).get_checkin_users

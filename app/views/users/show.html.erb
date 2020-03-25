@@ -11,6 +11,8 @@
     <% end %>
   </ul>
 </p>
+<p>Profile Image</p>
+<%= image_tag show_profimg_user_path(current_user.id) %>
 <p>Reviewers:
   <ul>
     <% @user.reviewer_relationships.each do |review| %>
