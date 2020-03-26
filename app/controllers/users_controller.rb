@@ -30,6 +30,7 @@ class UsersController < ApplicationController
   # Check In
   def checkin
     user = User.find(params[:user_id])
+    user.profimg = ""
 
     unless user.check_in?
       user.checkin(1)
