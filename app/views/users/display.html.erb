@@ -3,11 +3,13 @@
     <div class="swiper-wrapper">
       <% @users.each do |user| %>
       <div class="prof_<%= user.id %> swiper-slide">
-        <section class="displayprof bg_blue">
+        <section class="displayprof bg_<%= user.color.name %>">
           <div class="wrap">
             <div class="post_profimg">
               <div class="mainimgframe">
-                <img src="" alt="">
+                <% if user.profimg %>
+                  <%= image_tag show_profimg_user_path(user.id) %>
+                <% end %>
               </div>
             </div>
 

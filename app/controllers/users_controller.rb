@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   # Display
   def display
     @users = Shop.find(1).get_checkin_users
+    @users.map { |user| user.profimg = "" }
 
     DisplayChannel.broadcast_to('master', @users)
 
