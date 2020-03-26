@@ -1,12 +1,30 @@
 ActiveAdmin.register User do
   # Permit
-  permit_params :name, :email, :organization, :comment, :role, :point
+  permit_params :name, :email, :organization, :comment, :point, :gender, :birthday, :profimg
+
+  # Controller
+  controller do
+    def update
+      @user = User.find(params[:id])
+      @user.update(permitted_params[:user])
+
+      if permitted_params[:user][:profimg]
+        @user.profimg = permitted_params[:user][:profimg].read
+      end
+
+      if @user.save
+        redirect_to admin_user_path(@user.id)
+      end
+    end
+  end
 
   # Index
   index do
     selectable_column
     column :id
     column :name
+    column :gender
+    column :birthday
     column :email
     column :organization
     column 'Tags' do |user|
@@ -14,6 +32,7 @@ ActiveAdmin.register User do
         tag.name
       end
     end
+    column :color
     column :comment
     column :roles
     column :point
@@ -30,8 +49,11 @@ ActiveAdmin.register User do
     attributes_table do
       row :id
       row :name
+      row :gender
+      row :birthday
       row :email
       row :organization
+      row :color
       row :comment
       row :roles
       row :point
@@ -40,6 +62,10 @@ ActiveAdmin.register User do
       end
       row :created_at
       row :updated_at
+    end
+
+    panel "Profile Image" do
+      image_tag show_profimg_user_path(user.id)
     end
 
     panel "Tags" do
@@ -66,9 +92,13 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs do
       f.input :name
+      f.input :gender
+      f.input :birthday
       f.input :email
       f.input :organization
       f.input :comment
+      f.file_field :profimg, accept: "image/jpeg"
+      f.input :color
       f.input :roles
       f.input :point
     end
