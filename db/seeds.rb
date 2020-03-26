@@ -9,12 +9,15 @@ end
 
 # User
 CSV.foreach("db/seeds/users.csv") do |row|
+  file = File.open("./app/assets/images/prof/" + row[3], "r")
   user = User.create(
     name: row[0],
     email: row[1],
     password: "password",
     color_id: row[2],
+    profimg: file.read
   )
+  file.close
   user.add_role "guest"
 end
 
