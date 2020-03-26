@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   # Profile Image
   def show_profimg
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
     send_data(@user.profimg)
   end
 
