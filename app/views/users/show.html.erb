@@ -2,6 +2,9 @@
 
 <p>Name: <%= @user.name %></p>
 <p>Email: <%= @user.email %></p>
+<p>Gender: <%= @user.gender %></p>
+<p>Birthday: <%= @user.birthday %></p>
+<p>Color: <%= @user.color.name %></p>
 <p>Organization: <%= @user.organization %></p>
 <p>Comment: <%= @user.comment %></p>
 <p>Tag:
@@ -11,6 +14,12 @@
     <% end %>
   </ul>
 </p>
+<p>Profile Image</p>
+<% if @user.profimg %>
+  <%= image_tag show_profimg_user_path(@user.id) %>
+<% else %>
+  <p> Not Image</p>
+<% end %>
 <p>Reviewers:
   <ul>
     <% @user.reviewer_relationships.each do |review| %>
@@ -23,25 +32,27 @@
       </li>
     <% end %>
   </ul>
-</p>
+</pp>
 
-<p>Review</p>
-<% if current_user.reviewing? @user %>
-  <p>You have already reviewed!</p>
-<% else %>
-  <%= form_with model: @review, local: true do |f| %>
-    <%= f.hidden_field :reviewer_id, value: current_user.id %>
-    <%= f.hidden_field :reviewed_id, value: @user.id %>
-    <div class="field">
-      <%= f.label :rate %><br />
-      <%= f.number_field :rate %>
-    </div>
-    <div class="field">
-      <%= f.label :comment %><br />
-      <%= f.text_field :comment, autocomplete: "Comment" %>
-    </div>
-    <div class="actions">
-      <%= f.submit "Submit" %>
-    </div>
+<% if current_user != @user%>
+  <p>Review</p>
+  <% if current_user.reviewing? @user %>
+    <p>You have already reviewed!</p>
+  <% else %>
+    <%= form_with model: @review, local: true do |f| %>
+      <%= f.hidden_field :reviewer_id, value: current_user.id %>
+      <%= f.hidden_field :reviewed_id, value: @user.id %>
+      <div class="field">
+        <%= f.label :rate %><br />
+        <%= f.number_field :rate %>
+      </div>
+      <div class="field">
+        <%= f.label :comment %><br />
+        <%= f.text_field :comment, autocomplete: "Comment" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Submit" %>
+      </div>
+    <% end %>
   <% end %>
 <% end %>

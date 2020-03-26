@@ -23,7 +23,17 @@ Rails.application.routes.draw do
       sign_out: 'logout',
       registration: 'signup',
       sign_up: '',
+    },
+    controllers: {
+      registrations: 'users/registrations'
     }
+
+  # Profile Image
+  resources :users do
+    member do
+      get 'show_profimg'
+    end
+  end
 
   # Admin
   ActiveAdmin.routes(self)

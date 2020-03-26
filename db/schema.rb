@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_085722) do
+ActiveRecord::Schema.define(version: 2020_03_24_075450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2020_03_24_085722) do
 
   create_table "colors", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,13 +38,6 @@ ActiveRecord::Schema.define(version: 2020_03_24_085722) do
     t.datetime "updated_at", null: false
     t.index ["tag_id"], name: "index_interests_on_tag_id"
     t.index ["user_id"], name: "index_interests_on_user_id"
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.binary "image", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -100,6 +92,8 @@ ActiveRecord::Schema.define(version: 2020_03_24_085722) do
     t.integer "point", default: 0, null: false
     t.integer "gender"
     t.date "birthday"
+    t.bigint "color_id", default: 1
+    t.binary "profimg"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
