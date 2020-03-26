@@ -32,7 +32,7 @@ let addProf = (user, tags) => {
   $(post_profimg).append(mainimgframe)
 
   let pic = $(document.createElement('img'))
-  // $(pic).attr('src', './img/prof3.jpg')
+  $(pic).attr('src', '/users/' + user.id + '/show_profimg')
   $(mainimgframe).append(pic)
 
   let prof_body = $(document.createElement('div'))
