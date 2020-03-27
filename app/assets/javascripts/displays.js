@@ -66,8 +66,8 @@ let addProf = (user) => {
   $(wrap).append(prof_msg)
 
   let prof_msg_p = $(document.createElement('p'))
-  let msg = user.comment ? user.comment : ''
-  prof_msg_p.html("&quot;" + msg + "&quot;")
+  let msg = user.comment? "&quot;" + user.comment + "&quot;": ""
+  prof_msg_p.html(msg)
   $(prof_msg).append(prof_msg_p)
 
   swiper.appendSlide(slide)
