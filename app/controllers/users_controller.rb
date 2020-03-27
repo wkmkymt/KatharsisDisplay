@@ -44,6 +44,9 @@ class UsersController < ApplicationController
           tags: @user.tag,
         },
       )
+      flash[:success] = "#{@user.name} have just checked in!"
+    else
+      flash[:danger] = "#{@user.name} have already checked in..."
     end
 
     redirect_to root_path
@@ -61,6 +64,9 @@ class UsersController < ApplicationController
           id: @user.id,
         },
       )
+      flash[:success] = "#{@user.name} have just checked out!"
+    else
+      flash[:danger] = "#{@user.name} have not checked in..."
     end
 
     redirect_to root_path
@@ -74,6 +80,7 @@ class UsersController < ApplicationController
 
     # Not Authorized
     def not_authorized
+      flash[:danger] = "You are not allowed!"
       redirect_to request.referrer || root_path
     end
 end
