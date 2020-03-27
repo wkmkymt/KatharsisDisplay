@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   # Permit
-  permit_params :name, :email, :organization, :comment, :point, :gender, :birthday, :profimg
+  permit_params :name, :email, :organization, :comment, :point, :gender, :birthday, :profimg, :color_id, role_ids: [], tag_ids: []
 
   # Controller
   controller do
@@ -99,6 +99,9 @@ ActiveAdmin.register User do
       f.input :comment
       f.file_field :profimg, accept: "image/jpeg"
       f.input :color
+      f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |t|
+        t.check_box + t.text
+      end
       f.input :roles
       f.input :point
     end
