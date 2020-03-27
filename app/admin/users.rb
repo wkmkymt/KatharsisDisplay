@@ -1,20 +1,23 @@
 ActiveAdmin.register User do
   # Permit
-  permit_params :name, :email, :organization, :comment, :point, :gender, :birthday, :profimg
+  permit_params :name, :email, :organization, :comment, :point, :gender, :birthday, :profimg, :color_id, role_ids: [], tag_ids: []
 
   # Controller
   controller do
-    def update
-      @user = User.find(params[:id])
-      @user.update(permitted_params[:user])
-
+    def create
       if permitted_params[:user][:profimg]
-        @user.profimg = permitted_params[:user][:profimg].read
+        params[:user][:profimg] = permitted_params[:user][:profimg].read
       end
 
-      if @user.save
-        redirect_to admin_user_path(@user.id)
+      super
+    end
+
+    def update
+      if permitted_params[:user][:profimg]
+        params[:user][:profimg] = permitted_params[:user][:profimg].read
       end
+
+      super
     end
   end
 
@@ -99,6 +102,9 @@ ActiveAdmin.register User do
       f.input :comment
       f.file_field :profimg, accept: "image/jpeg"
       f.input :color
+      f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |t|
+        t.check_box + t.text
+      end
       f.input :roles
       f.input :point
     end

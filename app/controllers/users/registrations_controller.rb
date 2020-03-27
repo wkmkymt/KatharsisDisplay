@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  def create
+    if params[:user][:profimg]
+      params[:user][:profimg] = params[:user][:profimg].read
+    end
+
+    super
+  end
+
   def update
     if params[:user][:profimg]
       params[:user][:profimg] = params[:user][:profimg].read
@@ -8,4 +16,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     super
   end
+
+  protected
+
+    def update_resource(resource, params)
+      resource.update_without_current_password(params)
+    end
 end

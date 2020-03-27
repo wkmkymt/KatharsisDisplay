@@ -32,11 +32,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="field">
     <%= f.label :gender %><br />
     <%= f.select :gender, User.genders.keys %>
   </div>
@@ -49,6 +44,12 @@
   <div class="field">
     <%= f.label :color_id %><br />
     <%= f.collection_select :color_id, Color.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |t| %>
+      <%= t.check_box + t.text %>
+    <% end %>
   </div>
 
   <div class="field">
