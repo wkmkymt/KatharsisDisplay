@@ -4,6 +4,14 @@ ActiveAdmin.register User do
 
   # Controller
   controller do
+    def create
+      if permitted_params[:user][:profimg]
+        params[:user][:profimg] = permitted_params[:user][:profimg].read
+      end
+
+      super
+    end
+
     def update
       if permitted_params[:user][:profimg]
         params[:user][:profimg] = permitted_params[:user][:profimg].read
