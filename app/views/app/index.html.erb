@@ -15,8 +15,11 @@
         <% end %>
       </ul>
     </p>
+
+    <%= image_tag qrcode checkout_url(current_user.id) %>
+  <% else %>
+    <%= image_tag qrcode checkin_url(current_user.id) %>
   <% end %>
-  <%= image_tag qrcode checkin_url(current_user.id) %>
 <% else %>
   <p><%= link_to 'Login', new_user_session_path %></p>
 <% end %>
