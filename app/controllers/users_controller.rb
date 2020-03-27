@@ -46,12 +46,14 @@ class UsersController < ApplicationController
   # Check Out
   def checkout
     user = User.find(params[:user_id])
-    user.checkout
 
-    DisplayChannel.broadcast_to('master',
-      code: 'checkout',
-      userid: user.id,
-    )
+    if user.check_in?
+      user.checkout
+      DisplayChannel.broadcast_to('master',
+        code: 'checkout',
+        userid: user.id,
+      )
+    end
 
     redirect_to root_path
   end
