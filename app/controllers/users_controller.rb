@@ -29,14 +29,20 @@ class UsersController < ApplicationController
 
   # Check In
   def checkin
-    user = User.find(params[:user_id])
+    @user = User.find(params[:user_id])
 
-    unless user.check_in?
-      user.checkin(1)
+    unless @user.check_in?
+      @user.checkin(1)
       DisplayChannel.broadcast_to('master',
         code: 'checkin',
-        user: user,
-        tags: user.tag,
+        user: {
+          id: @user.id,
+          name: @user.name,
+          organization: @user.organization,
+          comment: @user.comment,
+          color: @user.color.name,
+          tags: @user.tag,
+        },
       )
     end
 
@@ -45,13 +51,15 @@ class UsersController < ApplicationController
 
   # Check Out
   def checkout
-    user = User.find(params[:user_id])
+    @user = User.find(params[:user_id])
 
-    if user.check_in?
-      user.checkout
+    if @user.check_in?
+      @user.checkout
       DisplayChannel.broadcast_to('master',
         code: 'checkout',
-        userid: user.id,
+        user: {
+          id: @user.id,
+        },
       )
     end
 
