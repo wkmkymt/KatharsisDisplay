@@ -9,14 +9,12 @@ let swiper = new Swiper('.swiper-container', {
   spaceBetween: 0,
 })
 
-let addProf = (user, tags) => {
+let addProf = (user) => {
   let slide = $(document.createElement('div'))
   $(slide).attr('class', 'prof_' + user.id + ' swiper-slide')
 
   let section = $(document.createElement('section'))
-  // let color = colorList[i % colorList.length]
-  // $(section).attr('class', 'displayprof bg_' + color)
-  $(section).attr('class', 'displayprof bg_blue')
+  $(section).attr('class', 'displayprof bg_' + user.color)
   $(slide).append(section)
 
   let wrap = $(document.createElement('div'))
@@ -53,7 +51,7 @@ let addProf = (user, tags) => {
 
   let prof_tag = $(document.createElement('h2'))
   let temp = ""
-  for (tag of tags) {
+  for (tag of user.tags) {
     temp += "#" + tag.name + " "
   }
   prof_tag.html(temp)
@@ -75,7 +73,7 @@ let addProf = (user, tags) => {
   swiper.appendSlide(slide)
 }
 
-let removeProf = (id) => {
-  let index = $('.prof_' + id).attr('data-swiper-slide-index')
+let removeProf = (user) => {
+  let index = $('.prof_' + user.id).attr('data-swiper-slide-index')
   swiper.removeSlide(index)
 }

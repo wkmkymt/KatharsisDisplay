@@ -11,6 +11,6 @@ App.display = App.cable.subscriptions.create "DisplayChannel",
       addProf(data.user, data.tags)
 
     if data.code == 'checkout'
-      removeProf(data.userid)
+      removeProf(data.user)
 
     return
