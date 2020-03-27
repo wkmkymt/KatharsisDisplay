@@ -5,16 +5,11 @@ ActiveAdmin.register User do
   # Controller
   controller do
     def update
-      @user = User.find(params[:id])
-      @user.update(permitted_params[:user])
-
       if permitted_params[:user][:profimg]
-        @user.profimg = permitted_params[:user][:profimg].read
+        params[:user][:profimg] = permitted_params[:user][:profimg].read
       end
 
-      if @user.save
-        redirect_to admin_user_path(@user.id)
-      end
+      super
     end
   end
 
