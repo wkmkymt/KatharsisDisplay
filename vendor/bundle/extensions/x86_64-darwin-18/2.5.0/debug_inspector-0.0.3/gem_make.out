@@ -1,0 +1,15 @@
+current directory: /Users/e45395/Documents/GitHub/KatharsisDisplay/vendor/bundle/gems/debug_inspector-0.0.3/ext/debug_inspector
+/Users/e45395/.rvm/rubies/ruby-2.5.7/bin/ruby -I /Users/e45395/.rvm/rubies/ruby-2.5.7/lib/ruby/site_ruby/2.5.0 -r ./siteconf20200419-26978-13u9vqv.rb extconf.rb
+creating Makefile
+
+current directory: /Users/e45395/Documents/GitHub/KatharsisDisplay/vendor/bundle/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" clean
+
+current directory: /Users/e45395/Documents/GitHub/KatharsisDisplay/vendor/bundle/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR="
+compiling debug_inspector.c
+linking shared-object debug_inspector.bundle
+
+current directory: /Users/e45395/Documents/GitHub/KatharsisDisplay/vendor/bundle/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 debug_inspector.bundle ./.gem.20200419-26978-3hxkzc

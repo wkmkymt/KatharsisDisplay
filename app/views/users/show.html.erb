@@ -1,25 +1,31 @@
-<p><%= link_to 'Edit', edit_user_registration_path %></p>
+<section>
+  <div class="wrap">
 
-<p>Name: <%= @user.name %></p>
-<p>Email: <%= @user.email %></p>
-<p>Gender: <%= @user.gender %></p>
-<p>Birthday: <%= @user.birthday %></p>
-<p>Color: <%= @user.color.name %></p>
-<p>Organization: <%= @user.organization %></p>
-<p>Comment: <%= @user.comment %></p>
-<p>Tag:
+<p>名前: <%= @user.name %></p>
+<p>メールアドレス: <%= @user.email %></p>
+<p>性別: <%= @user.gender %></p>
+<p>生年月日: <%= @user.birthday %></p>
+<p>プロフィールカラー: <%= @user.color.name %></p>
+<p>所属: <%= @user.organization %></p>
+<p>ひとこと: <%= @user.comment %></p>
+<p>タグ:
   <ul>
     <% @user.tag.each do |tag| %>
       <li><%= tag.name %></li>
     <% end %>
   </ul>
 </p>
-<p>Profile Image</p>
+<p>プロフィール画像</p>
 <% if @user.profimg %>
   <%= image_tag show_profimg_user_path(@user.id) %>
 <% else %>
   <p> Not Image</p>
 <% end %>
+
+<p><%= link_to 'プロフィール編集', edit_user_registration_path %></p>
+
+
+<!--
 <p>Reviewers:
   <ul>
     <% @user.reviewer_relationships.each do |review| %>
@@ -32,8 +38,9 @@
       </li>
     <% end %>
   </ul>
-</pp>
-
+</p>
+-->
+<!--
 <% if current_user != @user%>
   <p>Review</p>
   <% if current_user.reviewing? @user %>
@@ -56,3 +63,8 @@
     <% end %>
   <% end %>
 <% end %>
+-->
+
+
+  </div>
+</section>
