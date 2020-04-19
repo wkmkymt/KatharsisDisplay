@@ -31,7 +31,7 @@
 
   <div class="field">
     <%= f.label :gender %><br />
-    <%= f.select :gender, User.genders.keys %>
+    <%= f.select :gender, User.genders.keys.map {|k| [I18n.t("enums.user.gender.#{k}"), k]} %>
   </div>
 
   <div class="field">
@@ -41,10 +41,11 @@
 
   <div class="field">
     <%= f.label :color_id %><br />
-    <%= f.collection_select :color_id, Color.all, :id, :name %>
+    <%= f.select :color_id, Color.all.map {|k| [I18n.t("enums.user.color.#{k.name}"), k.id]} %>
   </div>
 
   <div class="field">
+    <p>興味あるタグを選択してください(複数選択可)</p>
     <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |t| %>
       <%= t.check_box + t.text %>
     <% end %>
