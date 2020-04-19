@@ -1,15 +1,15 @@
 <section>
   <div class="wrap">
 
-<p>名前: <%= @user.name %></p>
-<p>メールアドレス: <%= @user.email %></p>
-<p>性別: <%= @user.gender %></p>
-<p>生年月日: <%= @user.birthday %></p>
-<p>プロフィールカラー: <%= @user.color.name %></p>
-<p>所属: <%= @user.organization %></p>
-<p>ひとこと: <%= @user.comment %></p>
+<p class="p_item">名前: <%= @user.name %></p>
+<p class="p_item">メールアドレス: <%= @user.email %></p>
+<p class="p_item">性別: <%= I18n.t("enums.user.gender.#{@user.gender}") %></p>
+<p class="p_item">生年月日: <%= @user.birthday %></p>
+<p class="p_item">プロフィールカラー: <%= I18n.t("enums.user.color.#{@user.color.name}") %></p>
+<p class="p_item">所属: <%= @user.organization %></p>
+<p class="p_item">ひとこと: <%= @user.comment %></p>
 <p>タグ:
-  <ul>
+  <ul class="taglist p_item">
     <% @user.tag.each do |tag| %>
       <li><%= tag.name %></li>
     <% end %>
@@ -17,9 +17,9 @@
 </p>
 <p>プロフィール画像</p>
 <% if @user.profimg %>
-  <%= image_tag show_profimg_user_path(@user.id) %>
+  <%= image_tag show_profimg_user_path(@user.id), class:"p_item" %>
 <% else %>
-  <p> Not Image</p>
+  <p class="p_item"> Not Image</p>
 <% end %>
 
 <p><%= link_to 'プロフィール編集', edit_user_registration_path %></p>

@@ -61,3 +61,10 @@ ja:
         man: 男性
         woman: 女性
         others: その他
+      color:
+        white: ホワイト
+        red: レッド
+        blue: ブルー
+        green: グリーン
+        purple: パープル
+        midnightblue: ミッドナイトブルー
