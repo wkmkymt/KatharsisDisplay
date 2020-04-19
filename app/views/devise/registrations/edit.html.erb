@@ -1,4 +1,8 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<section>
+  <div class="wrap">
+
+<!--<h2>プロフィール編集 <%= resource_name.to_s.humanize %></h2>-->
+<h2>プロフィール編集</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -18,11 +22,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :password %><em>(<%= @minimum_password_length %>文字以上)</em><br />
+    <i>*パスワードを変更しない場合は空欄のままにしてください</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
   </div>
 
@@ -33,7 +36,7 @@
 
   <div class="field">
     <%= f.label :gender %><br />
-    <%= f.select :gender, User.genders.keys %>
+    <%= f.select :gender, User.genders.keys.map {|k| [I18n.t("enums.user.gender.#{k}"), k]} %>
   </div>
 
   <div class="field">
@@ -47,6 +50,7 @@
   </div>
 
   <div class="field">
+    <%= f.label :interest_tag %><br />
     <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |t| %>
       <%= t.check_box + t.text %>
     <% end %>
@@ -68,12 +72,18 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "保存" %>
   </div>
 <% end %>
 
+<!--
 <h3>Cancel my account</h3>
-
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+-->
 
-<%= link_to "Back", :back %>
+<!--
+<%= link_to "戻る", :back %>
+-->
+
+  </div>
+</section>

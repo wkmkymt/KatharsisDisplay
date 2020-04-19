@@ -1,3 +1,7 @@
+<section>
+  <div class="wrap">
+    
+
 <% flash.each do |key, value| %>
   <p class="alert alert-<%= key %>">
     <%= value %>
@@ -6,10 +10,10 @@
 
 <% if user_signed_in? %>
   <% if current_user.has_role? :admin %>
-    <p><%= link_to 'Admin', admin_root_path %></p>
+    <p><%= link_to '管理画面', admin_root_path %></p>
   <% end %>
-  <p><%= link_to 'Profile', profile_path(current_user.id) %></p>
-  <p><%= link_to 'Logout', destroy_user_session_path, method: :delete %></p>
+  <p><%= link_to 'プロフィール', profile_path(current_user.id) %></p>
+  <p><%= link_to 'サインアウト', destroy_user_session_path, method: :delete %></p>
   <% if current_user.check_in? %>
     <h1><%= current_user.get_checkin_shop.name %></h1>
     <p>Checkin Users
@@ -22,10 +26,18 @@
       </ul>
     </p>
 
-    <%= image_tag qrcode checkout_url(current_user.id) %>
+    <div class="img_center">
+      <%= image_tag qrcode checkout_url(current_user.id) %>
+    </div>
   <% else %>
-    <%= image_tag qrcode checkin_url(current_user.id) %>
+    <div class="img_center">
+      <%= image_tag qrcode checkin_url(current_user.id) %>
+    </div>
   <% end %>
 <% else %>
-  <p><%= link_to 'Login', new_user_session_path %></p>
+  <p><%= link_to 'サインイン', new_user_session_path %></p>
 <% end %>
+
+
+  </div>
+</section>

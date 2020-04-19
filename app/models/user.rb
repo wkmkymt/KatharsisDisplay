@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   # Attribute
-  enum  gender:  { man: 0, woman: 1 }
+  enum  gender:  { man: 0, woman: 1, others: 2 }
 
   # Rollify
   rolify
