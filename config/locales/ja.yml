@@ -60,6 +60,8 @@ ja:
               too_short: が短すぎます
             password_confirmation:
               confirmation: パスワード確認が一致していません
+            email:
+              blank: が空欄です
   enums:
     user:
       gender:

@@ -167,7 +167,7 @@ img.qrcode {
     font-size: 18px;
 }
 
-.taglist li{
+li{
     margin-left: 32px;
 }
 
@@ -224,4 +224,23 @@ div.smltopmargin {
 
 div.smlbottommargin {
     margin-bottom: 0px;
+}
+
+#error_explanation {
+    margin-bottom: 32px;
+    border: 1px solid #ffd700;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: none;
+    color: #ffffff;
+}
+
+#error_explanation h2 {
+    font-size: 22px;
+    line-height: 32px;
+    margin-bottom: 4px;
+}
+
+.prof_info {
+    margin-top: 16px;
 }

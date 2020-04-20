@@ -1,45 +1,49 @@
 <section>
   <div class="wrap">
 
-<p class="p_item">名前: <%= @user.name %></p>
-<p class="p_item">メールアドレス: <%= @user.email %></p>
-<p class="p_item">性別: <%= I18n.t("enums.user.gender.#{@user.gender}") %></p>
-<p class="p_item">生年月日: <%= @user.birthday %></p>
-<p class="p_item">プロフィールカラー: <%= I18n.t("enums.user.color.#{@user.color.name}") %></p>
-<p class="p_item">所属: <%= @user.organization %></p>
-<p class="p_item">ひとこと: <%= @user.comment %></p>
-<p>タグ:
-  <ul class="taglist p_item">
-    <% @user.tag.each do |tag| %>
-      <li><%= tag.name %></li>
-    <% end %>
-  </ul>
-</p>
-<p class="button_desc_text">プロフィール画像:</p>
-<% if @user.profimg %>
-  <%= image_tag show_profimg_user_path(@user.id), class:"p_item" %>
-<% else %>
-  <p class="p_item"> Not Image</p>
-<% end %>
 <div class="button_area">
   <p><%= link_to 'プロフィール編集', edit_user_registration_path %></p>
 </div>
 
-<!--
-<p>Reviewers:
-  <ul>
-    <% @user.reviewer_relationships.each do |review| %>
-      <li>
-        <ul>
-          <li>By: <%= review.reviewer.name %></li>
-          <li>Rate: <%= review.rate %></li>
-          <li>Rate: <%= review.comment %></li>
-        </ul>
-      </li>
-    <% end %>
-  </ul>
-</p>
--->
+<div class="prof_info">  
+  <p class="p_item">名前: <%= @user.name %></p>
+  <p class="p_item">メールアドレス: <%= @user.email %></p>
+  <p class="p_item">性別: <%= I18n.t("enums.user.gender.#{@user.gender}") %></p>
+  <p class="p_item">生年月日: <%= @user.birthday %></p>
+  <p class="p_item">プロフィールカラー: <%= I18n.t("enums.user.color.#{@user.color.name}") %></p>
+  <p class="p_item">所属: <%= @user.organization %></p>
+  <p class="p_item">ひとこと: <%= @user.comment %></p>
+  <p>タグ:
+    <ul class="taglist p_item">
+      <% @user.tag.each do |tag| %>
+        <li><%= tag.name %></li>
+      <% end %>
+    </ul>
+  </p>
+  <p class="button_desc_text">プロフィール画像:</p>
+  <% if @user.profimg %>
+    <%= image_tag show_profimg_user_path(@user.id), class:"p_item" %>
+  <% else %>
+    <p class="p_item"> Not Image</p>
+  <% end %>
+
+  <!--
+  <p>Reviewers:
+    <ul>
+      <% @user.reviewer_relationships.each do |review| %>
+        <li>
+          <ul>
+            <li>By: <%= review.reviewer.name %></li>
+            <li>Rate: <%= review.rate %></li>
+            <li>Rate: <%= review.comment %></li>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+  </p>
+  -->
+</div>
+
 <!--
 <% if current_user != @user%>
   <p>Review</p>
