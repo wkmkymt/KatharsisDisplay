@@ -117,6 +117,14 @@ input[type="checkbox"]:checked+label{
     border-bottom: 1px solid #1fdaff;
     /*border-bottom: 1px solid #1aff1a;*/
     color: #fff;
+    width: 100%;
+    position:fixed;
+    top: 0px;
+}
+
+#header-bk { 
+    height:56px;
+    width:100%;
 }
 
 a {
