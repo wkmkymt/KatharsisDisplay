@@ -3,21 +3,29 @@
     
 
 <% flash.each do |key, value| %>
-  <p class="p_item alert alert-<%= key %>">
-    <%= value %>
-  </p>
+  <div class="alert_area">
+    <p class="alert alert-<%= key %>">
+      <%= value %>
+    </p>
+  </div>
 <% end %>
 
 <% if user_signed_in? %>
   <% if current_user.has_role? :admin %>
-    <p class="p_item"><%= link_to '管理画面', admin_root_path %></p>
+    <div class="alert_area">
+      <p class="p_item">管理者アカウントでサインインしています。</p>
+      <p class="p_item">ゲスト来客時に端末のカメラアプリを起動してゲストのQRコードを読み込んでください。</p>
+      <p>システム管理を行うためには「管理画面」を開いてください。</p>
+    </div>
+    <p class="p_item"><%= link_to '管理画面', admin_root_path, target: '_blank' %></p>
   <% end %>
-  <p class="p_item"><%= link_to 'プロフィール', profile_path(current_user.id) %></p>
-  <p class="p_item"><%= link_to 'サインアウト', destroy_user_session_path, method: :delete %></p>
+  <div class="center_buttons">
+  <p class="p_item"><%= link_to 'プロフィール確認', profile_path(current_user.id), class:"button_area_blue" %></p>
+  </div>
   <% if current_user.check_in? %>
-    <h1><%= current_user.get_checkin_shop.name %></h1>
-    <p class="p_item">Checkin Users
-      <ul>
+    <!--<h1><%= current_user.get_checkin_shop.name %></h1>-->
+    <p>現在チェックインしているユーザ
+      <ul class="taglist">
         <% current_user.get_checkin_shop.get_checkin_users.each do |user| %>
           <% if user.id != current_user.id %>
             <li><%= link_to user.name, profile_path(user.id) %></li>
@@ -27,18 +35,21 @@
     </p>
 
     <div class="img_center">
-      <p class="qrcode_text">Checkout</p>
+      <p class="qrcode_text">Checkout QR</p>
       <%= image_tag qrcode(checkout_url(current_user.id)), class: 'qrcode' %>
     </div>
   <% else %>
     <div class="img_center">
-      <p class="qrcode_text">Checkin</p>
+      <p class="qrcode_text">Checkin QR</p>
       <%= image_tag qrcode(checkin_url(current_user.id)), class: 'qrcode' %>
     </div>
   <% end %>
+  <div class="center_buttons smltopmargin"><%= link_to 'サインアウト', destroy_user_session_path, method: :delete ,class:"button_area" %></div>
 <% else %>
-  <p class="p_item"><%= link_to 'サインイン', new_user_session_path %></p>
-  <p class="p_item"><%= link_to "サインアップ", new_registration_path(User) %></p>
+  <div class="center_buttons">
+    <%= link_to 'サインイン', new_user_session_path , class:"button_area button_side" %>
+    <%= link_to "サインアップ", new_registration_path(User) , class:"button_area_blue" %>
+  </div>
 <% end %>
 
 

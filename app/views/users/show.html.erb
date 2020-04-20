@@ -15,15 +15,15 @@
     <% end %>
   </ul>
 </p>
-<p>プロフィール画像</p>
+<p class="button_desc_text">プロフィール画像:</p>
 <% if @user.profimg %>
   <%= image_tag show_profimg_user_path(@user.id), class:"p_item" %>
 <% else %>
   <p class="p_item"> Not Image</p>
 <% end %>
-
-<p><%= link_to 'プロフィール編集', edit_user_registration_path %></p>
-
+<div class="button_area">
+  <p><%= link_to 'プロフィール編集', edit_user_registration_path %></p>
+</div>
 
 <!--
 <p>Reviewers:
