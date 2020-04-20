@@ -1,25 +1,31 @@
-<p><%= link_to 'Edit', edit_user_registration_path %></p>
+<section>
+  <div class="wrap">
 
-<p>Name: <%= @user.name %></p>
-<p>Email: <%= @user.email %></p>
-<p>Gender: <%= @user.gender %></p>
-<p>Birthday: <%= @user.birthday %></p>
-<p>Color: <%= @user.color.name %></p>
-<p>Organization: <%= @user.organization %></p>
-<p>Comment: <%= @user.comment %></p>
-<p>Tag:
-  <ul>
+<p class="p_item">名前: <%= @user.name %></p>
+<p class="p_item">メールアドレス: <%= @user.email %></p>
+<p class="p_item">性別: <%= I18n.t("enums.user.gender.#{@user.gender}") %></p>
+<p class="p_item">生年月日: <%= @user.birthday %></p>
+<p class="p_item">プロフィールカラー: <%= I18n.t("enums.user.color.#{@user.color.name}") %></p>
+<p class="p_item">所属: <%= @user.organization %></p>
+<p class="p_item">ひとこと: <%= @user.comment %></p>
+<p>タグ:
+  <ul class="taglist p_item">
     <% @user.tag.each do |tag| %>
       <li><%= tag.name %></li>
     <% end %>
   </ul>
 </p>
-<p>Profile Image</p>
+<p class="button_desc_text">プロフィール画像:</p>
 <% if @user.profimg %>
-  <%= image_tag show_profimg_user_path(@user.id) %>
+  <%= image_tag show_profimg_user_path(@user.id), class:"p_item" %>
 <% else %>
-  <p> Not Image</p>
+  <p class="p_item"> Not Image</p>
 <% end %>
+<div class="button_area">
+  <p><%= link_to 'プロフィール編集', edit_user_registration_path %></p>
+</div>
+
+<!--
 <p>Reviewers:
   <ul>
     <% @user.reviewer_relationships.each do |review| %>
@@ -32,8 +38,9 @@
       </li>
     <% end %>
   </ul>
-</pp>
-
+</p>
+-->
+<!--
 <% if current_user != @user%>
   <p>Review</p>
   <% if current_user.reviewing? @user %>
@@ -56,3 +63,8 @@
     <% end %>
   <% end %>
 <% end %>
+-->
+
+
+  </div>
+</section>

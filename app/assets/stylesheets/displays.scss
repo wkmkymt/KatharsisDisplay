@@ -442,8 +442,12 @@ p.nomarginbottom {
 }
 
 .bg_white {
-	background: #fff;
+	background: #ecf0f1;
 	color: #000;
+}
+
+.bg_white .under {
+    border-bottom: 4px solid #000;
 }
 
 .bg_dot {
@@ -452,13 +456,18 @@ p.nomarginbottom {
     color: #000;
 }
 
+.bg_midnightblue {
+    background: #2c3e50;
+    color: #fff;
+}
+
 .bg_red {
     background: #ff6670;
     color: #fff;
 }
 
 .bg_green {
-    background: #77a88d;
+    background: #1abc9c;
     color: #fff;
 }
 

@@ -44,9 +44,9 @@ class UsersController < ApplicationController
           tags: @user.tag,
         },
       )
-      flash[:success] = "#{@user.name} have just checked in!"
+      flash[:success] = "#{@user.name}: チェックインに成功しました"
     else
-      flash[:danger] = "#{@user.name} have already checked in..."
+      flash[:danger] = "#{@user.name}: 既にチェックイン済みです"
     end
 
     redirect_to root_path
@@ -64,9 +64,9 @@ class UsersController < ApplicationController
           id: @user.id,
         },
       )
-      flash[:success] = "#{@user.name} have just checked out!"
+      flash[:success] = "#{@user.name}: チェックアウトしました"
     else
-      flash[:danger] = "#{@user.name} have not checked in..."
+      flash[:danger] = "#{@user.name}: 事前にチェックインしていません"
     end
 
     redirect_to root_path

@@ -12,3 +12,216 @@
  *
  *= require_self
  */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    font-family: "游ゴシック", "游ゴシック体", 'YuGothic', "Yu Gothic", "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro", 'Meiryo', "メイリオ", "MS PGothic", sans-serif;
+    background-color: #181818;
+    color: #fff;
+}
+
+input,textarea, select {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -webkit-appearance: none;
+    max-width: 100%;
+}
+
+input, textarea, select {
+    padding: 4px 8px;
+    font-size: 14px;
+    line-height: 20px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 4px;
+}
+
+input[type="file"] {
+    padding: 0;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    border: 1px solid #1fdaff;
+    background: none;
+    color: #fff;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input[type="submit"] {
+    font-size: 16px;
+    line-height: 24px;
+    padding: 8px 16px;
+}
+
+select {
+    border: 1px solid #1fdaff;
+    background: none;
+    color: #fff;
+}
+
+textarea {
+    width: 100%;
+    height: 48px;
+    resize: none;
+    border: 1px solid #1fdaff;
+    background: none;
+    color: #fff;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]+label{
+    display: inline-block;
+    border: 1px solid #555555;
+    padding: 8px 16px;
+    border-radius: 8px;
+    margin-top: 8px;
+    margin-right: 4px;
+    margin-bottom: 8px;
+}
+
+input[type="checkbox"]:checked+label{
+    border: 1px solid #8370ff;
+}
+
+.wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 32px 16px;
+    overflow: hidden;
+    zoom: 1;
+}
+
+.headerwrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 16px;
+    overflow: hidden;
+    zoom: 1;
+}
+
+#header {
+    /*background-color: #8a2be2;*/
+    background-color: #212121;
+    border-bottom: 1px solid #1fdaff;
+    /*border-bottom: 1px solid #1aff1a;*/
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+p {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+#header a {
+    color: #fff;
+}
+
+.wrap .img_center {
+    max-width: 100%;
+    text-align: center;
+}
+
+.wrap img {
+    width: 100%;
+}
+
+div.field {
+    margin-bottom: 24px;
+}
+
+.wrap h2 {
+    margin-bottom: 16px;
+}
+
+.p_item {
+    margin-bottom: 16px;
+}
+
+img.qrcode {
+    border: 2px solid #1fdaff;
+    border-radius: 8px;
+    max-width: 400px;
+}
+
+.qrcode_text {
+    margin-bottom: 8px;
+    color: #1fdaff;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.taglist li{
+    margin-left: 32px;
+}
+
+.alert_area {
+    border: 1px solid #8370ff;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.button_area {
+    display: inline-block;
+    border: 1px solid #8370ff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: none;
+    color: #ffffff;
+}
+
+.button_area_blue {
+    display: inline-block;
+    border: 1px solid #1fdaff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: none;
+    color: #ffffff;
+}
+
+._links {
+    margin-top: 32px;
+}
+
+.button_desc_text {
+    margin-bottom: 8px;
+}
+
+.button_side {
+    margin-right: 8px;
+}
+
+.center_buttons {
+    text-align: center;
+}
+
+.smltopmargin {
+    display: inline-block;
+    margin-top: 16px;
+}
+
+div.smltopmargin {
+    display: block;
+    margin-top: 16px;
+}
+
+div.smlbottommargin {
+    margin-bottom: 0px;
+}
