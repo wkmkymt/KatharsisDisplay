@@ -15,14 +15,14 @@
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+    <div class="field smlbottommargin">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end %>
 
   <div class="actions">
-    <%= f.submit "サインイン" %>
+    <%= f.submit "サインイン", class:"button_area_blue" %>
   </div>
 <% end %>
 

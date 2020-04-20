@@ -28,6 +28,11 @@ ja:
     models:
       user: ユーザー
       admin: 管理者
+      checkin_record: チェックイン履歴
+      color: プロフィールカラー
+      review: レビュー
+      shop: 店舗
+      tag: タグ
     attributes:
       user:
         id: ID

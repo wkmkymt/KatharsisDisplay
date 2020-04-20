@@ -446,6 +446,10 @@ p.nomarginbottom {
 	color: #000;
 }
 
+.bg_white .under {
+    border-bottom: 4px solid #000;
+}
+
 .bg_dot {
     background: url(../img/dot_bg.png) left top repeat;
     background-size: 19px 57px;
