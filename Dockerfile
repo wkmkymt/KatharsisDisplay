@@ -1,5 +1,5 @@
 # Base Image
-FROM ruby:2.5
+FROM ruby:2.5.8
 
 # Set Language
 ENV LANG C.UTF-8
