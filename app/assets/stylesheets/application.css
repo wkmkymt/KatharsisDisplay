@@ -52,6 +52,11 @@ input[type="text"], input[type="email"], input[type="password"] {
     color: #fff;
 }
 
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #181818 inset;
+    -webkit-text-fill-color: #fff; !important;
+}
+
 input[type="file"] {
     display: none;
 }
