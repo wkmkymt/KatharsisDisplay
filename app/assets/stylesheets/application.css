@@ -258,3 +258,25 @@ div.smlbottommargin {
 .prof_info {
     margin-top: 16px;
 }
+
+.purple_text {
+    color: #8370ff !important;
+}
+
+.blue_text {
+    color: #1fdaff !important;
+}
+
+.purple_underline {
+    text-decoration:underline;
+    text-decoration-color: #8370ff;
+}
+
+.blue_underline {
+    text-decoration:underline;
+    text-decoration-color: #1fdaff;
+}
+
+.label_supplement {
+    margin-left: 8px;
+}

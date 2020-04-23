@@ -40,6 +40,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :personality %><a href="https://www.16personalities.com/ja" target="_blank" class="blue_text blue_underline label_supplement"><i>16Personalites診断を受けたことがない人はこちら</i></a><br>
+    <%= f.select :personality, User.personalities.keys.map {|k| [I18n.t("enums.user.personality.#{k}"), k]} %>
+  </div>
+
+  <div class="field">
     <%= f.label :color_id %><br />
     <%= f.select :color_id, Color.all.map {|k| [I18n.t("enums.user.color.#{k.name}"), k.id]} %>
   </div>

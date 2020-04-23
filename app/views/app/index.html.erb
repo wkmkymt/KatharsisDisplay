@@ -13,7 +13,7 @@
 <% if user_signed_in? %>
   <% if current_user.has_role? :admin %>
     <div class="alert_area">
-      <p class="p_item">管理者アカウントでサインインしています。</p>
+      <p class="p_item">管理者アカウント「<%= current_user.name %>」でサインインしています。</p>
       <p class="p_item">ゲスト来客時に端末のカメラアプリを起動してゲストのQRコードを読み込んでください。</p>
       <p>システム管理を行うためには「管理画面」を開いてください。</p>
     </div>
@@ -23,7 +23,7 @@
     <p>現在チェックインしているユーザ
       <ul class="taglist p_item">
         <% current_user.get_checkin_shop.get_checkin_users.each do |user| %>
-          <% if user.id != current_user.id %>
+          <% if user.id != current_.id %>
             <li><%= link_to user.name, profile_path(user.id) %></li>
           <% end %>
         <% end %>
@@ -33,6 +33,7 @@
   <div class="center_buttons p_item">
   <% if current_user.has_role? :admin %>
     <%= link_to '管理画面', admin_root_path, target: '_blank' , class:"button_area button_side"%>
+    <%= link_to 'K-Display', display_path, target: '_blank' , class:"button_area button_side"%>
   <% end %>
   <%= link_to 'プロフィール確認', profile_path(current_user.id), class:"button_area_blue" %>
   </div>

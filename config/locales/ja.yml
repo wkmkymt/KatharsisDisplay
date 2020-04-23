@@ -45,6 +45,7 @@ ja:
         password_confirmation: パスワード確認
         interest_tag: タグ
         gender: 性別
+        personality: パーソナリティ
         birthday: 生年月日
         organization: 所属
         color_id: プロフィールカラー
@@ -68,6 +69,40 @@ ja:
         man: 男性
         woman: 女性
         others: その他
+      personality: 
+        noanswer: 未回答
+        INTJ_A: INTJ-A
+        INTJ_T: INTJ-T
+        INTP_A: INTP-A
+        INTP_T: INTP-T
+        ENTJ_A: ENTJ-A
+        ENTJ_T: ENTJ-T
+        ENTP_A: ENTP-A
+        ENTP_T: ENTP-T
+        INFJ_A: INFJ-A
+        INFJ_T: INFJ-T
+        INFP_A: INFP-A
+        INFP_T: INFP-T
+        ENFJ_A: ENFJ-A
+        ENFJ_T: ENFJ-T
+        ENFP_A: ENFP-A
+        ENFP_T: ENFP-T
+        ISTJ_A: ISTJ-A
+        ISTJ_T: ISTJ-T
+        ISFJ_A: ISFJ-A
+        ISFJ_T: ISFJ-T
+        ESTJ_A: ESTJ-A
+        ESTJ_T: ESTJ-T
+        ESFJ_A: ESFJ-A
+        ESFJ_T: ESFJ-T
+        ISTP_A: ISTP-A
+        ISTP_T: ISTP-T
+        ISFP_A: ISFP-A
+        ISFP_T: ISFP-T
+        ESTP_A: ESTP-A
+        ESTP_T: ESTP-T
+        ESFP_A: ESFP-A
+        ESFP_T: ESFP-T
       color:
         white: ホワイト
         red: レッド

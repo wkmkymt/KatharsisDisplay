@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Attribute
   enum  gender:  { man: 0, woman: 1, others: 2 }
+  enum  personality:  {noanswer: 0, INTJ_A: 1, INTJ_T: 2, INTP_A: 3, INTP_T: 4, ENTJ_A: 5, ENTJ_T: 6, ENTP_A: 7, ENTP_T: 8, INFJ_A: 9, INFJ_T: 10, INFP_A: 11, INFP_T: 12, ENFJ_A: 13, ENFJ_T: 14, ENFP_A: 15, ENFP_T: 16, ISTJ_A: 17, ISTJ_T: 18, ISFJ_A: 19, ISFJ_T: 20, ESTJ_A: 21, ESTJ_T: 22, ESFJ_A: 23, ESFJ_T: 24, ISTP_A: 25, ISTP_T: 26, ISFP_A: 27, ISFP_T: 28, ESTP_A: 29, ESTP_T: 30, ESFP_A: 31, ESFP_T: 32}
 
   # Rollify
   rolify

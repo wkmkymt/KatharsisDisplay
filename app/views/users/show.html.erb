@@ -10,6 +10,7 @@
   <p class="p_item">メールアドレス: <%= @user.email %></p>
   <p class="p_item">性別: <%= I18n.t("enums.user.gender.#{@user.gender}") %></p>
   <p class="p_item">生年月日: <%= @user.birthday %></p>
+  <p class="p_item">パーソナリティ: <%= I18n.t("enums.user.personality.#{@user.personality}") %></p>
   <p class="p_item">プロフィールカラー: <%= I18n.t("enums.user.color.#{@user.color.name}") %></p>
   <p class="p_item">所属: <%= @user.organization %></p>
   <p class="p_item">ひとこと: <%= @user.comment %></p>
