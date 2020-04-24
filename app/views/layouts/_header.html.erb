@@ -1,6 +1,11 @@
 <section id="header">
     <div class="headerwrap">
-        <p><%= link_to 'Katarsis Degital Hub', root_path %></p>    
+        <p class="header_logo">
+            <%= link_to root_path do %>
+                <%= image_tag '/assets/KDH_logo.png' %>
+                Katarsis Degital Hub
+            <% end %>
+        </p>    
     </div>
 </section>
 <div id="header-bk">

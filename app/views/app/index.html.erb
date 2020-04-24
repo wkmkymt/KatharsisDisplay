@@ -30,12 +30,12 @@
       </ul>
     </p>
   <% end %>
-  <div class="center_buttons p_item">
+  <div class="center_buttons">
   <% if current_user.has_role? :admin %>
-    <%= link_to '管理画面', admin_root_path, target: '_blank' , class:"button_area button_side"%>
-    <%= link_to 'K-Display', display_path, target: '_blank' , class:"button_area button_side"%>
+    <%= link_to '管理画面', admin_root_path, target: '_blank' , class:"button_area button_side p_item"%>
+    <%= link_to 'K-Display', display_path, target: '_blank' , class:"button_area button_side p_item"%>
   <% end %>
-  <%= link_to 'プロフィール確認', profile_path(current_user.id), class:"button_area_blue" %>
+  <%= link_to 'プロフィール確認', profile_path(current_user.id), class:"button_area_blue p_item" %>
   </div>
   <% if current_user.check_in? %>
     <div class="img_center">
