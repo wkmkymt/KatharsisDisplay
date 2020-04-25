@@ -9,13 +9,16 @@
 
 <div class="prof_info">  
   <p class="p_item">名前: <%= @user.name %></p>
-  <p class="p_item">メールアドレス: <%= @user.email %></p>
-  <p class="p_item">性別: <%= I18n.t("enums.user.gender.#{@user.gender}") %></p>
-  <p class="p_item">生年月日: <%= @user.birthday %></p>
+  <% if @user.id == current_user.id %>
+    <p class="p_item">メールアドレス: <%= @user.email %></p>
+  <% end %>
+  <p class="p_item">所属: <%= @user.organization %></p>
+  <% if @user.id == current_user.id %>
+    <p class="p_item">性別: <%= I18n.t("enums.user.gender.#{@user.gender}") %></p>
+    <p class="p_item">生年月日: <%= @user.birthday %></p>
+  <% end %>
   <p class="p_item">パーソナリティ: <%= I18n.t("enums.user.personality.#{@user.personality}") %></p>
   <p class="p_item">プロフィールカラー: <%= I18n.t("enums.user.color.#{@user.color.name}") %></p>
-  <p class="p_item">所属: <%= @user.organization %></p>
-  <p class="p_item">ひとこと: <%= @user.comment %></p>
   <p>タグ:
     <ul class="taglist p_item">
       <% @user.tag.each do |tag| %>
@@ -23,6 +26,7 @@
       <% end %>
     </ul>
   </p>
+  <p class="p_item">ひとこと: <%= @user.comment %></p>
   <p class="button_desc_text">プロフィール画像:</p>
   <% if @user.profimg %>
     <%= image_tag show_profimg_user_path(@user.id), class:"p_item" %>
