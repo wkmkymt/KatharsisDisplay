@@ -1,9 +1,11 @@
 <section>
   <div class="wrap">
 
+<% if @user.id == current_user.id %>
 <div class="center_buttons">
     <%= link_to 'プロフィール編集', edit_user_registration_path, class:"button_area" %>
 </div>
+<% end %>
 
 <div class="prof_info">  
   <p class="p_item">名前: <%= @user.name %></p>
