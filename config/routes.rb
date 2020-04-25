@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'app#index'
 
   #Term of Service
-  get 'tos', to: 'app#tos' 
+  get 'tos', to: 'app#tos'
 
   # Profile
   get 'users/:user_id', to: 'users#show', as: 'profile'
