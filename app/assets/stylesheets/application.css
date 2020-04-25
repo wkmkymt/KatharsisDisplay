@@ -35,8 +35,15 @@ input,textarea, select {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    -moz-appearance: none;
     -webkit-appearance: none;
     max-width: 100%;
+}
+
+option {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
 }
 
 input, textarea, select {
@@ -76,8 +83,12 @@ input[type="submit"] {
 
 select {
     border: 1px solid #1fdaff;
-    background: none;
+    background: #181818;
     color: #fff;
+}
+
+option {
+    color: #000;
 }
 
 textarea {
