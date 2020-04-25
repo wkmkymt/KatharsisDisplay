@@ -71,6 +71,9 @@
     <%= f.file_field :profimg, accept: "image/jpeg" %>
   </div>
 
+  <p>サインアップ前に下記の利用規約をお読みください。サインアップおよび本サービス利用にて、下記規約に同意したものとします。</p>
+  <p><%= link_to '利用規約', tos_path, class:"blue_text blue_underline", target:"_blank" %></p>
+
   <div class="center_buttons">
     <div class="actions">
       <%= f.submit "サインアップ", class:"button_area" %>
