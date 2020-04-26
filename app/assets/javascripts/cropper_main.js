@@ -23,13 +23,6 @@ $(function () {
       $dataRotate.val(e.detail.rotate);
       $dataScaleX.val(e.detail.scaleX);
       $dataScaleY.val(e.detail.scaleY);
-
-      console.log("トリミングウインドウのスタートx, y座標, ウインドウのサイズ");
-      console.log(Math.round(e.detail.x));
-      console.log(Math.round(e.detail.y));
-      console.log(Math.round(e.detail.width));
-      console.log(Math.round(e.detail.height));
-
     }
   };
   var originalImageURL = $image.attr('src');
