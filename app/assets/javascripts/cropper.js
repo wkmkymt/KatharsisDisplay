@@ -178,11 +178,11 @@
   // Inspired by the default width and height of a canvas element.
 
   var MIN_CONTAINER_WIDTH = 200;
-  var MIN_CONTAINER_HEIGHT = 200;
+  var MIN_CONTAINER_HEIGHT = 100;
 
   var DEFAULTS = {
     // Define the view mode of the cropper
-    viewMode: 3,
+    viewMode: 1,
     // 0, 1, 2, 3
     // Define the dragging mode of the cropper
     dragMode: DRAG_MODE_CROP,
