@@ -59,6 +59,7 @@ ja:
           attributes:
             password:
               too_short: が短すぎます
+              blank: が空欄です
             password_confirmation:
               confirmation: パスワード確認が一致していません
             email:

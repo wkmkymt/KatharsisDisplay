@@ -78,9 +78,32 @@
     <%= f.file_field :profimg, accept: "image/jpg, image/jpeg, image/png, image/gif" %>
   </div>
 
+  <!-- -->
+  <div class="container">
+    <div>
+      <div>
+        <!-- <h3>Demo:</h3> -->
+        <div class="img-container">
+          <% if @user.profimg %>
+            <%= image_tag show_profimg_user_path(@user.id), class:"p_item", id:"image" %>
+          <% else %>
+            <%= image_tag '/assets/noavatar.png', id:"image" %>
+          <% end %>
+        </div>
+      </div>
+      <div>
+        <!-- <h3>Preview:</h3> -->
+        <div class="docs-preview clearfix">
+          <div class="img-preview preview-lg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- -->
+
   <div class="center_buttons">
     <div class="actions">
-      <%= f.submit "保存", class:"button_area" %>
+      <%= f.submit "保存", class:"button_area", id:"submit" %>
     </div>
   </div>
 <% end %>

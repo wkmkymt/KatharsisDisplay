@@ -313,3 +313,60 @@ div.smlbottommargin {
 .label_supplement {
     margin-left: 8px;
 }
+
+/* Cropper */
+.img-container, .img-preview {
+  background-color: #f7f7f7;
+  text-align: center;
+  width: 100%;
+  max-width: 460px;
+}
+
+.cropper-canvas {
+    /*
+    max-width: 460px;
+    max-height: 460px;
+    */
+}
+
+.img-container {
+  margin-bottom: 1rem;
+  max-height: 2000px;
+  min-height: 200px;
+}
+
+.img-container > img {
+  max-width: 100%;
+}
+
+.img-preview {
+  float: left;
+  margin-bottom: .5rem;
+  margin-right: .5rem;
+  overflow: hidden;
+}
+
+.img-preview > img {
+  max-width: 100%;
+}
+
+.preview-lg {
+  height: 9rem;
+  width: 16rem;
+}
+
+.clearfix::after {
+   content: "";
+   display: block;
+   clear: both;
+}
+
+#header {
+    z-index: 10;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Cropper ここまで */ 
