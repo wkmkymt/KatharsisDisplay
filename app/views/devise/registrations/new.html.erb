@@ -70,6 +70,7 @@
   <div class="field">
     <%= f.label :profimg, class:"button_area_blue" %><br />
     <%= f.file_field :profimg, accept: "image/jpg, image/jpeg, image/png, image/gif" %>
+    <%= f.hidden_field :profimg_temp, id:"user_profimg_temp" %>
   </div>
 
   <!-- -->

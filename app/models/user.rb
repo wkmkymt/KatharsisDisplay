@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :x, :y, :width, :height
+  attr_accessor :profimg_temp
 
   # Attribute
   enum  gender:  { man: 0, woman: 1, others: 2 }

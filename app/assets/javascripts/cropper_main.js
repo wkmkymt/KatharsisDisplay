@@ -23,6 +23,9 @@ $(function () {
       $dataRotate.val(e.detail.rotate);
       $dataScaleX.val(e.detail.scaleX);
       $dataScaleY.val(e.detail.scaleY);
+
+      var base64 = $image.cropper("getCroppedCanvas").toDataURL('image/jpeg').replace(/^.*,/, '')
+      $("#user_profimg_temp").val(base64);
     }
   };
   var originalImageURL = $image.attr('src');
