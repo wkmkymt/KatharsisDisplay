@@ -2,7 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   def create
-    if params[:user][:profimg]
+    if params[:user][:profimg_temp]
       b64 = params[:user][:profimg_temp]
       bin = Base64.decode64(b64)
       file = Tempfile.new('img', :encoding => 'utf8')
@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    if params[:user][:profimg]
+    if params[:user][:profimg_temp]
       b64 = params[:user][:profimg_temp]
       bin = Base64.decode64(b64)
       file = Tempfile.new('img', :encoding => 'utf8')
