@@ -1,14 +1,11 @@
 class AppController < ApplicationController
-  before_action :login_check, only: [:destroy_confirmation]
+  #before_action :login_check, only: [:destroy_confirmation]
 
   def index
   end
 
   def tos
     render layout: 'another_window'
-  end
-
-  def destroy_confirmation
   end
 
   def login_check

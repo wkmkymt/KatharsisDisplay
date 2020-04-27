@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:checkin, :checkout]
   before_action :authorize_staff, only: [:checkin, :checkout]
-  before_action :login_check, only: [:destroy]
+  before_action :login_check, only: [:destroy, :destroy_confirmation]
 
   rescue_from Pundit::NotAuthorizedError, with: :not_authorized
 
@@ -72,7 +72,10 @@ class UsersController < ApplicationController
 
     redirect_to root_path
   end
-  
+
+  def destroy_confirmation
+  end
+
   def destroy 
     @user = current_user
     temp = "#{@user.name}"

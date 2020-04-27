@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'checkout/:user_id', to: 'users#checkout', as: 'checkout'
 
   #Destroy
-  get 'destroy_confirmation', to: 'app#destroy_confirmation'
+  get 'destroy_confirmation', to: 'users#destroy_confirmation', as: 'destroy_confirmation'
   get 'destroy', to: 'users#destroy', as: 'destroy'
 
   # Devise
