@@ -1078,29 +1078,12 @@ img.textimg {
     cursor: none;
 }
 
-
-//複数行省略設定
-$font-size-base: 48px;
-$line-height-computed: 1.4;
-$lines-to-show: 8;
-
-.multiline-text {
-  position: relative;
-  width: 100%;
-  height: $font-size-base * $line-height-computed * $lines-to-show;
+//複数行省略設定(ChromeやSafari、Firefox(macは確認)などのみで動作)
+.multiline-text-container {
   overflow: hidden;
 }
-.multiline-text:before,
-.multiline-text:after {
-  position: absolute;  
-}
-.multiline-text:before {
-  content: "";
-  bottom: 0;
-  right: 0;
-}
-.multiline-text:after {
-  content: "";
-  height: 100%;
-  width: 100%;
+.multiline-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
 }
