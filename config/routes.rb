@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   get 'checkin/:user_id', to: 'users#checkin', as: 'checkin'
   get 'checkout/:user_id', to: 'users#checkout', as: 'checkout'
 
+  #Destroy
+  get 'destroy_confirmation', to: 'app#destroy_confirmation'
+  get 'destroy', to: 'users#destroy', as: 'destroy'
+
   # Devise
   devise_for :users,
     path: '',
