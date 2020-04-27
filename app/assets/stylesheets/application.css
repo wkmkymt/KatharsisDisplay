@@ -255,6 +255,10 @@ li{
     margin-right: 8px;
 }
 
+.button_side:last-of-type {
+    margin-right: 0;
+}
+
 .center_buttons {
     text-align: center;
 }
@@ -370,3 +374,12 @@ div.smlbottommargin {
 }
 
 /* Cropper ここまで */ 
+
+.footer_link {
+    float: left;
+    margin-right: 24px;
+}
+
+.footer_link:last-of-type {
+    margin-right: 0;
+}
