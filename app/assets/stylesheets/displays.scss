@@ -1077,3 +1077,30 @@ img.textimg {
 .cursor_none {
     cursor: none;
 }
+
+
+//複数行省略設定
+$font-size-base: 48px;
+$line-height-computed: 1.4;
+$lines-to-show: 8;
+
+.multiline-text {
+  position: relative;
+  width: 100%;
+  height: $font-size-base * $line-height-computed * $lines-to-show;
+  overflow: hidden;
+}
+.multiline-text:before,
+.multiline-text:after {
+  position: absolute;  
+}
+.multiline-text:before {
+  content: "";
+  bottom: 0;
+  right: 0;
+}
+.multiline-text:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+}

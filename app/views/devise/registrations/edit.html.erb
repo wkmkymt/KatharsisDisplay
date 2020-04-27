@@ -103,19 +103,14 @@
   <!-- -->
 
   <div class="center_buttons">
-    <div class="actions">
-      <%= f.submit "保存", class:"button_area" %>
-    </div>
+    <%= link_to "キャンセル", :back, class:"button_area_blue action_button_side" %>
+    <%= f.submit "保存", class:"button_area" %>
   </div>
 <% end %>
 
 <!--
 <h3>Cancel my account</h3>
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
--->
-
-<!--
-<%= link_to "戻る", :back %>
 -->
 
   </div>

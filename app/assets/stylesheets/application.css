@@ -305,6 +305,7 @@ div.smlbottommargin {
 }
 
 .prof_edit_button {
+    margin-top: 16px;
     margin-bottom: 32px;
 }
 
@@ -422,7 +423,7 @@ div.smlbottommargin {
 
 .list_mainimgframe {
     position: relative;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 
 .show_mainimgframe:before, .list_mainimgframe:before{
@@ -451,7 +452,7 @@ div.smlbottommargin {
 
 .list_profname {
     font-size: 14px;
-    line-height: 18px;
+    line-height: 14px;
     display: inline;
     word-wrap : break-word;
     vertical-align: bottom;
@@ -492,7 +493,7 @@ div.smlbottommargin {
     }
     .list_profname {
         font-size: 12px;
-        line-height: 16px;
+        line-height: 12px;
     }
     .list_mainimgframe {
         margin-bottom: 2px;
@@ -511,4 +512,8 @@ div.smlbottommargin {
 
 .bottom_margin {
     margin-bottom: 32px;
+}
+
+.action_button_side {
+    margin-right: 8px;
 }

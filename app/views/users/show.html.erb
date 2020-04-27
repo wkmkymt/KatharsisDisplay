@@ -1,21 +1,22 @@
 <section>
   <div class="wrap">
-  <% if user_signed_in? and @user.id == current_user.id %>
-  <div class="center_buttons">
-      <%= link_to 'プロフィール編集', edit_user_registration_path, class:"button_area prof_edit_button" %>
-  </div>
-  <% end %>
+  <%= link_to "戻る", root_path, class:"button_area_blue" %>
 <% if !@user.has_role? :admin or (user_signed_in? and current_user.has_role? :admin) %>
   <div class="prof_info">
-    <div class="show_profimg">
+    <div class="show_profimg p_item">
       <div class="show_mainimgframe">
           <% if @user.profimg %>
-            <%= image_tag show_profimg_user_path(@user.id), class:"p_item" %>
+            <%= image_tag show_profimg_user_path(@user.id)%>
           <% else %>
-            <p class="p_item"> Not Image</p>
+            <p> Not Image</p>
           <% end %>
       </div>
     </div>
+    <% if user_signed_in? and @user.id == current_user.id %>
+      <div class="center_buttons">
+        <%= link_to 'プロフィール編集', edit_user_registration_path, class:"button_area prof_edit_button" %>
+      </div>
+    <% end %>
     <p class="p_item">名前: <%= @user.name %></p>
     <% if user_signed_in? and @user.id == current_user.id %>
       <p class="p_item">メールアドレス: <%= @user.email %></p>
