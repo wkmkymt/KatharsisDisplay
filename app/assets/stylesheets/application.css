@@ -199,6 +199,14 @@ img.qrcode {
     max-width: 400px;
 }
 
+@media only screen and (max-width: 480px) {
+    img.qrcode {
+        border: 2px solid #1fdaff;
+        border-radius: 8px;
+        max-width: 200px;
+    }
+}
+
 .qrcode_text {
     margin-bottom: 8px;
     color: #1fdaff;
@@ -293,7 +301,11 @@ div.smlbottommargin {
 }
 
 .prof_info {
-    margin-top: 16px;
+    margin-top: 0px;
+}
+
+.prof_edit_button {
+    margin-bottom: 32px;
 }
 
 .purple_text {
@@ -382,4 +394,121 @@ div.smlbottommargin {
 
 .footer_link:last-of-type {
     margin-right: 0;
+}
+
+.list_profimg_body {
+    float: left;
+    width: 100%;
+}
+
+.show_profimg {
+    overflow:hidden;
+    zoom:1;
+    position: relative;
+}
+
+.list_profimg {
+    overflow:hidden;
+    zoom:1;
+    position: relative;
+}
+
+.show_mainimgframe {
+    position: relative;
+    max-width: 300px;
+    max-height: 300px;
+    margin: 0 auto;
+}
+
+.list_mainimgframe {
+    position: relative;
+    margin-bottom: 8px;
+}
+
+.show_mainimgframe:before, .list_mainimgframe:before{
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.list_profimg img{
+    float: left;
+    display: inline-block;
+}
+
+.show_profimg img, .list_mainimgframe img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.list_profname {
+    font-size: 14px;
+    line-height: 18px;
+    display: inline;
+    word-wrap : break-word;
+    vertical-align: bottom;
+    color: #dddddd;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.prof_list {
+    list-style: none;
+    overflow-x: auto;
+    white-space: nowrap;
+    border: 1px solid #1fdaff;
+    padding: 16px 32px;
+}
+
+.prof_list_item {
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 48px;
+    width: 100px;
+    text-align: center;
+    display: inline-block;
+}
+
+@media only screen and (max-width: 480px) {
+    .prof_list_item {
+        width: 75px;
+        margin-right: 24px;
+    }
+
+    .prof_list {
+        padding: 8px 16px;
+    }
+    .list_profname {
+        font-size: 12px;
+        line-height: 16px;
+    }
+    .list_mainimgframe {
+        margin-bottom: 2px;
+    }
+}
+
+
+
+.prof_list_item:last-of-type {
+    margin-right: 0;
+}
+
+.top_margin {
+    margin-top: 16px;
+}
+
+.bottom_margin {
+    margin-bottom: 32px;
 }

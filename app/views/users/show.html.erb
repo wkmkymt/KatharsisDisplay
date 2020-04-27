@@ -2,11 +2,20 @@
   <div class="wrap">
   <% if user_signed_in? and @user.id == current_user.id %>
   <div class="center_buttons">
-      <%= link_to 'プロフィール編集', edit_user_registration_path, class:"button_area" %>
+      <%= link_to 'プロフィール編集', edit_user_registration_path, class:"button_area prof_edit_button" %>
   </div>
   <% end %>
 <% if !@user.has_role? :admin or (user_signed_in? and current_user.has_role? :admin) %>
-  <div class="prof_info">  
+  <div class="prof_info">
+    <div class="show_profimg">
+      <div class="show_mainimgframe">
+          <% if @user.profimg %>
+            <%= image_tag show_profimg_user_path(@user.id), class:"p_item" %>
+          <% else %>
+            <p class="p_item"> Not Image</p>
+          <% end %>
+      </div>
+    </div>
     <p class="p_item">名前: <%= @user.name %></p>
     <% if user_signed_in? and @user.id == current_user.id %>
       <p class="p_item">メールアドレス: <%= @user.email %></p>
@@ -26,12 +35,7 @@
       </ul>
     </p>
     <p class="p_item">ひとこと: <%= @user.comment %></p>
-    <p class="button_desc_text">プロフィール画像:</p>
-    <% if @user.profimg %>
-      <%= image_tag show_profimg_user_path(@user.id), class:"p_item" %>
-    <% else %>
-      <p class="p_item"> Not Image</p>
-    <% end %>
+    <p class="p_item">ポイント: <%= @user.point %> pt</p>
 
     <!--
     <p>Reviewers:
