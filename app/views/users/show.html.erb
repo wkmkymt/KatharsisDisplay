@@ -42,13 +42,16 @@
 
         <p class="p_item">プロフィールカラー: <%= I18n.t("enums.user.color.#{@user.color.name}") %></p>
 
-        <p>タグ:
+        <% if !@user.tag.nil? and @user.tag != [] %>
+          <p>タグ:</p>
           <ul class="taglist p_item">
             <% @user.tag.each do |tag| %>
               <li><%= tag.name %></li>
             <% end %>
           </ul>
-        </p>
+        <% else %>
+          <p class="p_item">タグ: <i>未登録</i></p>
+        <% end %>
 
         <p class="p_item">ひとこと: 
           <% if @user.comment != "" and !@user.comment.nil?%>
