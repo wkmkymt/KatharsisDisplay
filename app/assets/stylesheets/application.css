@@ -409,6 +409,7 @@ div.smlbottommargin {
   list-style: none;
   white-space: nowrap;
   border: 1px solid #1fdaff;
+  border-radius: 8px;
 }
 
 .prof_list_item {
@@ -454,4 +455,35 @@ div.smlbottommargin {
 
 .action_button_side {
   margin-right: 8px;
+}
+
+.img-container, .img-preview {
+  background-color: #f7f7f7;
+  text-align: center;
+  width: 100%;
+  max-width: 460px;
+}
+
+.img-container {
+  margin-bottom: 1rem;
+  max-height: 2000px;
+  min-height: 200px;
+}
+
+.img-container > img {
+  max-width: 95%;
+}
+
+.clearfix::after {
+   content: "";
+   display: block;
+   clear: both;
+}
+
+#header {
+    z-index: 10;
+}
+
+.hidden {
+    display: none;
 }

@@ -5,6 +5,52 @@ class User < ApplicationRecord
   enum  gender:  { man: 0, woman: 1, others: 2 }
   enum  personality:  {noanswer: 0, INTJ_A: 1, INTJ_T: 2, INTP_A: 3, INTP_T: 4, ENTJ_A: 5, ENTJ_T: 6, ENTP_A: 7, ENTP_T: 8, INFJ_A: 9, INFJ_T: 10, INFP_A: 11, INFP_T: 12, ENFJ_A: 13, ENFJ_T: 14, ENFP_A: 15, ENFP_T: 16, ISTJ_A: 17, ISTJ_T: 18, ISFJ_A: 19, ISFJ_T: 20, ESTJ_A: 21, ESTJ_T: 22, ESFJ_A: 23, ESFJ_T: 24, ISTP_A: 25, ISTP_T: 26, ISFP_A: 27, ISFP_T: 28, ESTP_A: 29, ESTP_T: 30, ESFP_A: 31, ESFP_T: 32}
 
+  PERSONALITY_SELECT_OPTIONS = [
+    ['未診断の方は未回答', [
+      ['未回答', 'noanswer']
+    ]],
+    ['分析家', [
+      ['INTJ-A 建築家',   'INTJ_A'],
+      ['INTJ-T 建築家', 'INTJ_T'],
+      ['INTP-A 論理学者',    'INTP_A'],
+      ['INTP-T 論理学者',   'INTP_T'],
+      ['ENTJ-A 指揮官',   'ENTJ_A'],
+      ['ENTJ-T 指揮官',   'ENTJ_T'],
+      ['ENTP-A　討論者',   'ENTP_A'],
+      ['ENTP-T　討論者',   'ENTP_T'],
+    ]],
+    ['外交官', [
+      ['INFJ-A 提唱者',   'INFJ_A'],
+      ['INFJ-T 提唱者',   'INFJ_T'],
+      ['INFP-A 仲介者',   'INFP_A'],
+      ['INFP-T 仲介者',   'INFP_T'],
+      ['ENFJ-A 主人公',   'ENFJ_A'],
+      ['ENFJ-T 主人公',   'ENFJ_T'],
+      ['ENFP-A 広報運動家',   'ENFP_A'],
+      ['ENFP-T 広報運動家',   'ENFP_T'],
+    ]],
+    ['番人', [
+      ['ISTJ-A 管理者',   'ISTJ_A'],
+      ['ISTJ-T 管理者',   'ISTJ_T'],
+      ['ISFJ-A 擁護者',   'ISFJ_A'],
+      ['ISFJ-T 擁護者',   'ISFJ_T'],
+      ['ESTJ-A 幹部',   'ESTJ_A'],
+      ['ESTJ-T 幹部',   'ESTJ_T'],
+      ['ESFJ-A 領事官',   'ESFJ_A'],
+      ['ESFJ-T 領事官',   'ESFJ_T'],
+    ]],
+    ['探検家', [
+      ['ISTP-A 巨匠',   'ISTP_A'],
+      ['ISTP-T 巨匠',   'ISTP_T'],
+      ['ISFP-A 冒険家',   'ISFP_A'],
+      ['ISFP-T 冒険家',   'ISFP_T'],
+      ['ESTP-A 起業家',   'ESTP_A'],
+      ['ESTP-T 起業家',   'ESTP_T'],
+      ['ESFP-A エンターテイナー',   'ESFP_A'],
+      ['ESFP-T エンターテイナー',   'ESFP_T'],
+    ]]
+  ]
+
   # Rollify
   rolify
 

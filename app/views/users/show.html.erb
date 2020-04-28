@@ -25,26 +25,47 @@
           <p class="p_item">メールアドレス: <%= @user.email %></p>
         <% end %>
 
-        <p class="p_item">所属: <%= @user.organization %></p>
+        <p class="p_item">所属: 
+          <% if @user.organization != "" and !@user.organization.nil? %>
+            <%= @user.organization %>
+          <% else %>
+            <i>未登録</i>
+          <% end %>
+        </p>
 
         <% if user_signed_in? and @user.id == current_user.id %>
           <p class="p_item">性別: <%= I18n.t("enums.user.gender.#{@user.gender}") %></p>
           <p class="p_item">生年月日: <%= @user.birthday %></p>
         <% end %>
 
-        <p class="p_item">パーソナリティ: <%= I18n.t("enums.user.personality.#{@user.personality}") %></p>
+        <p class="p_item">パーソナリティ: 
+          <% if  @user.personality == 'noanswer' %>
+            <i><%= I18n.t("enums.user.personality.#{@user.personality}") %></i>
+          <% else %>
+            <%= I18n.t("enums.user.personality.#{@user.personality}") %>
+          <% end %>
+        </p>
 
         <p class="p_item">プロフィールカラー: <%= I18n.t("enums.user.color.#{@user.color.name}") %></p>
 
-        <p>タグ:
+        <% if !@user.tag.nil? and @user.tag != [] %>
+          <p>タグ:</p>
           <ul class="taglist p_item">
             <% @user.tag.each do |tag| %>
               <li><%= tag.name %></li>
             <% end %>
           </ul>
-        </p>
+        <% else %>
+          <p class="p_item">タグ: <i>未登録</i></p>
+        <% end %>
 
-        <p class="p_item">ひとこと: <%= @user.comment %></p>
+        <p class="p_item">ひとこと: 
+          <% if @user.comment != "" and !@user.comment.nil?%>
+            <%= @user.comment %>
+          <% else %>
+            <i>未登録</i>
+          <% end %>
+        </p>
 
         <p class="p_item">ポイント: <%= @user.point %> pt</p>
       </div>
