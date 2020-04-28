@@ -2,7 +2,7 @@ let swiper = new Swiper('.swiper-container', {
   loop: true,
   autoplay: {
     delay: 2000,
-    disableOnInteraction: false
+    disableOnInteraction: false,
   },
   speed: 800,
   slidesPerView: 1,
@@ -50,9 +50,9 @@ let addProf = (user) => {
   $(prof_body).append(prof_org)
 
   let prof_tag = $(document.createElement('h2'))
-  let temp = ""
+  let temp = ''
   for (tag of user.tags) {
-    temp += "#" + tag.name + " "
+    temp += '#' + tag.name + ' '
   }
   prof_tag.html(temp)
   $(prof_body).append(prof_tag)
@@ -66,7 +66,7 @@ let addProf = (user) => {
   $(wrap).append(prof_msg)
 
   let prof_msg_p = $(document.createElement('p'))
-  let msg = user.comment? "&quot;" + user.comment + "&quot;": ""
+  let msg = user.comment ? '&quot;' + user.comment + '&quot;' : ''
   prof_msg_p.html(msg)
   $(prof_msg).append(prof_msg_p)
 

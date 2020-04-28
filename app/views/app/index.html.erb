@@ -1,29 +1,27 @@
 <section>
   <div class="wrap">
-    
+    <% flash.each do |key, value| %>
+      <div class="alert_area">
+        <p class="alert alert-<%= key %>">
+          <%= value %>
+        </p>
+      </div>
+    <% end %>
 
-<% flash.each do |key, value| %>
-  <div class="alert_area">
-    <p class="alert alert-<%= key %>">
-      <%= value %>
-    </p>
-  </div>
-<% end %>
+    <% if user_signed_in? %>
+      <% if current_user.has_role? :admin %>
+        <div class="alert_area">
+          <p class="p_item">管理者アカウント「<%= current_user.name %>」でサインインしています。</p>
+          <p class="p_item">ゲスト来客時に端末のカメラアプリを起動してゲストのQRコードを読み込んでください。</p>
+          <p>システム管理を行うためには「管理画面」を開いてください。</p>
+        </div>
+      <% end %>
 
-<% if user_signed_in? %>
-  <% if current_user.has_role? :admin %>
-    <div class="alert_area">
-      <p class="p_item">管理者アカウント「<%= current_user.name %>」でサインインしています。</p>
-      <p class="p_item">ゲスト来客時に端末のカメラアプリを起動してゲストのQRコードを読み込んでください。</p>
-      <p>システム管理を行うためには「管理画面」を開いてください。</p>
-    </div>
-  <% end %>
-  <% if current_user.check_in? %>
-    <!--<h1><%= current_user.get_checkin_shop.name %></h1>-->
-    <p>現在チェックインしているユーザ</p>
-      <ul class="prof_list top_margin">
-        <% current_user.get_checkin_shop.get_checkin_users.each do |user| %>
-          <% if user.id != current_user.id %>
+      <% if current_user.check_in? %>
+        <p>現在チェックインしているユーザ</p>
+        <ul class="prof_list top_margin">
+          <% current_user.get_checkin_shop.get_checkin_users.each do |user| %>
+            <% if user.id != current_user.id %>
               <li class="prof_list_item ellipsis">
                 <%= link_to profile_path(user.id) do %>
                   <div class="list_profimg_body">
@@ -39,37 +37,40 @@
                   <p class="list_profname"><%= user.name %></p>
                 <% end %>
               </li>
+            <% end %>
           <% end %>
+        </ul>
+        <div class="clearfix bottom_margin"></div>
+      <% end %>
+
+      <div class="center_buttons">
+        <% if current_user.has_role? :admin %>
+          <%= link_to "管理画面", admin_root_path, target: "_blank" , class:"button_area button_side p_item"%>
+          <%= link_to "K-Display", display_path, target: "_blank" , class:"button_area button_side p_item"%>
         <% end %>
-      </ul>
-      <div class="clearfix bottom_margin"></div>
-  <% end %>
-  <div class="center_buttons">
-  <% if current_user.has_role? :admin %>
-    <%= link_to '管理画面', admin_root_path, target: '_blank' , class:"button_area button_side p_item"%>
-    <%= link_to 'K-Display', display_path, target: '_blank' , class:"button_area button_side p_item"%>
-  <% end %>
-  <%= link_to 'プロフィール確認', profile_path(current_user.id), class:"button_area_blue p_item" %>
-  </div>
-  <% if current_user.check_in? %>
-    <div class="img_center">
-      <p class="qrcode_text">Checkout QR</p>
-      <%= image_tag qrcode(checkout_url(current_user.id)), class: 'qrcode' %>
-    </div>
-  <% else %>
-    <div class="img_center">
-      <p class="qrcode_text">Checkin QR</p>
-      <%= image_tag qrcode(checkin_url(current_user.id)), class: 'qrcode' %>
-    </div>
-  <% end %>
-  <div class="center_buttons smltopmargin"><%= link_to 'サインアウト', destroy_user_session_path, method: :delete ,class:"button_area" %></div>
-<% else %>
-  <div class="center_buttons">
-    <%= link_to 'サインイン', new_user_session_path , class:"button_area button_side" %>
-    <%= link_to "サインアップ", new_registration_path(User) , class:"button_area_blue" %>
-  </div>
-<% end %>
+        <%= link_to "プロフィール確認", profile_path(current_user.id), class:"button_area_blue p_item" %>
+      </div>
 
+      <% if current_user.check_in? %>
+        <div class="img_center">
+          <p class="qrcode_text">Checkout QR</p>
+          <%= image_tag qrcode(checkout_url(current_user.id)), class: "qrcode" %>
+        </div>
+      <% else %>
+        <div class="img_center">
+          <p class="qrcode_text">Checkin QR</p>
+          <%= image_tag qrcode(checkin_url(current_user.id)), class: "qrcode" %>
+        </div>
+      <% end %>
 
+      <div class="center_buttons smltopmargin">
+        <%= link_to "サインアウト", destroy_user_session_path, method: :delete ,class:"button_area" %>
+      </div>
+    <% else %>
+      <div class="center_buttons">
+        <%= link_to "サインイン", new_user_session_path , class:"button_area button_side" %>
+        <%= link_to "サインアップ", new_registration_path(User) , class:"button_area_blue" %>
+      </div>
+    <% end %>
   </div>
 </section>

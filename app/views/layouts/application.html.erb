@@ -5,21 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= favicon_link_tag('favicon.ico') %>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+    <%= favicon_link_tag("favicon.ico") %>
   </head>
 
   <body>
-    <%= render 'layouts/header'%>
+    <%= render "layouts/header"%>
     <main>
-    <%= yield %>
+      <%= yield %>
     </main>
-    <%= render 'layouts/footer'%>
+    <%= render "layouts/footer"%>
   </body>
-  <%= stylesheet_link_tag 'cropper' %>
-  <%= javascript_include_tag 'cropper' %>
-  <%= javascript_include_tag 'jquery-cropper' %>
-  <%= javascript_include_tag 'cropper_main' %>
 </html>
