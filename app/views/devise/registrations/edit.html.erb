@@ -1,119 +1,101 @@
 <section>
   <div class="wrap">
+    <h2>プロフィール編集</h2>
 
-<!--<h2>プロフィール編集 <%= resource_name.to_s.humanize %></h2>-->
-<h2>プロフィール編集</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autocomplete: "name" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %><em>(<%= @minimum_password_length %>文字以上)</em><br />
-    <i>*パスワードを変更しない場合は空欄のままにしてください</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <i>*パスワードを変更しない場合は空欄のままにしてください</i><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :gender %><br />
-    <%= f.select :gender, User.genders.keys.map {|k| [I18n.t("enums.user.gender.#{k}"), k]} %>
-  </div>
-
-  <div class="field">
-    <%= f.label :personality %><a href="https://www.16personalities.com/ja" target="_blank" class="blue_text blue_underline label_supplement"><i>16Personalites診断を受けたことがない人はこちら</i></a>*外部サイトに飛びます<br>
-    <%= f.select :personality, User.personalities.keys.map {|k| [I18n.t("enums.user.personality.#{k}"), k]} %>
-  </div>
-
-  <div class="field">
-    <%= f.label :birthday %><br />
-    <%= f.date_select :birthday, prompt: "--", use_month_numbers: true, start_year: Time.now.year, end_year:1900 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :color_id %><br />
-    <%= f.select :color_id, Color.all.map {|k| [I18n.t("enums.user.color.#{k.name}"), k.id]} %>
-  </div>
-
-  <div class="field">
-    <p>興味あるタグを選択してください(複数選択可)</p>
-    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |t| %>
-      <%= t.check_box + t.label{t.text} %>
-
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :organization %><br />
-    <%= f.text_field :organization, autocomplete: "organization" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :comment %><br />
-    <%= f.text_area :comment %>
-  </div>
-
-  <div class="field">
-    <%= f.label :profimg, class:"button_area_blue" %><br />
-    <%= f.file_field :profimg, accept: "image/jpg, image/jpeg, image/png, image/gif" %>
-    <%= f.hidden_field :profimg_temp, id:"user_profimg_temp" %>
-  </div>
-
-  <div class="container">
-    <div>
-      <div>
-        <!-- <h3>Demo:</h3> -->
-        <div class="img-container">
-          <% if @user.profimg %>
-            <%= image_tag show_profimg_user_path(@user.id), class:"p_item", id:"image" %>
-          <% else %>
-            <%= image_tag '/assets/noavatar.png', id:"image" %>
-          <% end %>
-        </div>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
-      <div>
-        <!--
-        <h3>Preview:</h3>
-        <div class="docs-preview clearfix">
-          <div class="img-preview preview-lg"></div>
-        </div>
+
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autocomplete: "name" %>
       </div>
-      -->
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :password %><em>(<%= @minimum_password_length %>文字以上)</em><br />
+        <i>*パスワードを変更しない場合は空欄のままにしてください</i><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+        <% if @minimum_password_length %>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <i>*パスワードを変更しない場合は空欄のままにしてください</i><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :gender %><br />
+        <%= f.select :gender, User.genders.keys.map {|k| [I18n.t("enums.user.gender.#{k}"), k]} %>
+      </div>
+
+      <div class="field">
+        <%= f.label :personality %><a href="https://www.16personalities.com/ja" target="_blank"
+        class="blue_text blue_underline label_supplement"><i>16Personalites診断を受けたことがない人はこちら</i></a>*外部サイトに飛びます<br>
+        <%= f.select :personality, User.personalities.keys.map {|k| [I18n.t("enums.user.personality.#{k}"), k]} %>
+      </div>
+
+      <div class="field">
+        <%= f.label :birthday %><br />
+        <%= f.date_select :birthday, prompt: "--", use_month_numbers: true, start_year: Time.now.year, end_year:1900 %>
+      </div>
+
+      <div class="field">
+        <%= f.label :color_id %><br />
+        <%= f.select :color_id, Color.all.map {|k| [I18n.t("enums.user.color.#{k.name}"), k.id]} %>
+      </div>
+
+      <div class="field">
+        <p>興味あるタグを選択してください(複数選択可)</p>
+        <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |t| %>
+          <%= t.check_box + t.label{t.text} %>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label :organization %><br />
+        <%= f.text_field :organization, autocomplete: "organization" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :comment %><br />
+        <%= f.text_area :comment %>
+      </div>
+
+      <div class="field">
+        <%= f.label :profimg, class:"button_area_blue" %><br />
+        <%= f.file_field :profimg, accept: "image/jpg, image/jpeg, image/png, image/gif" %>
+        <%= f.hidden_field :profimg_temp, id:"user_profimg_temp" %>
+      </div>
+
+      <div class="container">
+        <div>
+          <div>
+            <div class="img-container">
+              <% if @user.profimg %>
+                <%= image_tag show_profimg_user_path(@user.id), class:"p_item", id:"image" %>
+              <% else %>
+                <%= image_tag '/assets/noavatar.png', id:"image" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="center_buttons">
+          <%= link_to "キャンセル", :back, class:"button_area_blue action_button_side" %>
+          <%= f.submit "保存", class:"button_area" %>
+        </div>
+      <% end %>
     </div>
-  </div>
 
-  <div class="center_buttons">
-    <%= link_to "キャンセル", :back, class:"button_area_blue action_button_side" %>
-    <%= f.submit "保存", class:"button_area" %>
-  </div>
-<% end %>
-
-<!--
-<h3>Cancel my account</h3>
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
--->
-
-  </div>
-
-  <%= render "devise/shared/assets" %>
-</section>
+    <%= render "devise/shared/assets" %>
+  </section>
