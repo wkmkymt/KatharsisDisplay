@@ -42,7 +42,7 @@
   <div class="field">
     <%= f.label :personality %><a href="https://www.16personalities.com/ja" target="_blank" class="blue_text blue_underline label_supplement"><i>16Personalites診断を受けたことがない人はこちら</i></a>*外部サイトに飛びます<br>
     <!-- <%= f.select :personality, User.personalities.keys.map {|k| [I18n.t("enums.user.personality.#{k}"), k]} %> -->
-        <%= select_tag "user_personality", grouped_options_for_select(User::SELECT_OPTIONS), name:"user[personality]" %>
+        <%= select_tag "user_personality", grouped_options_for_select(User::PERSONALITY_SELECT_OPTIONS), name:"user[personality]" %>
   </div>
 
   <div class="field">
@@ -75,25 +75,12 @@
   </div>
 
   <div class="container">
-    <div>
-      <div>
-        <!-- <h3>Demo:</h3> -->
-        <div class="img-container">
-          <% if @user.profimg %>
-            <%= image_tag show_profimg_user_path(@user.id), class:"p_item", id:"image" %>
-          <% else %>
-            <%= image_tag '/assets/noavatar.png', id:"image" %>
-          <% end %>
-        </div>
-      </div>
-      <div>
-        <!--
-        <h3>Preview:</h3>
-        <div class="docs-preview clearfix">
-          <div class="img-preview preview-lg"></div>
-        </div>
-      </div>
-      -->
+    <div class="img-container">
+      <% if @user.profimg %>
+        <%= image_tag show_profimg_user_path(@user.id), class:"p_item", id:"image" %>
+      <% else %>
+        <%= image_tag '/assets/noavatar.png', id:"image" %>
+      <% end %>
     </div>
   </div>
 
