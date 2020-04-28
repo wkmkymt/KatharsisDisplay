@@ -25,7 +25,9 @@
           <p class="p_item">メールアドレス: <%= @user.email %></p>
         <% end %>
 
-        <p class="p_item">所属: <%= @user.organization %></p>
+        <% if @user.organization != "" and !@user.organization.nil? %>
+          <p class="p_item">所属: <%= @user.organization %></p>
+        <% end %>
 
         <% if user_signed_in? and @user.id == current_user.id %>
           <p class="p_item">性別: <%= I18n.t("enums.user.gender.#{@user.gender}") %></p>
@@ -44,7 +46,9 @@
           </ul>
         </p>
 
-        <p class="p_item">ひとこと: <%= @user.comment %></p>
+        <% if @user.comment != "" and !@user.comment.nil?%>
+          <p class="p_item">ひとこと: <%= @user.comment %></p>
+        <% end %>
 
         <p class="p_item">ポイント: <%= @user.point %> pt</p>
       </div>
