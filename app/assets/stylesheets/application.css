@@ -78,7 +78,8 @@ select {
 }
 
 option {
-  color: #000;
+  background: #181818;
+  color: #fff;
 }
 
 textarea {

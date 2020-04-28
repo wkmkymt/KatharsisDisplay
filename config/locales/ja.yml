@@ -72,38 +72,38 @@ ja:
         others: その他
       personality: 
         noanswer: 未回答
-        INTJ_A: INTJ-A
-        INTJ_T: INTJ-T
-        INTP_A: INTP-A
-        INTP_T: INTP-T
-        ENTJ_A: ENTJ-A
-        ENTJ_T: ENTJ-T
-        ENTP_A: ENTP-A
-        ENTP_T: ENTP-T
-        INFJ_A: INFJ-A
-        INFJ_T: INFJ-T
-        INFP_A: INFP-A
-        INFP_T: INFP-T
-        ENFJ_A: ENFJ-A
-        ENFJ_T: ENFJ-T
-        ENFP_A: ENFP-A
-        ENFP_T: ENFP-T
-        ISTJ_A: ISTJ-A
-        ISTJ_T: ISTJ-T
-        ISFJ_A: ISFJ-A
-        ISFJ_T: ISFJ-T
-        ESTJ_A: ESTJ-A
-        ESTJ_T: ESTJ-T
-        ESFJ_A: ESFJ-A
-        ESFJ_T: ESFJ-T
-        ISTP_A: ISTP-A
-        ISTP_T: ISTP-T
-        ISFP_A: ISFP-A
-        ISFP_T: ISFP-T
-        ESTP_A: ESTP-A
-        ESTP_T: ESTP-T
-        ESFP_A: ESFP-A
-        ESFP_T: ESFP-T
+        INTJ_A: INTJ-A 建築家
+        INTJ_T: INTJ-T 建築家
+        INTP_A: INTP-A 論理学者
+        INTP_T: INTP-T 論理学者
+        ENTJ_A: ENTJ-A 指揮官
+        ENTJ_T: ENTJ-T 指揮官
+        ENTP_A: ENTP-A 討論者
+        ENTP_T: ENTP-T 討論者
+        INFJ_A: INFJ-A 提唱者
+        INFJ_T: INFJ-T 提唱者
+        INFP_A: INFP-A 仲介者
+        INFP_T: INFP-T 仲介者
+        ENFJ_A: ENFJ-A 主人公
+        ENFJ_T: ENFJ-T 主人公
+        ENFP_A: ENFP-A 広報運動家
+        ENFP_T: ENFP-T 広報運動家
+        ISTJ_A: ISTJ-A 管理者
+        ISTJ_T: ISTJ-T 管理者
+        ISFJ_A: ISFJ-A 擁護者
+        ISFJ_T: ISFJ-T 擁護者
+        ESTJ_A: ESTJ-A 幹部
+        ESTJ_T: ESTJ-T 幹部
+        ESFJ_A: ESFJ-A 領事官
+        ESFJ_T: ESFJ-T 領事官
+        ISTP_A: ISTP-A 巨匠
+        ISTP_T: ISTP-T 巨匠
+        ISFP_A: ISFP-A 冒険家
+        ISFP_T: ISFP-T 冒険家
+        ESTP_A: ESTP-A 起業家
+        ESTP_T: ESTP-T 起業家
+        ESFP_A: ESFP-A エンターテイナー
+        ESFP_T: ESFP-T エンターテイナー
       color:
         white: ホワイト
         red: レッド
