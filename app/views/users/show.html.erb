@@ -38,7 +38,13 @@
           <p class="p_item">生年月日: <%= @user.birthday %></p>
         <% end %>
 
-        <p class="p_item">パーソナリティ: <%= I18n.t("enums.user.personality.#{@user.personality}") %></p>
+        <p class="p_item">パーソナリティ: 
+          <% if  @user.personality == 'noanswer' %>
+            <i><%= I18n.t("enums.user.personality.#{@user.personality}") %></i>
+          <% else %>
+            <%= I18n.t("enums.user.personality.#{@user.personality}") %>
+          <% end %>
+        </p>
 
         <p class="p_item">プロフィールカラー: <%= I18n.t("enums.user.color.#{@user.color.name}") %></p>
 
