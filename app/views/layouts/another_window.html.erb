@@ -12,14 +12,9 @@
   </head>
 
   <body>
-    <%= render 'layouts/header'%>
-    <main>
     <%= yield %>
-    </main>
-    <%= render 'layouts/footer'%>
+    <div class="center_buttons">
+      <a href="javascript:window.close();" class="button_area_blue">閉じる</a>
+    </div>
   </body>
-  <%= stylesheet_link_tag 'cropper' %>
-  <%= javascript_include_tag 'cropper' %>
-  <%= javascript_include_tag 'jquery-cropper' %>
-  <%= javascript_include_tag 'cropper_main' %>
 </html>

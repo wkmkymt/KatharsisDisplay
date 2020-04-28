@@ -22,12 +22,20 @@ body {
     font-family: "游ゴシック", "游ゴシック体", 'YuGothic', "Yu Gothic", "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro", 'Meiryo', "メイリオ", "MS PGothic", sans-serif;
     background-color: #181818;
     color: #fff;
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
 }
 
 input,textarea, select {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    -moz-appearance: none;
     -webkit-appearance: none;
     max-width: 100%;
 }
@@ -52,6 +60,11 @@ input[type="text"], input[type="email"], input[type="password"] {
     color: #fff;
 }
 
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #181818 inset;
+    -webkit-text-fill-color: #fff; !important;
+}
+
 input[type="file"] {
     display: none;
 }
@@ -64,7 +77,12 @@ input[type="submit"] {
 
 select {
     border: 1px solid #1fdaff;
-    background: none;
+    background: #181818;
+    color: #fff;
+}
+
+option {
+    background: #181818;
     color: #fff;
 }
 
@@ -95,6 +113,16 @@ input[type="checkbox"]:checked+label{
     border: 1px solid #8370ff;
 }
 
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+p {
+    font-size: 16px;
+    line-height: 24px;
+}
+
 .wrap {
     max-width: 720px;
     margin: 0 auto;
@@ -117,20 +145,32 @@ input[type="checkbox"]:checked+label{
     border-bottom: 1px solid #1fdaff;
     /*border-bottom: 1px solid #1aff1a;*/
     color: #fff;
+    width: 100%;
+    position:fixed;
+    top: 0px;
 }
 
-a {
-    text-decoration: none;
-    color: #fff;
-}
-
-p {
-    font-size: 16px;
-    line-height: 24px;
+#header-bk { 
+    height: 64px;
+    width:100%;
 }
 
 #header a {
     color: #fff;
+    font-size: 16px;
+    line-height: 32px;
+    font-weight: bold;
+}
+
+#header img {
+    height: 32px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 4px;
+}
+
+#footer {
+    border-top: 1px solid #1fdaff;
 }
 
 .wrap .img_center {
@@ -160,6 +200,14 @@ img.qrcode {
     max-width: 400px;
 }
 
+@media only screen and (max-width: 480px) {
+    img.qrcode {
+        border: 2px solid #1fdaff;
+        border-radius: 8px;
+        max-width: 200px;
+    }
+}
+
 .qrcode_text {
     margin-bottom: 8px;
     color: #1fdaff;
@@ -167,12 +215,20 @@ img.qrcode {
     font-size: 18px;
 }
 
-.taglist li{
+li{
     margin-left: 32px;
+    margin-top: 8px;
 }
 
 .alert_area {
     border: 1px solid #8370ff;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.alert_area_blue {
+    border: 1px solid #1fdaff;
     padding: 16px;
     border-radius: 8px;
     margin-bottom: 16px;
@@ -208,6 +264,10 @@ img.qrcode {
     margin-right: 8px;
 }
 
+.button_side:last-of-type {
+    margin-right: 0;
+}
+
 .center_buttons {
     text-align: center;
 }
@@ -224,4 +284,237 @@ div.smltopmargin {
 
 div.smlbottommargin {
     margin-bottom: 0px;
+}
+
+#error_explanation {
+    margin-bottom: 32px;
+    border: 1px solid #ffd700;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: none;
+    color: #ffffff;
+}
+
+#error_explanation h2 {
+    font-size: 22px;
+    line-height: 32px;
+    margin-bottom: 4px;
+}
+
+.prof_info {
+    margin-top: 0px;
+}
+
+.prof_edit_button {
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+
+.purple_text {
+    color: #8370ff !important;
+}
+
+.blue_text {
+    color: #1fdaff !important;
+}
+
+.purple_underline {
+    text-decoration:underline;
+    text-decoration-color: #8370ff;
+}
+
+.blue_underline {
+    text-decoration:underline;
+    text-decoration-color: #1fdaff;
+}
+
+.label_supplement {
+    margin-left: 8px;
+}
+
+/* Cropper */
+.img-container, .img-preview {
+  background-color: #f7f7f7;
+  text-align: center;
+  width: 100%;
+  max-width: 460px;
+}
+
+.cropper-canvas {
+    /*
+    max-width: 460px;
+    max-height: 460px;
+    */
+}
+
+.img-container {
+  margin-bottom: 1rem;
+  max-height: 2000px;
+  min-height: 200px;
+}
+
+.img-container > img {
+  max-width: 95%;
+}
+
+.img-preview {
+  float: left;
+  margin-bottom: .5rem;
+  margin-right: .5rem;
+  overflow: hidden;
+}
+
+.img-preview > img {
+  max-width: 100%;
+}
+
+.preview-lg {
+  height: 9rem;
+  width: 16rem;
+}
+
+.clearfix::after {
+   content: "";
+   display: block;
+   clear: both;
+}
+
+#header {
+    z-index: 10;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Cropper ここまで */ 
+
+.footer_link {
+    float: left;
+    margin-right: 24px;
+}
+
+.footer_link:last-of-type {
+    margin-right: 0;
+}
+
+.list_profimg_body {
+    float: left;
+    width: 100%;
+}
+
+.show_profimg {
+    overflow:hidden;
+    zoom:1;
+    position: relative;
+}
+
+.list_profimg {
+    overflow:hidden;
+    zoom:1;
+    position: relative;
+}
+
+.show_mainimgframe {
+    position: relative;
+    max-width: 300px;
+    max-height: 300px;
+    margin: 0 auto;
+}
+
+.list_mainimgframe {
+    position: relative;
+    margin-bottom: 4px;
+}
+
+.show_mainimgframe:before, .list_mainimgframe:before{
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.list_profimg img{
+    float: left;
+    display: inline-block;
+}
+
+.show_profimg img, .list_mainimgframe img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.list_profname {
+    font-size: 14px;
+    line-height: 14px;
+    display: inline;
+    word-wrap : break-word;
+    vertical-align: bottom;
+    color: #dddddd;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.prof_list {
+    list-style: none;
+    overflow-x: auto;
+    white-space: nowrap;
+    border: 1px solid #1fdaff;
+    padding: 16px 32px;
+}
+
+.prof_list_item {
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 48px;
+    width: 100px;
+    text-align: center;
+    display: inline-block;
+}
+
+@media only screen and (max-width: 480px) {
+    .prof_list_item {
+        width: 75px;
+        margin-right: 24px;
+    }
+
+    .prof_list {
+        padding: 8px 16px;
+    }
+    .list_profname {
+        font-size: 12px;
+        line-height: 12px;
+    }
+    .list_mainimgframe {
+        margin-bottom: 2px;
+    }
+}
+
+
+
+.prof_list_item:last-of-type {
+    margin-right: 0;
+}
+
+.top_margin {
+    margin-top: 16px;
+}
+
+.bottom_margin {
+    margin-bottom: 32px;
+}
+
+.action_button_side {
+    margin-right: 8px;
 }

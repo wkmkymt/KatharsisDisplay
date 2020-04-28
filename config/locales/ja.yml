@@ -45,6 +45,7 @@ ja:
         password_confirmation: パスワード確認
         interest_tag: タグ
         gender: 性別
+        personality: パーソナリティ
         birthday: 生年月日
         organization: 所属
         color_id: プロフィールカラー
@@ -58,14 +59,51 @@ ja:
           attributes:
             password:
               too_short: が短すぎます
+              blank: が空欄です
             password_confirmation:
               confirmation: パスワード確認が一致していません
+            email:
+              blank: が空欄です
   enums:
     user:
       gender:
         man: 男性
         woman: 女性
         others: その他
+      personality: 
+        noanswer: 未回答
+        INTJ_A: INTJ-A 建築家
+        INTJ_T: INTJ-T 建築家
+        INTP_A: INTP-A 論理学者
+        INTP_T: INTP-T 論理学者
+        ENTJ_A: ENTJ-A 指揮官
+        ENTJ_T: ENTJ-T 指揮官
+        ENTP_A: ENTP-A 討論者
+        ENTP_T: ENTP-T 討論者
+        INFJ_A: INFJ-A 提唱者
+        INFJ_T: INFJ-T 提唱者
+        INFP_A: INFP-A 仲介者
+        INFP_T: INFP-T 仲介者
+        ENFJ_A: ENFJ-A 主人公
+        ENFJ_T: ENFJ-T 主人公
+        ENFP_A: ENFP-A 広報運動家
+        ENFP_T: ENFP-T 広報運動家
+        ISTJ_A: ISTJ-A 管理者
+        ISTJ_T: ISTJ-T 管理者
+        ISFJ_A: ISFJ-A 擁護者
+        ISFJ_T: ISFJ-T 擁護者
+        ESTJ_A: ESTJ-A 幹部
+        ESTJ_T: ESTJ-T 幹部
+        ESFJ_A: ESFJ-A 領事官
+        ESFJ_T: ESFJ-T 領事官
+        ISTP_A: ISTP-A 巨匠
+        ISTP_T: ISTP-T 巨匠
+        ISFP_A: ISFP-A 冒険家
+        ISFP_T: ISFP-T 冒険家
+        ESTP_A: ESTP-A 起業家
+        ESTP_T: ESTP-T 起業家
+        ESFP_A: ESFP-A エンターテイナー
+        ESFP_T: ESFP-T エンターテイナー
       color:
         white: ホワイト
         red: レッド
@@ -73,3 +111,7 @@ ja:
         green: グリーン
         purple: パープル
         midnightblue: ミッドナイトブルー
+        yellow: イエロー
+        orange: オレンジ
+        magenta: マゼンタ
+        turquoise: ターコイズ

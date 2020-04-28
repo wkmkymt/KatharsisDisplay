@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   # Root
   root to: 'app#index'
 
+  #Term of Service
+  get 'tos', to: 'app#tos'
+
   # Profile
   get 'users/:user_id', to: 'users#show', as: 'profile'
 
@@ -14,6 +17,10 @@ Rails.application.routes.draw do
   # Check In/Out
   get 'checkin/:user_id', to: 'users#checkin', as: 'checkin'
   get 'checkout/:user_id', to: 'users#checkout', as: 'checkout'
+
+  #Destroy
+  get 'destroy_confirmation', to: 'users#destroy_confirmation', as: 'destroy_confirmation'
+  get 'destroy', to: 'users#destroy', as: 'destroy'
 
   # Devise
   devise_for :users,

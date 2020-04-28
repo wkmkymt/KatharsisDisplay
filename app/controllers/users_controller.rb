@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:checkin, :checkout]
   before_action :authorize_staff, only: [:checkin, :checkout]
+  before_action :login_check, only: [:destroy, :destroy_confirmation]
 
   rescue_from Pundit::NotAuthorizedError, with: :not_authorized
 
@@ -72,6 +73,17 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy_confirmation
+  end
+
+  def destroy 
+    @user = current_user
+    temp = "#{@user.name}"
+    @user.destroy
+    redirect_to root_path
+    flash[:success] = "#{temp}: 退会処理が完了しました"
+  end
+
   private
     # Authorize
     def authorize_staff
@@ -82,5 +94,12 @@ class UsersController < ApplicationController
     def not_authorized
       flash[:danger] = "You are not allowed!"
       redirect_to request.referrer || root_path
+    end
+
+    def login_check
+      unless user_signed_in?
+        flash[:alert] = "ログインしてください"
+        redirect_to root_path
+      end
     end
 end

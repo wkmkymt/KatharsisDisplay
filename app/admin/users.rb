@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   # Permit
-  permit_params :name, :email, :organization, :comment, :point, :gender, :birthday, :profimg, :color_id, role_ids: [], tag_ids: []
+  permit_params :name, :email, :organization, :comment, :point, :gender, :personality, :birthday, :profimg, :color_id, role_ids: [], tag_ids: []
 
   # Controller
   controller do
@@ -27,6 +27,7 @@ ActiveAdmin.register User do
     column :id
     column :name
     column :gender
+    column :personality
     column :birthday
     column :email
     column :organization
@@ -53,6 +54,7 @@ ActiveAdmin.register User do
       row :id
       row :name
       row :gender
+      row :personality
       row :birthday
       row :email
       row :organization
@@ -96,6 +98,7 @@ ActiveAdmin.register User do
     f.inputs do
       f.input :name
       f.input :gender
+      f.input :personality
       f.input :birthday
       f.input :email
       f.input :organization

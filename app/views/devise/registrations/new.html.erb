@@ -40,6 +40,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :personality %><a href="https://www.16personalities.com/ja" target="_blank" class="blue_text blue_underline label_supplement"><i>16Personalites診断を受けたことがない人はこちら</i></a>*外部サイトに飛びます<br>
+    <%= f.select :personality, User.personalities.keys.map {|k| [I18n.t("enums.user.personality.#{k}"), k]} %>
+  </div>
+
+  <div class="field">
     <%= f.label :color_id %><br />
     <%= f.select :color_id, Color.all.map {|k| [I18n.t("enums.user.color.#{k.name}"), k.id]} %>
   </div>
@@ -61,13 +66,43 @@
     <%= f.text_area :comment %>
   </div>
 
+
   <div class="field">
     <%= f.label :profimg, class:"button_area_blue" %><br />
-    <%= f.file_field :profimg, accept: "image/jpeg" %>
+    <%= f.file_field :profimg, accept: "image/jpg, image/jpeg, image/png, image/gif" %>
+    <%= f.hidden_field :profimg_temp, id:"user_profimg_temp" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "サインアップ", class:"button_area" %>
+  <div class="container">
+    <div>
+      <div>
+        <!-- <h3>Demo:</h3> -->
+        <div class="img-container">
+          <% if @user.profimg %>
+            <%= image_tag show_profimg_user_path(@user.id), class:"p_item", id:"image" %>
+          <% else %>
+            <%= image_tag '/assets/noavatar.png', id:"image" %>
+          <% end %>
+        </div>
+      </div>
+      <div>
+        <!--
+        <h3>Preview:</h3>
+        <div class="docs-preview clearfix">
+          <div class="img-preview preview-lg"></div>
+        </div>
+      </div>
+      -->
+    </div>
+  </div>        
+
+  <p>サインアップ前に下記の利用規約をお読みください。サインアップおよび本サービス利用にて、下記規約に同意したものとします。</p>
+  <p><%= link_to '利用規約', tos_path, class:"blue_text blue_underline", target:"_blank" %></p>
+
+  <div class="center_buttons">
+    <div class="actions">
+      <%= f.submit "サインアップ", class:"button_area" %>
+    </div>
   </div>
 <% end %>
 
