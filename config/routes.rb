@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   #Term of Service
   get 'tos', to: 'app#tos'
 
+  #Privacy Policy
+  get 'privacy', to: 'app#privacy'
+
   # Profile
   get 'users/:user_id', to: 'users#show', as: 'profile'
 
