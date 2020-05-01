@@ -12,7 +12,7 @@
       <% if current_user.has_role? :admin %>
         <div class="alert_area">
           <p class="p_item">管理者アカウント「<%= current_user.name %>」でサインインしています。</p>
-          <p class="p_item">ゲスト来客時に端末のカメラアプリを起動してゲストのQRコードを読み込んでください。</p>
+          <p class="p_item">一般スタッフの方はスタッフアカウントでサインインしてください。</p>
           <p>システム管理を行うためには「管理画面」を開いてください。</p>
         </div>
       <% end %>
