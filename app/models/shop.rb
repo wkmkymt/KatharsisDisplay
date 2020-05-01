@@ -10,4 +10,14 @@ class Shop < ApplicationRecord
   def get_checkin_users
     checkined_user.joins(:checkin_record).where('checkin_records.check_in', 'in').uniq
   end
+
+  # Get Users My Shoped
+  def get_myshoped_users
+    user.joins(:roles).where(roles: {name: "guest"})
+  end
+
+  # Get Staffs
+  def get_staffs
+    user.joins(:roles).where(roles: {name: "staff"})
+  end
 end

@@ -51,6 +51,7 @@ ja:
         color_id: プロフィールカラー
         comment: ひとこと
         profimg: プロフィール画像
+        shop_id: マイショップ
       admin:
         id: ID
     errors:
@@ -70,7 +71,7 @@ ja:
         man: 男性
         woman: 女性
         others: その他
-      personality: 
+      personality:
         noanswer: 未回答
         INTJ_A: INTJ-A 建築家
         INTJ_T: INTJ-T 建築家
