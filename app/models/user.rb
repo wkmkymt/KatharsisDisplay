@@ -84,13 +84,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # Role
-  after_create :assign_default_role
-
-  def assign_default_role
-    self.add_role(:guest) if self.roles.blank?
-  end
-
   # Config for Updating Profile
   def update_without_current_password(params, *options)
     params.delete(:current_password)
