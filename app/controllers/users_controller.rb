@@ -32,19 +32,23 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
 
     unless @user.check_in?
-      @user.checkin(current_user.shop.id)
-      DisplayChannel.broadcast_to('master',
-        code: 'checkin',
-        user: {
-          id: @user.id,
-          name: @user.name,
-          organization: @user.organization,
-          comment: @user.comment,
-          color: @user.color.name,
-          tags: @user.tag,
-        },
-      )
-      flash[:success] = "#{@user.name}: チェックインに成功しました"
+      if @current_user.shop
+        @user.checkin(current_user.shop.id)
+        DisplayChannel.broadcast_to('master',
+          code: 'checkin',
+          user: {
+            id: @user.id,
+            name: @user.name,
+            organization: @user.organization,
+            comment: @user.comment,
+            color: @user.color.name,
+            tags: @user.tag,
+          },
+        )
+        flash[:success] = "#{@user.name}: チェックインに成功しました"
+      else
+        flash[:danger] = "マイショップが指定されていません"
+      end
     else
       flash[:danger] = "#{@user.name}: 既にチェックイン済みです"
     end
