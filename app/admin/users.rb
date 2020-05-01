@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   # Permit
-  permit_params :name, :email, :organization, :comment, :point, :gender, :personality, :birthday, :profimg, :color_id, role_ids: [], tag_ids: []
+  permit_params :name, :email, :organization, :comment, :point, :gender, :personality, :birthday, :profimg, :color_id, :shop_id, role_ids: [], tag_ids: []
 
   # Controller
   controller do
