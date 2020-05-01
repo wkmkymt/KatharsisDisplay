@@ -56,7 +56,7 @@ class User < ApplicationRecord
 
   # CheckinRecord -> Shop
   has_many :checkin_record, dependent: :delete_all
-  has_many :shop, through: :checkin_record
+  has_many :checking_shop, through: :checkin_record, source: :shop
 
   # Interest -> Tag
   has_many :interest, dependent: :delete_all
@@ -76,6 +76,9 @@ class User < ApplicationRecord
 
   # Color
   belongs_to :color
+
+  # My Shop
+  belongs_to :shop
 
   # Devise
   devise :database_authenticatable, :registerable,
@@ -126,7 +129,7 @@ class User < ApplicationRecord
 
   # Get Shop Checked In
   def get_checkin_shop
-    get_checkin_record.shop
+    get_checkin_record.checking_shop
   end
 
   # Check In?
