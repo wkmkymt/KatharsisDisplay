@@ -7,54 +7,33 @@ CSV.foreach("db/seeds/colors.csv") do |row|
   )
 end
 
-# Shop
-CSV.foreach("db/seeds/shops.csv") do |row|
-  Shop.create(
-    name: row[0],
-    address: row[1],
-    description: row[2],
-  )
-end
-
-# Admin User
-CSV.foreach("db/seeds/admin_users.csv") do |row|
-  admin = User.create(
-    name: row[0],
-    email: row[1],
-    password: "password",
-  )
-  admin.add_role "admin"
-end
-
-# Staff User
-CSV.foreach("db/seeds/staff_users.csv") do |row|
-  staff = User.create(
-    name: row[0],
-    email: row[1],
-    password: "password",
-    shop_id: row[2],
-  )
-  staff.add_role "staff"
-end
-
 # User
 CSV.foreach("db/seeds/users.csv") do |row|
-  file = File.open("./app/assets/images/prof/" + row[9], "r")
-
+  file = File.open("./app/assets/images/prof/" + row[3], "r")
   user = User.create(
     name: row[0],
     email: row[1],
     password: "password",
-    organization: row[2],
-    comment: row[3],
-    gender: row[4].to_i,
-    birthday: row[5],
-    color_id: row[6],
-    personality: row[7].to_i,
-    shop_id: row[8],
+    color_id: row[2],
     profimg: file.read
   )
+  file.close
   user.add_role "guest"
+end
+
+# Admin User
+admin = User.create(
+  name: "admin",
+  email: "admin@test.com",
+  password: "password",
+)
+admin.add_role "admin"
+
+# Shop
+CSV.foreach("db/seeds/shops.csv") do |row|
+  Shop.create(
+    name: row[0],
+  )
 end
 
 # Tag
