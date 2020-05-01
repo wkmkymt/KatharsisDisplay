@@ -17,30 +17,40 @@
         </div>
       <% end %>
 
-      <% if current_user.check_in? %>
-        <p>現在チェックインしているユーザ</p>
-        <ul class="prof_list top_margin">
-          <% current_user.get_checkin_shop.get_checkin_users.each do |user| %>
-            <% if user.id != current_user.id %>
-              <li class="prof_list_item ellipsis">
-                <%= link_to profile_path(user.id) do %>
-                  <div class="list_profimg_body">
-                    <div class="list_mainimgframe">
-                      <% if user.profimg %>
-                        <%= image_tag show_profimg_user_path(user.id) %>
-                      <% else %>
-                        <p class="p_item"> Not Image</p>
-                      <% end %>
+      <% if current_user.check_in? or current_user.has_role? :staff %>
+        <% if current_user.has_role? :guest %>
+          <% current_shop = current_user.get_checkin_shop %>
+        <% else %>
+          <% current_shop = current_user.shop %>
+        <% end %>
+
+        <% if !current_shop.get_checkin_users.empty? %>
+          <p>現在チェックインしているユーザ</p>
+          <ul class="prof_list top_margin">
+            <% current_shop.get_checkin_users.each do |user| %>
+              <% if user.id != current_user.id %>
+                <li class="prof_list_item ellipsis">
+                  <%= link_to profile_path(user.id) do %>
+                    <div class="list_profimg_body">
+                      <div class="list_mainimgframe">
+                        <% if user.profimg %>
+                          <%= image_tag show_profimg_user_path(user.id) %>
+                        <% else %>
+                          <p class="p_item"> Not Image</p>
+                        <% end %>
+                      </div>
                     </div>
-                  </div>
-                  <div class="clearfix"></div>
-                  <p class="list_profname"><%= user.name %></p>
-                <% end %>
-              </li>
+                    <div class="clearfix"></div>
+                    <p class="list_profname"><%= user.name %></p>
+                  <% end %>
+                </li>
+              <% end %>
             <% end %>
-          <% end %>
-        </ul>
-        <div class="clearfix bottom_margin"></div>
+          </ul>
+          <div class="clearfix bottom_margin"></div>
+        <% else %>
+          <p class="alert_area_blue p_item">表示されるユーザがいません</p>
+        <% end %>
       <% end %>
 
       <div class="center_buttons">
