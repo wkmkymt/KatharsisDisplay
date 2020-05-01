@@ -71,6 +71,13 @@
       <div class="center_buttons smltopmargin">
         <%= link_to "サインアウト", destroy_user_session_path, method: :delete ,class:"button_area" %>
       </div>
+
+      <% if current_user.has_role? :staff %>
+        <div class="center_buttons smltopmargin">
+          <%= link_to "全員チェックアウト", checkout_all_path, class:"button_area_blue button_side p_item", data: {confirm: "本当に実行しますか？"} %>
+        </div>
+      <% end %>
+
     <% else %>
       <div class="center_buttons">
         <%= link_to "サインイン", new_user_session_path , class:"button_area button_side" %>

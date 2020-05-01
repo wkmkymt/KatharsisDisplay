@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   # Check In/Out
   get 'checkin/:user_id', to: 'users#checkin', as: 'checkin'
   get 'checkout/:user_id', to: 'users#checkout', as: 'checkout'
+  get 'checkout_all', to: 'users#checkout_all', as: 'checkout_all'
 
   #Destroy
   get 'destroy_confirmation', to: 'users#destroy_confirmation', as: 'destroy_confirmation'
