@@ -16,6 +16,12 @@
           <p>システム管理を行うためには「管理画面」を開いてください。</p>
         </div>
       <% end %>
+      <% if current_user.has_role? :staff %>
+        <div class="alert_area_blue">
+          <p class="p_item"><%= current_user.shop.name %>スタッフアカウント「<%= current_user.name %>」でサインインしています。</p>
+          <p>顧客の入退店時に顧客のQRコードを読み込んでください。</p>
+        </div>
+      <% end %>
 
       <% if current_user.check_in? or current_user.has_role? :staff %>
         <% if current_user.has_role? :guest %>
