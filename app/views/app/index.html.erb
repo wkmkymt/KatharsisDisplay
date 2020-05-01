@@ -17,10 +17,16 @@
         </div>
       <% end %>
 
-      <% if current_user.check_in? %>
+      <% if current_user.check_in? or current_user.has_role? :staff %>
+        <% if current_user.has_role? :guest %>
+          <% current_shop = current_user.get_checkin_shop %>
+        <% else %>
+          <% current_shop = current_user.shop %>
+        <% end %>
+
         <p>現在チェックインしているユーザ</p>
         <ul class="prof_list top_margin">
-          <% current_user.get_checkin_shop.get_checkin_users.each do |user| %>
+          <% current_shop.get_checkin_users.each do |user| %>
             <% if user.id != current_user.id %>
               <li class="prof_list_item ellipsis">
                 <%= link_to profile_path(user.id) do %>
