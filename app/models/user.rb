@@ -78,7 +78,7 @@ class User < ApplicationRecord
   belongs_to :color
 
   # My Shop
-  belongs_to :shop
+  belongs_to :shop, optional: true
 
   # Devise
   devise :database_authenticatable, :registerable,
