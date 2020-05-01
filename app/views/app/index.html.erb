@@ -45,9 +45,14 @@
 
       <div class="center_buttons">
         <% if current_user.has_role? :admin %>
-          <%= link_to "管理画面", admin_root_path, target: "_blank" , class:"button_area button_side p_item"%>
-          <%= link_to "K-Display", display_path, target: "_blank" , class:"button_area button_side p_item"%>
+          <%= link_to "管理画面", admin_root_path, target: "_blank" , class:"button_area button_side p_item" %>
+          <% @shops.each do |shop| %>
+            <%= link_to shop.name + " Display", display_path(shop.id), target: "_blank" , class:"button_area button_side p_item" %>
+          <% end%>
         <% end %>
+        <% if current_user.has_role? :staff %>
+          <%= link_to current_user.shop.name + " Display", display_path(current_user.shop.id), target: "_blank" , class:"button_area button_side p_item" %>
+        <% end%>
         <%= link_to "プロフィール確認", profile_path(current_user.id), class:"button_area_blue p_item" %>
       </div>
 

@@ -19,5 +19,16 @@ if defined? Hirb
     end
   end
 
+  module Hirb
+    IGNORE = [:created_at, :updated_at, :profimg, :reset_password_token, :reset_password_sent_at, :remember_created_at, :encrypted_password]
+  end
+
+  module Hirb::Views::Rails #:nodoc:
+    alias :_original_get_active_record_fields :get_active_record_fields
+    def get_active_record_fields(obj)
+      _original_get_active_record_fields(obj).select {|x| !Hirb::IGNORE.include?(x) }
+    end
+  end
+
   Hirb.enable
 end

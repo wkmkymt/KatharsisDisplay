@@ -1,8 +1,8 @@
 <section>
   <div class="wrap">
-    <%= link_to "戻る", root_path, class:"button_area_blue" %>
-    <% if !@user.has_role? :admin or (user_signed_in? and current_user.has_role? :admin) %>
-      <div class="prof_info">
+    <%= link_to "戻る", root_path, class:"button_area_blue back_btn" %>
+    <div class="prof_info">
+      <% if @user.has_role? "guest" %>
         <div class="show_profimg p_item">
           <div class="show_mainimgframe">
             <% if @user.profimg %>
@@ -12,65 +12,68 @@
             <% end %>
           </div>
         </div>
+      <% end %>
 
-        <% if user_signed_in? and @user.id == current_user.id %>
-          <div class="center_buttons">
-            <%= link_to "プロフィール編集", edit_user_registration_path, class:"button_area prof_edit_button" %>
-          </div>
-        <% end %>
+      <% if user_signed_in? and @user.id == current_user.id %>
+        <div class="center_buttons">
+          <%= link_to "プロフィール編集", edit_user_registration_path, class:"button_area prof_edit_button" %>
+        </div>
+      <% end %>
+      <p class="p_item"><b>名前: </b><%= @user.name %></p>
 
-        <p class="p_item"><b>名前: </b><%= @user.name %></p>
+      <% if user_signed_in? and @user.id == current_user.id %>
+        <p class="p_item"><b>メールアドレス: </b><%= @user.email %></p>
+      <% end %>
 
-        <% if user_signed_in? and @user.id == current_user.id %>
-          <p class="p_item"><b>メールアドレス: </b><%= @user.email %></p>
-        <% end %>
+      <% if not @user.has_role? "admin" %>
+        <p class="p_item"><b>マイショップ: </b><%= @user.shop.name || "none" %></p>
 
-        <p class="p_item"><b>所属: </b>
-          <% if @user.organization != "" and !@user.organization.nil? %>
-            <%= @user.organization %>
-          <% else %>
-            <i>未登録</i>
-          <% end %>
-        </p>
-
-        <% if user_signed_in? and @user.id == current_user.id %>
-          <p class="p_item"><b>性別: </b><%= I18n.t("enums.user.gender.#{@user.gender}") %></p>
-          <p class="p_item"><b>生年月日: </b><%= @user.birthday %></p>
-        <% end %>
-
-        <p class="p_item"><b>パーソナリティ: </b>
-          <% if  @user.personality == 'noanswer' %>
-            <i><%= I18n.t("enums.user.personality.#{@user.personality}") %></i>
-          <% else %>
-            <%= I18n.t("enums.user.personality.#{@user.personality}") %>
-          <% end %>
-        </p>
-
-        <p class="p_item"><b>プロフィールカラー: </b><%= I18n.t("enums.user.color.#{@user.color.name}") %></p>
-
-        <% if !@user.tag.nil? and @user.tag != [] %>
-          <p><b>タグ:</b></p>
-          <ul class="taglist p_item">
-            <% @user.tag.each do |tag| %>
-              <li><%= tag.name %></li>
+        <% if not @user.has_role? "staff" %>
+          <p class="p_item"><b>所属: </b>
+            <% if @user.organization != "" and !@user.organization.nil? %>
+              <%= @user.organization %>
+            <% else %>
+              <i>未登録</i>
             <% end %>
-          </ul>
-        <% else %>
-          <p class="p_item"><b>タグ: </b><i>未登録</i></p>
-        <% end %>
+          </p>
 
-        <p class="p_item"><b>ひとこと: </b>
-          <% if @user.comment != "" and !@user.comment.nil?%>
-            <%= @user.comment %>
-          <% else %>
-            <i>未登録</i>
+          <% if user_signed_in? and @user.id == current_user.id %>
+            <p class="p_item"><b>性別: </b><%= I18n.t("enums.user.gender.#{@user.gender}") %></p>
+            <p class="p_item"><b>生年月日: </b><%= @user.birthday %></p>
           <% end %>
-        </p>
 
-        <p class="p_item"><b>ポイント: </b><%= @user.point %> pt</p>
-      </div>
-    <% else %>
-      <p>Forbidden</p>
-    <% end %>
+          <p class="p_item"><b>パーソナリティ: </b>
+            <% if  @user.personality == 'noanswer' %>
+              <i><%= I18n.t("enums.user.personality.#{@user.personality}") %></i>
+            <% else %>
+              <%= I18n.t("enums.user.personality.#{@user.personality}") %>
+            <% end %>
+          </p>
+
+          <p class="p_item"><b>プロフィールカラー: </b><%= I18n.t("enums.user.color.#{@user.color.name}") %></p>
+
+          <% if !@user.tag.nil? and @user.tag != [] %>
+            <p><b>タグ:</b></p>
+            <ul class="taglist p_item">
+              <% @user.tag.each do |tag| %>
+                <li><%= tag.name %></li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p class="p_item"><b>タグ: </b><i>未登録</i></p>
+          <% end %>
+
+          <p class="p_item"><b>ひとこと :</b>
+            <% if @user.comment != "" and !@user.comment.nil?%>
+              <%= @user.comment %>
+            <% else %>
+              <i>未登録</i>
+            <% end %>
+          </p>
+
+          <p class="p_item">ポイント: <%= @user.point %> pt</p>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </section>

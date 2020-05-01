@@ -40,6 +40,7 @@ ActiveAdmin.register User do
     column :comment
     column :roles
     column :point
+    column :shop
     column 'Checkin' do |user|
       user.check_in?
     end
@@ -62,6 +63,7 @@ ActiveAdmin.register User do
       row :comment
       row :roles
       row :point
+      row :shop
       row 'Checkin' do |user|
         user.check_in?
       end
@@ -109,6 +111,7 @@ ActiveAdmin.register User do
         t.check_box + t.text
       end
       f.input :roles
+      f.input :shop
       f.input :point
     end
     f.actions

@@ -56,7 +56,7 @@ class User < ApplicationRecord
 
   # CheckinRecord -> Shop
   has_many :checkin_record, dependent: :delete_all
-  has_many :shop, through: :checkin_record
+  has_many :checking_shop, through: :checkin_record, source: :shop
 
   # Interest -> Tag
   has_many :interest, dependent: :delete_all
@@ -77,16 +77,12 @@ class User < ApplicationRecord
   # Color
   belongs_to :color
 
+  # My Shop
+  belongs_to :shop, optional: true
+
   # Devise
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  # Role
-  after_create :assign_default_role
-
-  def assign_default_role
-    self.add_role(:guest) if self.roles.blank?
-  end
 
   # Config for Updating Profile
   def update_without_current_password(params, *options)

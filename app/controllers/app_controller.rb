@@ -1,5 +1,6 @@
 class AppController < ApplicationController
   def index
+    @shops = Shop.all
   end
 
   def tos

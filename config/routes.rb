@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'users/:user_id', to: 'users#show', as: 'profile'
 
   # Display
-  get 'display', to: 'users#display', as: 'display'
+  get 'display/:shop_id', to: 'users#display', as: 'display'
 
   # Review
   resources :reviews, only: [:create]
