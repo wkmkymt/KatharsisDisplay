@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
 
     unless @user.check_in?
-      @user.checkin(1)
+      @user.checkin(current_user.shop.id)
       DisplayChannel.broadcast_to('master',
         code: 'checkin',
         user: {
