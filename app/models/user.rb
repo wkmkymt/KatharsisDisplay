@@ -122,7 +122,7 @@ class User < ApplicationRecord
 
   # Get Shop Checked In
   def get_checkin_shop
-    get_checkin_record.checking_shop
+    get_checkin_record.shop
   end
 
   # Check In?
