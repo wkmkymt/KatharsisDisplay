@@ -51,6 +51,12 @@ select {
   border-radius: 8px;
 }
 
+
+input:focus, textarea:focus, select:focus, option:focus, a.button_area:focus, a.button_area_blue:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.15rem rgba(255,232,120,.35);
+}
+
 input[type='file'] {
   padding: 0;
 }
@@ -83,6 +89,10 @@ select {
   color: #fff;
   border: 1px solid #1fdaff;
   background: #181818;
+}
+
+select::-ms-expand {
+    display: none;
 }
 
 option {
