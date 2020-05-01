@@ -25,7 +25,7 @@
           <p class="p_item">メールアドレス: <%= @user.email %></p>
         <% end %>
 
-        <p class="p_item">所属: 
+        <p class="p_item">所属:
           <% if @user.organization != "" and !@user.organization.nil? %>
             <%= @user.organization %>
           <% else %>
@@ -38,7 +38,7 @@
           <p class="p_item">生年月日: <%= @user.birthday %></p>
         <% end %>
 
-        <p class="p_item">パーソナリティ: 
+        <p class="p_item">パーソナリティ:
           <% if  @user.personality == 'noanswer' %>
             <i><%= I18n.t("enums.user.personality.#{@user.personality}") %></i>
           <% else %>
@@ -59,13 +59,15 @@
           <p class="p_item">タグ: <i>未登録</i></p>
         <% end %>
 
-        <p class="p_item">ひとこと: 
+        <p class="p_item">ひとこと:
           <% if @user.comment != "" and !@user.comment.nil?%>
             <%= @user.comment %>
           <% else %>
             <i>未登録</i>
           <% end %>
         </p>
+
+        <p class="p_item">マイショップ: <%= @user.shop.name %></p>
 
         <p class="p_item">ポイント: <%= @user.point %> pt</p>
       </div>
