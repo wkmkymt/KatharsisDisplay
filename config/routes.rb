@@ -35,7 +35,8 @@ Rails.application.routes.draw do
       sign_up: '',
     },
     controllers: {
-      registrations: 'users/registrations'
+      registrations: 'users/registrations',
+      confirmations: 'users/confirmations',
     }
 
   # Profile Image
