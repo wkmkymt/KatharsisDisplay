@@ -59,6 +59,9 @@ gem 'chunky_png'
 
 gem 'enum_help'
 
+# dotenv
+gem 'dotenv-rails'
+
 # Carrier Wave
 # gem 'carrierwave'
 
@@ -80,6 +83,9 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-doc'
   gem 'pry-byebug'
+
+  # Web Mailer
+  gem 'letter_opener_web'
 end
 
 group :development do

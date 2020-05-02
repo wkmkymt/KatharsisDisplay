@@ -47,4 +47,9 @@ Rails.application.routes.draw do
 
   # Admin
   ActiveAdmin.routes(self)
+
+  # Web Mailer
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end
 end
