@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   # Permit
-  permit_params :name, :email, :organization, :comment, :point, :gender, :personality, :birthday, :profimg, :color_id, :shop_id, role_ids: [], tag_ids: []
+  permit_params :name, :email, :password, :organization, :comment, :point, :gender, :personality, :birthday, :profimg, :color_id, :shop_id, role_ids: [], tag_ids: []
 
   # Controller
   controller do
@@ -13,11 +13,23 @@ ActiveAdmin.register User do
     end
 
     def update
+      @user = User.find(params[:id])
+
       if permitted_params[:user][:profimg]
         params[:user][:profimg] = permitted_params[:user][:profimg].read
       end
 
-      super
+      if permitted_params[:user][:password].blank?
+        @user.update_without_password(permitted_params[:user])
+      else
+        @user.update_attributes(permitted_params[:user])
+      end
+
+      if @user.errors.blank?
+        redirect_to admin_users_path, :success => "ユーザの更新が完了しました"
+      else
+        render :edt
+      end
     end
   end
 
@@ -99,10 +111,11 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs do
       f.input :name
+      f.input :email
+      f.input :password
       f.input :gender
       f.input :personality
       f.input :birthday
-      f.input :email
       f.input :organization
       f.input :comment
       f.file_field :profimg, accept: "image/jpg, image/jpeg, image/png, image/gif"
