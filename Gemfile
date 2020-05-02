@@ -59,6 +59,9 @@ gem 'chunky_png'
 
 gem 'enum_help'
 
+# dotenv
+gem 'dotenv-rails'
+
 # Carrier Wave
 # gem 'carrierwave'
 
