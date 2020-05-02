@@ -82,7 +82,7 @@ class User < ApplicationRecord
 
   # Devise
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
 
   # Config for Updating Profile
   def update_without_current_password(params, *options)
