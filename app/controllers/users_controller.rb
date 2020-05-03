@@ -88,8 +88,7 @@ class UsersController < ApplicationController
         )
       end
     end
-    @shop = Shop.find_by(id:current_user.shop)
-    flash[:success] = "#{@shop.name}: 全員チェックアウトしました"
+    flash[:success] = "#{current_user.shop.name}: 全員チェックアウトしました"
     redirect_to root_path
   end
 
