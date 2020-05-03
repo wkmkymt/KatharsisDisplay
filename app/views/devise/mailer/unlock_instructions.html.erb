@@ -1,7 +1,8 @@
-<p>Hello <%= @resource.email %>!</p>
+<p><%= @resource.email %>様</p>
+<p>Katharsis Digital Hub 運営です。</p>
 
-<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
+<p>サインインに連続して失敗したため、本アカウントはロックされました。</p>
 
-<p>Click the link below to unlock your account:</p>
+<p>アカウントのロック解除を行うには下記からアクセスしてください。</p>
 
-<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>
+<p><%= link_to 'ロックを解除する', unlock_url(@resource, unlock_token: @token) %></p>
