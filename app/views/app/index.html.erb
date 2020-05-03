@@ -12,8 +12,16 @@
       <% if current_user.has_role? :admin %>
         <div class="alert_area">
           <p class="p_item">管理者アカウント「<%= current_user.name %>」でサインインしています。</p>
-          <p class="p_item">ゲスト来客時に端末のカメラアプリを起動してゲストのQRコードを読み込んでください。</p>
+          <p class="p_item">一般スタッフの方はスタッフアカウントでサインインしてください。</p>
           <p>システム管理を行うためには「管理画面」を開いてください。</p>
+        </div>
+      <% end %>
+      <% if current_user.has_role? :staff %>
+        <div class="alert_area_blue">
+          <p class="p_item"><%= current_user.shop.name %>スタッフアカウント「<%= current_user.name %>」でサインインしています。</p>
+          <p class="p_item">顧客の入退店時に顧客のQRコードを読み込んでください。</p>
+          <p class="p_item">チェックアウト処理は顧客のプロフィール画面からも行えます。</p>
+          <p>全員をチェックアウトさせる時は本ページ下部の「閉店処理」を押してください。</p>
         </div>
       <% end %>
 
@@ -24,29 +32,33 @@
           <% current_shop = current_user.shop %>
         <% end %>
 
-        <p>現在チェックインしているユーザ</p>
-        <ul class="prof_list top_margin">
-          <% current_shop.get_checkin_users.each do |user| %>
-            <% if user.id != current_user.id %>
-              <li class="prof_list_item ellipsis">
-                <%= link_to profile_path(user.id) do %>
-                  <div class="list_profimg_body">
-                    <div class="list_mainimgframe">
-                      <% if user.profimg %>
-                        <%= image_tag show_profimg_user_path(user.id) %>
-                      <% else %>
-                        <p class="p_item"> Not Image</p>
-                      <% end %>
+        <% if !current_shop.get_checkin_users.empty? %>
+          <p>現在チェックインしているユーザ</p>
+          <ul class="prof_list top_margin">
+            <% current_shop.get_checkin_users.each do |user| %>
+              <% if user.id != current_user.id %>
+                <li class="prof_list_item ellipsis">
+                  <%= link_to profile_path(user.id) do %>
+                    <div class="list_profimg_body">
+                      <div class="list_mainimgframe">
+                        <% if user.profimg %>
+                          <%= image_tag show_profimg_user_path(user.id) %>
+                        <% else %>
+                          <p class="p_item"> Not Image</p>
+                        <% end %>
+                      </div>
                     </div>
-                  </div>
-                  <div class="clearfix"></div>
-                  <p class="list_profname"><%= user.name %></p>
-                <% end %>
-              </li>
+                    <div class="clearfix"></div>
+                    <p class="list_profname"><%= user.name %></p>
+                  <% end %>
+                </li>
+              <% end %>
             <% end %>
-          <% end %>
-        </ul>
-        <div class="clearfix bottom_margin"></div>
+          </ul>
+          <div class="clearfix bottom_margin"></div>
+        <% else %>
+          <p class="alert_area_blue p_item">表示されるユーザがいません</p>
+        <% end %>
       <% end %>
 
       <div class="center_buttons">
@@ -77,6 +89,13 @@
       <div class="center_buttons smltopmargin">
         <%= link_to "サインアウト", destroy_user_session_path, method: :delete ,class:"button_area" %>
       </div>
+
+      <% if current_user.has_role? :staff %>
+        <div class="center_buttons smltopmargin">
+          <%= link_to "閉店処理", checkout_all_path, class:"button_area_blue button_side p_item", data: {confirm: "本当に実行しますか？"} %>
+        </div>
+      <% end %>
+
     <% else %>
       <div class="center_buttons">
         <%= link_to "サインイン", new_user_session_path , class:"button_area button_side" %>

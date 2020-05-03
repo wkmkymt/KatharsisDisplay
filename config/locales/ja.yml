@@ -65,6 +65,7 @@ ja:
               confirmation: パスワード確認が一致していません
             email:
               blank: が空欄です
+              taken: が既に登録されています。
   enums:
     user:
       gender:

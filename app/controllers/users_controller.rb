@@ -76,6 +76,22 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def checkout_all
+    current_user.shop.get_checkin_users.each do |user|
+      if user.check_in?
+        user.checkout
+        DisplayChannel.broadcast_to('master',
+          code: 'checkout',
+          user: {
+            id: user.id,
+          },
+        )
+      end
+    end
+    flash[:success] = "#{current_user.shop.name}: 全員チェックアウトしました"
+    redirect_to root_path
+  end
+
   def destroy_confirmation
   end
 

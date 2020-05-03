@@ -234,14 +234,14 @@ li {
 }
 
 .alert_area {
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   padding: 16px;
   border: 1px solid #8370ff;
   border-radius: 8px;
 }
 
 .alert_area_blue {
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   padding: 16px;
   border: 1px solid #1fdaff;
   border-radius: 8px;
