@@ -36,7 +36,8 @@ Rails.application.routes.draw do
       sign_up: '',
     },
     controllers: {
-      registrations: 'users/registrations'
+      registrations: 'users/registrations',
+      confirmations: 'users/confirmations',
     }
 
   # Profile Image
@@ -48,4 +49,9 @@ Rails.application.routes.draw do
 
   # Admin
   ActiveAdmin.routes(self)
+
+  # Web Mailer
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end
 end

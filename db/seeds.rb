@@ -18,30 +18,34 @@ end
 
 # Admin User
 CSV.foreach("db/seeds/admin_users.csv") do |row|
-  admin = User.create(
+  admin = User.new(
     name: row[0],
     email: row[1],
     password: "password",
   )
   admin.add_role "admin"
+  admin.skip_confirmation!
+  admin.save!
 end
 
 # Staff User
 CSV.foreach("db/seeds/staff_users.csv") do |row|
-  staff = User.create(
+  staff = User.new(
     name: row[0],
     email: row[1],
     password: "password",
     shop_id: row[2],
   )
   staff.add_role "staff"
+  staff.skip_confirmation!
+  staff.save!
 end
 
 # User
 CSV.foreach("db/seeds/users.csv") do |row|
   file = File.open("./app/assets/images/prof/" + row[9], "r")
 
-  user = User.create(
+  user = User.new(
     name: row[0],
     email: row[1],
     password: "password",
@@ -55,6 +59,8 @@ CSV.foreach("db/seeds/users.csv") do |row|
     profimg: file.read
   )
   user.add_role "guest"
+  user.skip_confirmation!
+  user.save!
 end
 
 # Tag
