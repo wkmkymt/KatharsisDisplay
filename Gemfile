@@ -43,6 +43,11 @@ gem 'jquery-rails'
 # Devise
 gem 'devise'
 
+# SNS Auth
+gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+
 # rolify
 gem 'rolify'
 
