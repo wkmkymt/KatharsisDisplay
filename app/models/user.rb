@@ -120,7 +120,7 @@ class User < ApplicationRecord
 
   # Create with SNS Data
   def self.with_sns_data(auth, snscredential)
-    user = User.find(snscredential.user_id).first
+    user = User.find(snscredential.user_id)
 
     unless user.present?
       user = User.new(
