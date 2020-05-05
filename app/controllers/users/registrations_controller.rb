@@ -6,6 +6,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
 
     super
+
+    # Add Default Role
+    if resource.roles.blank?
+      resource.add_role :guest
+    end
   end
 
   def update
