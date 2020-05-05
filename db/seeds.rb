@@ -13,6 +13,7 @@ CSV.foreach("db/seeds/shops.csv") do |row|
     name: row[0],
     address: row[1],
     description: row[2],
+    checkin_point: row[3],
   )
 end
 
