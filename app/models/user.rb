@@ -194,7 +194,8 @@ class User < ApplicationRecord
   def checkin(shop_id)
     unless check_in?
       if not has_checkined_today? shop_id
-        set_point
+        shop = Shop.find(shop_id)
+        set_point shop.checkin_point
       end
 
       checkin_record.create(user_id: self.id, shop_id: shop_id)
@@ -211,8 +212,8 @@ class User < ApplicationRecord
   private
 
     # Set pecific points to user
-    def set_point
-      self.point += 1
+    def set_point(point)
+      self.point += point
       self.save
     end
 
