@@ -85,7 +85,8 @@ class User < ApplicationRecord
 
   # Devise
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable, :confirmable,
+         :omniauthable, omniauth_providers: %i[google_oauth2 twitter facebook]
 
   # Config for Updating Profile
   def update_without_current_password(params, *options)
@@ -99,6 +100,62 @@ class User < ApplicationRecord
     result = update_attributes(params, *options)
     clean_up_passwords
     result
+  end
+
+  # Find OAuth
+  def self.find_oauth(auth)
+    snscredential = SnsCredential.where(uid: auth.uid, provider: auth.provider).first
+
+    if snscredential.present?
+      info = {
+        user: with_sns_data(auth, snscredential),
+        sns: snscredential,
+      }
+    else
+      info = without_sns_data(auth)
+    end
+
+    return info
+  end
+
+  # Create with SNS Data
+  def self.with_sns_data(auth, snscredential)
+    user = User.find(snscredential.user_id)
+
+    unless user.present?
+      user = User.new(
+        name: auth.info.name,
+        email: auth.info.email,
+        password: Devise.friendly_token[0,20],
+      )
+    end
+
+    return user
+  end
+
+  # Create without SNS Data
+  def self.without_sns_data(auth)
+    user = User.where(email: auth.info.email).first
+
+    if user.present?
+      sns = SnsCredential.create(
+        uid: auth.uid,
+        provider: auth.provider,
+        user_id: user.id
+      )
+    else
+      user = User.new(
+        name: auth.info.name,
+        email: auth.info.email,
+        password: Devise.friendly_token[0,20],
+      )
+      sns = SnsCredential.new(
+        uid: auth.uid,
+        provider: auth.provider
+      )
+    end
+
+    return { user: user, sns: sns }
   end
 
   # Review
