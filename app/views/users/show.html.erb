@@ -46,7 +46,13 @@
 
           <% if user_signed_in? and @user.id == current_user.id %>
             <p class="p_item"><b>性別: </b><%= I18n.t("enums.user.gender.#{@user.gender}") %></p>
-            <p class="p_item"><b>生年月日: </b><%= @user.birthday %></p>
+            <p class="p_item"><b>生年月日: </b>
+              <% if !@user.birthday.nil? %>
+                <%= @user.birthday %>
+              <% else %>
+                <i>未登録</i>
+              <% end %>
+            </p>
           <% end %>
 
           <p class="p_item"><b>パーソナリティ: </b>
