@@ -80,6 +80,9 @@ class User < ApplicationRecord
   # My Shop
   belongs_to :shop, optional: true
 
+  # SNS Credentials
+  has_many :sns_credentials, dependent: :destroy
+
   # Devise
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
