@@ -19,7 +19,14 @@
           <%= link_to "プロフィール編集", edit_user_registration_path, class:"button_area prof_edit_button" %>
         </div>
       <% end %>
-      <p class="p_item"><b>名前: </b><%= @user.name %></p>
+
+      <h2 class="p_item"><%= @user.name %></h2>
+
+      <% if @user.comment != "" and !@user.comment.nil?%>
+        <p class="alert_area_blue p_item">
+          <%= @user.comment %>
+        </p>
+      <% end %>
 
       <% if user_signed_in? and @user.id == current_user.id %>
         <p class="p_item"><b>メールアドレス: </b><%= @user.email %></p>
@@ -62,14 +69,6 @@
           <% else %>
             <p class="p_item"><b>タグ: </b><i>未登録</i></p>
           <% end %>
-
-          <p class="p_item"><b>ひとこと :</b>
-            <% if @user.comment != "" and !@user.comment.nil?%>
-              <%= @user.comment %>
-            <% else %>
-              <i>未登録</i>
-            <% end %>
-          </p>
 
           <p class="p_item">ポイント: <%= @user.point %> pt</p>
 
