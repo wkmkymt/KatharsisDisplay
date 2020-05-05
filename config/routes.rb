@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     controllers: {
       registrations: 'users/registrations',
       confirmations: 'users/confirmations',
+      omniauth_callbacks: 'users/omniauth_callbacks',
     }
 
   # Profile Image
