@@ -7,8 +7,13 @@ class Shop < ApplicationRecord
   has_many :user
 
   # Get Users Checked In
-  def get_checkin_users
-    checkined_user.joins(:checkin_record).where('checkin_records.check_in', 'in').uniq
+  def get_checkin_users(user_id=nil)
+    users = checkined_user.joins(:checkin_record).where('checkin_records.check_in', 'in').uniq
+    if user_id
+      users.select{ |user| user[:id] == user_id } + users.select{ |user| user[:id] != user_id }
+    else
+      users
+    end
   end
 
   # Get Users My Shoped
