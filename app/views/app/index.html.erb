@@ -35,24 +35,26 @@
         <% if !current_shop.get_checkin_users.empty? %>
           <p>現在チェックインしているユーザ</p>
           <ul class="prof_list top_margin">
-            <% current_shop.get_checkin_users.each do |user| %>
-              <% if user.id != current_user.id %>
-                <li class="prof_list_item ellipsis">
-                  <%= link_to profile_path(user.id) do %>
-                    <div class="list_profimg_body">
-                      <div class="list_mainimgframe">
-                        <% if user.profimg %>
-                          <%= image_tag show_profimg_user_path(user.id) %>
+            <% current_shop.get_checkin_users(current_user.id).each do |user| %>
+              <li class="prof_list_item ellipsis">
+                <%= link_to profile_path(user.id) do %>
+                  <div class="list_profimg_body">
+                    <div class="list_mainimgframe">
+                      <% if user.profimg %>
+                        <% if user.id == current_user.id %>
+                          <%= image_tag show_profimg_user_path(current_user.id), class: "border_img" %>
                         <% else %>
-                          <p class="p_item"> Not Image</p>
+                          <%= image_tag show_profimg_user_path(user.id) %>
                         <% end %>
-                      </div>
+                      <% else %>
+                        <p class="p_item"> Not Image</p>
+                      <% end %>
                     </div>
-                    <div class="clearfix"></div>
-                    <p class="list_profname"><%= user.name %></p>
-                  <% end %>
-                </li>
-              <% end %>
+                  </div>
+                  <div class="clearfix"></div>
+                  <p class="list_profname"><%= user.name %></p>
+                <% end %>
+              </li>
             <% end %>
           </ul>
           <div class="clearfix bottom_margin"></div>

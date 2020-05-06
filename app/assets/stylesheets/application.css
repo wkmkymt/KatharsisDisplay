@@ -523,6 +523,10 @@ div.smlbottommargin {
   margin-bottom: 32px;
 }
 
+.border_img {
+    border: 2px solid #8370ff;
+    box-sizing: border-box;
+
 .bg_white {
     color: #101010;
     background-color: #eee;
