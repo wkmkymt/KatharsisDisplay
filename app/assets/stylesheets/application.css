@@ -522,3 +522,8 @@ div.smlbottommargin {
 .back_btn {
   margin-bottom: 32px;
 }
+
+.bg_white {
+    color: #000;
+    background-color: #eee;
+}
