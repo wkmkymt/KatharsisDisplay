@@ -193,9 +193,11 @@ class User < ApplicationRecord
   # Check In
   def checkin(shop_id)
     unless check_in?
+      if not has_checkined_today? shop_id
+        set_point
+      end
+
       checkin_record.create(user_id: self.id, shop_id: shop_id)
-      self.point += 1
-      self.save
     end
   end
 
@@ -205,4 +207,18 @@ class User < ApplicationRecord
       get_checkin_record.checkout
     end
   end
+
+  private
+
+    # Set pecific points to user
+    def set_point
+      self.point += 1
+      self.save
+    end
+
+    # Has already checkined today?
+    def has_checkined_today?(shop_id)
+      checkin_record.where(shop_id: shop_id, created_at: Date.today.all_day).present?
+    end
+
 end
