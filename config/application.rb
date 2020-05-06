@@ -31,5 +31,9 @@ module App
     config.action_view.field_error_proc = Proc.new do |html_tag, instance|
       %Q(#{html_tag}).html_safe
     end
+
+    # Timezone
+    config.active_record.default_timezone = :local
+    config.time_zone = 'Tokyo'
   end
 end
