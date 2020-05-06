@@ -32,7 +32,7 @@
           <% current_shop = current_user.shop %>
         <% end %>
 
-        <% if !current_shop.get_checkin_users.empty? %>
+        <% if current_shop.get_checkin_users.length > 1 or (!current_shop.get_checkin_users.empty? and current_user.has_role? :staff ) %>
           <p>現在チェックインしているユーザ</p>
           <ul class="prof_list top_margin">
             <% current_shop.get_checkin_users.each do |user| %>
