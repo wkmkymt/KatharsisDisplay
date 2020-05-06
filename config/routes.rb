@@ -48,6 +48,10 @@ Rails.application.routes.draw do
     end
   end
 
+  # 例外
+  get '*not_found', to: 'application#routing_error'
+  post '*not_found', to: 'application#routing_error'
+
   # Admin
   ActiveAdmin.routes(self)
 
