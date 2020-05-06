@@ -40,6 +40,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # jQuery
 gem 'jquery-rails'
 
+# Bootstrap
+gem 'bootstrap', '~> 4.3.1'
+
 # Confirm Modal
 gem 'data-confirm-modal'
 
