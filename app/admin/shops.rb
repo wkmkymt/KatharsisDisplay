@@ -1,6 +1,6 @@
 ActiveAdmin.register Shop do
   # Permit
-  permit_params :name, :address, :description
+  permit_params :name, :address, :description, :checkin_point
 
   # Show
   show do |shop|
@@ -9,6 +9,7 @@ ActiveAdmin.register Shop do
       row :name
       row :address
       row :description
+      row :checkin_point
       row :created_at
       row :updated_at
     end
