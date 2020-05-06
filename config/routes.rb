@@ -48,10 +48,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # 例外
-  get '*not_found', to: 'application#routing_error'
-  post '*not_found', to: 'application#routing_error'
-
   # Admin
   ActiveAdmin.routes(self)
 
@@ -59,4 +55,8 @@ Rails.application.routes.draw do
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end
+
+  # Exception
+  get '*not_found', to: 'application#routing_error'
+  post '*not_found', to: 'application#routing_error'
 end
