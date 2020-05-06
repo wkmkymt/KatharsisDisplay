@@ -554,3 +554,15 @@ img.libig_img {
     width: 50%;
     max-width: 320px;
 }
+
+.catchphrase {
+    font-size: 40px;
+}
+
+.slogan {
+    margin-top: 56px;
+}
+
+.slogan:first-of-type {
+    margin-top: 0;
+}
