@@ -35,6 +35,23 @@
         <% if !current_shop.get_checkin_users.empty? %>
           <p>現在チェックインしているユーザ</p>
           <ul class="prof_list top_margin">
+            <% if current_user.has_role? :guest %>
+              <li class="prof_list_item ellipsis">
+                <%= link_to profile_path(current_user.id) do %>
+                  <div class="list_profimg_body">
+                    <div class="list_mainimgframe">
+                      <% if current_user.profimg %>
+                        <%= image_tag show_profimg_user_path(current_user.id),class: "border_img" %>
+                      <% else %>
+                        <p class="p_item"> Not Image</p>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                  <p class="list_profname"><%= current_user.name %></p>
+                <% end %>
+              </li>
+            <% end %>
             <% current_shop.get_checkin_users.each do |user| %>
               <% if user.id != current_user.id %>
                 <li class="prof_list_item ellipsis">
