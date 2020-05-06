@@ -111,7 +111,7 @@ class UsersController < ApplicationController
 
     # Not Authorized
     def not_authorized
-      flash[:danger] = "You are not allowed!"
+      flash[:danger] = "許可されていないアカウントです"
       redirect_to request.referrer || root_path
     end
 end
