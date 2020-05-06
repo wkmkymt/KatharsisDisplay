@@ -118,6 +118,7 @@ img {
 
 .displayprof {
   height: 100vh;
+  overflow: hidden;
 }
 
 .bg_purple {
@@ -210,4 +211,10 @@ img {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 6;
+}
+
+.multiline-text-3 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }

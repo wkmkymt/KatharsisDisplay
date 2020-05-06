@@ -65,7 +65,12 @@ ja:
               confirmation: パスワード確認が一致していません
             email:
               blank: が空欄です
-              taken: が既に登録されています。
+              taken: が既に登録されています
+            name:
+              blank: が空欄です
+              too_long: が長すぎます
+            comment:
+              too_long: が長すぎます
   enums:
     user:
       gender:
