@@ -1,4 +1,12 @@
 <div class="_links">
+  <%- if devise_mapping.omniauthable? && controller_name != "registrations" %>
+    <div class="smltopmargin">
+      <%= link_to "#{OmniAuth::Utils.camelize('Google')}でサインイン", omniauth_authorize_path(resource_name, 'google_oauth2'), class:"button_area_blue button_side p_item" %>
+      <%= link_to "#{OmniAuth::Utils.camelize('Twitter')}でサインイン", omniauth_authorize_path(resource_name, 'twitter'), class:"button_area_blue button_side p_item" %>
+      <%= link_to "#{OmniAuth::Utils.camelize('Facebook')}でサインイン", omniauth_authorize_path(resource_name, 'facebook'), class:"button_area_blue button_side p_item" %>
+    </div>
+  <% end %>
+
   <%- if controller_name != "sessions" %>
     <p class="button_desc_text">アカウントをお持ちの方はこちら</p>
     <%= link_to "サインイン", new_session_path(resource_name), class:"button_area" %><br />
@@ -18,11 +26,5 @@
 
   <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != "unlocks" %>
     <%= link_to "unlock", new_unlock_path(resource_name) , class:"smltopmargin"%><br />
-  <% end %>
-
-  <%- if devise_mapping.omniauthable? %>
-    <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
-    <% end %>
   <% end %>
 </div>

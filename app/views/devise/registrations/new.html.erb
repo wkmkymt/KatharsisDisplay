@@ -2,6 +2,11 @@
     <div class="wrap">
 
 <h2>サインアップ</h2>
+<div class="center_buttons p_item">
+  <%= link_to "#{OmniAuth::Utils.camelize('Google')}でサインアップ", omniauth_authorize_path(resource_name, 'google_oauth2'), class:"button_area button_side p_item" %>
+  <%= link_to "#{OmniAuth::Utils.camelize('Twitter')}でサインアップ", omniauth_authorize_path(resource_name, 'twitter'), class:"button_area button_side p_item" %>
+  <%= link_to "#{OmniAuth::Utils.camelize('Facebook')}でサインアップ", omniauth_authorize_path(resource_name, 'facebook'), class:"button_area button_side p_item" %>
+</div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
