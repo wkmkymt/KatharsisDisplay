@@ -72,13 +72,12 @@
           </p>
 
           <p class="p_item">ポイント: <%= @user.point %> pt</p>
-
-          <% if current_user.has_role? :staff and current_user.shop.id == @user.get_checkin_shop.id %>
-            <div class="center_buttons">
-              <%= link_to "チェックアウト", checkout_url(@user.id), class:"button_area prof_edit_button" %>
-            </div>
-          <% end %>
         <% end %>
+      <% end %>
+      <% if current_user.has_role? :staff and @user.check_in? and current_user.shop.id == @user.get_checkin_shop.id %>
+        <div class="center_buttons">
+          <%= link_to "チェックアウト", checkout_url(@user.id), class:"button_area prof_edit_button" %>
+        </div>
       <% end %>
     </div>
   </div>
