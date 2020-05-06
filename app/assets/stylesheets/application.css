@@ -524,6 +524,11 @@ div.smlbottommargin {
 }
 
 .bg_white {
-    color: #000;
+    color: #101010;
     background-color: #eee;
+}
+
+.bg_purple {
+    color: #efefef;
+    background-color: #8370ff;
 }
