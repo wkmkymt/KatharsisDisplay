@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :profimg_temp
+  validates :comment, length:{maximum: 40}
+  validates :name, presence:true, length:{maximum: 16}
 
   # Attribute
   enum  gender:  { man: 0, woman: 1, others: 2 }
