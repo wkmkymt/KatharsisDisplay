@@ -42,7 +42,7 @@
         <%= f.label :personality %><a href="https://www.16personalities.com/ja" target="_blank"
         class="blue_text blue_underline label_supplement"><i>16Personalites診断を受けたことがない人はこちら</i></a>*外部サイトに飛びます<br>
         <!-- <%= f.select :personality, User.personalities.keys.map {|k| [I18n.t("enums.user.personality.#{k}"), k]} %> -->
-        <%= f.select :personality, grouped_options_for_select(User::PERSONALITY_SELECT_OPTIONS, @user.personality) %>
+        <%= f.select :personality, grouped_options_for_select(Constants::PERSONALITY_SELECT_OPTIONS, @user.personality) %>
       </div>
 
       <div class="field">
