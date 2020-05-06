@@ -40,6 +40,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # jQuery
 gem 'jquery-rails'
 
+# Confirm Modal
+gem 'data-confirm-modal'
+
 # Devise
 gem 'devise'
 

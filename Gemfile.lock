@@ -90,6 +90,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
+    data-confirm-modal (1.6.3)
+      railties (>= 3.0)
     debug_inspector (0.0.3)
     devise (4.7.1)
       bcrypt (~> 3.0)
@@ -371,6 +373,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chunky_png
   coffee-rails (~> 4.2)
+  data-confirm-modal
   devise
   dotenv-rails
   enum_help
