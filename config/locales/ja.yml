@@ -33,6 +33,7 @@ ja:
       review: レビュー
       shop: 店舗
       tag: タグ
+      category: カテゴリ
     attributes:
       user:
         id: ID
