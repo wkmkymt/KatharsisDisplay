@@ -45,12 +45,16 @@ class UsersController < ApplicationController
             tags: @user.tag,
           },
         )
-        flash[:success] = "#{@user.name}: チェックインに成功しました"
+        if @user.shop.id == current_user.shop.id
+          flash[:success] = "#{@user.name}が「#{current_user.shop.name}」にチェックインしました"
+        else
+          flash[:success] = "#{@user.name}が「#{current_user.shop.name}」にチェックインしました<br />マイショップ設定「#{@user.shop.name}」のユーザです"
+        end
       else
         flash[:danger] = "マイショップが指定されていません"
       end
     else
-      flash[:danger] = "#{@user.name}: 既にチェックイン済みです"
+      flash[:danger] = "#{@user.name}は既に「#{current_user.shop.name}」にチェックイン済みです"
     end
 
     redirect_to root_path
@@ -68,9 +72,9 @@ class UsersController < ApplicationController
           id: @user.id,
         },
       )
-      flash[:success] = "#{@user.name}: チェックアウトしました"
+      flash[:success] = "#{@user.name}が「#{current_user.shop.name}」をチェックアウトしました"
     else
-      flash[:danger] = "#{@user.name}: 事前にチェックインしていません"
+      flash[:danger] = "#{@user.name}は事前に「#{current_user.shop.name}」にチェックインしていません"
     end
 
     redirect_to root_path
