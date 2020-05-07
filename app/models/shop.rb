@@ -3,6 +3,10 @@ class Shop < ApplicationRecord
   has_many :checkin_record, dependent: :delete_all
   has_many :checkined_user, through: :checkin_record, source: :user
 
+  # AdContract -> Advertisement
+  has_many :ad_contract, dependent: :delete_all
+  has_many :advertisement, through: :ad_contract
+
   # My User
   has_many :user
 
