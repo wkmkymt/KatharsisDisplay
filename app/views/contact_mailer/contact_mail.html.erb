@@ -1,0 +1,8 @@
+<h1>お問い合わせが届きました</h1>
+
+<h3>お名前： <%= @contact.name %></h3>
+
+<h3>メールアドレス： <%= @contact.email %></h3>
+
+<h3>お問い合わせ内容</h3>
+<p><%= safe_join(@contact.message.split("\n"),tag(:br)) %></p>
