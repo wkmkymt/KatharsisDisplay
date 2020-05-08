@@ -19,10 +19,13 @@ class UsersController < ApplicationController
 
   # Display
   def display
-    @users = Shop.find(params[:shop_id]).get_checkin_users
-    @users.map { |user| user.profimg = "" }
+    shop = Shop.find(params[:shop_id])
+    users = shop.get_checkin_users
 
-    DisplayChannel.broadcast_to('master', @users)
+    @panels = get_panel(users, shop.advertisement)
+
+    users.map { |user| user.profimg = "" }
+    DisplayChannel.broadcast_to('master', users)
 
     render layout: 'display'
   end
@@ -117,5 +120,42 @@ class UsersController < ApplicationController
     def not_authorized
       flash[:danger] = "許可されていないアカウントです"
       redirect_to request.referrer || root_path
+    end
+
+    # Get Panel
+    def get_panel(users_a, ads_a)
+      users = []
+      users_a.each do |user|
+        users.push({ type: "user", body: user })
+      end
+
+      ads = []
+      ads_a.each do |ad|
+        ads.push({ type: "ad", body: ad })
+      end
+
+      panels = []
+      if users.present? and ads.present?
+        if users.size >= ads.size
+          panels = set_panel_order(users, ads)
+        else
+          panels = set_panel_order(ads, users)
+        end
+      else
+        panels = users + ads
+      end
+
+      return panels
+    end
+
+    # Set Item Alternate
+    def set_panel_order(bases, items)
+      step = bases.size / items.size
+
+      items.each.with_index do |item, index|
+        bases.insert(step * (index + 1) + index, item)
+      end
+
+      return bases
     end
 end
