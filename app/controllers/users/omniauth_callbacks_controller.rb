@@ -25,8 +25,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user, event: :authentication
       set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
     else
-      @sns = info[:sns]
-      render template: "devise/registrations/new"
+      @user.skip_confirmation!
+      @user.save
+      sign_in(:user, @user)
+      redirect_to edit_user_registration_path(@user.id)
     end
   end
 
