@@ -64,7 +64,7 @@
     <p>興味あるタグを選択してください(複数選択可)</p>
     <% Category.all.each do |category| %>
       <div class="category-container">
-        <span class="category"><%= category.name %></span>
+        <span class="category"><%= category.name %></span><br>
         <%= f.collection_check_boxes :tag_ids, Tag.where(category_id: category.id), :id, :name do |t| %>
           <%= t.check_box + t.label{t.text} %>
         <% end %>
