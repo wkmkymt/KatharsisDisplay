@@ -35,6 +35,7 @@ ja:
       tag: タグ
       contact: お問い合わせ
       category: カテゴリ
+      advertisement: 広告
     attributes:
       user:
         id: ID
