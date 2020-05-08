@@ -57,7 +57,7 @@ class UsersController < ApplicationController
         flash[:danger] = "マイショップが指定されていません"
       end
     else
-      flash[:danger] = "#{@user.name}は既に「#{current_user.shop.name}」にチェックイン済みです"
+      flash[:danger] = "#{@user.name}は既に「#{@user.get_checkin_shop.name}」にチェックイン済みです"
     end
 
     redirect_to root_path
