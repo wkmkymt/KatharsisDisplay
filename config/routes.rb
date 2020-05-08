@@ -51,6 +51,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # Advertisement Image
+  get 'ads/:ad_id/image', to: 'advertisements#show_adimg', as: 'adimg'
+
   # Admin
   ActiveAdmin.routes(self)
 

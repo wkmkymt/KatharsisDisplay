@@ -20,7 +20,7 @@ if defined? Hirb
   end
 
   module Hirb
-    IGNORE = [:created_at, :updated_at, :profimg, :reset_password_token, :reset_password_sent_at, :remember_created_at, :encrypted_password]
+    IGNORE = [:created_at, :updated_at, :profimg, :adimg, :reset_password_token, :reset_password_sent_at, :remember_created_at, :encrypted_password]
   end
 
   module Hirb::Views::Rails #:nodoc:

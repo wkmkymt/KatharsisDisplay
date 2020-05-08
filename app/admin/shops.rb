@@ -37,5 +37,13 @@ ActiveAdmin.register Shop do
         end
       end
     end
+
+    panel "Advertisements" do
+      table_for shop.advertisement do
+        column :name do |ad|
+          link_to ad.sponsor, admin_advertisement_path(ad)
+        end
+      end
+    end
   end
 end
