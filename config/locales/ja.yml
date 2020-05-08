@@ -33,6 +33,7 @@ ja:
       review: レビュー
       shop: 店舗
       tag: タグ
+      contact: お問い合わせ
       category: カテゴリ
     attributes:
       user:
@@ -53,25 +54,30 @@ ja:
         comment: ひとこと
         profimg: プロフィール画像
         shop_id: マイショップ
+      contact:
+        name: 名前
+        email: メールアドレス
+        message: お問い合わせ内容
       admin:
         id: ID
-    errors:
-      models:
-        user:
-          attributes:
-            password:
-              too_short: が短すぎます
-              blank: が空欄です
-            password_confirmation:
-              confirmation: パスワード確認が一致していません
-            email:
-              blank: が空欄です
-              taken: が既に登録されています
-            name:
-              blank: が空欄です
-              too_long: が長すぎます
-            comment:
-              too_long: が長すぎます
+  errors:
+    attributes:
+      password:
+        too_short: が短すぎます
+        blank: が空欄です
+      password_confirmation:
+        confirmation: パスワード確認が一致していません
+      email:
+        blank: が空欄です
+        taken: が既に登録されています
+      name:
+        blank: が空欄です
+        too_long: が長すぎます
+      comment:
+        too_long: が長すぎます
+      message:
+        blank: が空欄です
+        too_long: が長すぎます
   enums:
     user:
       gender:

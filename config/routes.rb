@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   # Review
   resources :reviews, only: [:create]
 
+  # Contact
+  resource :contact, only: [:show, :create]
+
   # Check In/Out
   get 'checkin/:user_id', to: 'users#checkin', as: 'checkin'
   get 'checkout/:user_id', to: 'users#checkout', as: 'checkout'

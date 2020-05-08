@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 2020_05_07_182649) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "email", null: false
+    t.text "message", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "interests", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "tag_id", null: false
