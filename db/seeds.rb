@@ -105,3 +105,24 @@ CSV.foreach("db/seeds/reviews.csv") do |row|
     comment: row[3],
   )
 end
+
+# Advertisement
+CSV.foreach("db/seeds/advertisements.csv") do |row|
+  file = File.open("./app/assets/images/ad/" + row[4], "r")
+
+  Advertisement.create(
+    sponsor: row[0],
+    url: row[1],
+    start_date: row[2],
+    end_date: row[3],
+    adimg: file.read,
+  )
+end
+
+# Advertisement
+CSV.foreach("db/seeds/ad_contracts.csv") do |row|
+  AdContract.create(
+    advertisement_id: row[0],
+    shop_id: row[1],
+  )
+end
