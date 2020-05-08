@@ -34,6 +34,7 @@ ja:
       shop: 店舗
       tag: タグ
       contact: お問い合わせ
+      category: カテゴリ
     attributes:
       user:
         id: ID

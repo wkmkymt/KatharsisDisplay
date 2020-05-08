@@ -64,10 +64,18 @@ CSV.foreach("db/seeds/users.csv") do |row|
   user.save!
 end
 
+# Category
+CSV.foreach("db/seeds/categories.csv") do |row|
+  Category.create(
+    name: row[0],
+  )
+end
+
 # Tag
 CSV.foreach("db/seeds/tags.csv") do |row|
   Tag.create(
     name: row[0],
+    category_id: row[1],
   )
 end
 

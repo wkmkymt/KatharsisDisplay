@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_07_154312) do
+ActiveRecord::Schema.define(version: 2020_05_07_182649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "checkin_records", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -93,6 +99,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_154312) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id", null: false
     t.index ["name"], name: "index_tags_on_name"
   end
 

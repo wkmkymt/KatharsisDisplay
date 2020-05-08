@@ -3,11 +3,11 @@
     <% flash.each do |key, value| %>
       <div class="alert_area">
         <p class="alert alert-<%= key %>">
-          <%= value %>
+          <%= value.html_safe %>
         </p>
       </div>
     <% end %>
-    
+
     <h2>サインイン</h2>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
