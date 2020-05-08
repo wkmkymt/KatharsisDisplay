@@ -1,39 +1,13 @@
 <div class="container">
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <% @users.each do |user| %>
-        <div class="prof_<%= user.id %> swiper-slide">
-          <section class="displayprof bg_<%= user.color.name %>">
-            <div class="wrap">
-              <div class="post_profimg">
-                <div class="mainimgframe">
-                  <% if user.profimg %>
-                    <%= image_tag show_profimg_user_path(user.id) %>
-                  <% end %>
-                </div>
-              </div>
-
-              <div class="prof_body">
-                <div class="under">
-                  <h1><%= user.name %></h1>
-                </div>
-                <h2><%= user.organization %></h2>
-                <div class="multiline-text-container">
-                  <h2 class="multiline-text">
-                    <% user.tag.each do |tag| %>
-                      #<%= tag.name %>&nbsp;
-                    <% end %>
-                  </h2>
-                </div>
-              </div>
-
-              <div class="clearfix"></div>
-
-              <div class="prof_msg multiline-text-container">
-                <p class="multiline-text-3"><% if user.comment? %>"<%= user.comment %>"<% end %></p>
-              </div>
-            </div>
-          </section>
+      <% @panels.each do |panel| %>
+        <div id="prof_<%= panel[:type]%>_<%= panel[:body].id %>" class="prof_<%= panel[:type] %> swiper-slide">
+          <% if panel[:type] == "user" %>
+            <%= render "layouts/display_user", user: panel[:body] %>
+          <% else %>
+            <%= render "layouts/display_ad", ad: panel[:body] %>
+          <% end %>
         </div>
       <% end %>
     </div>

@@ -121,6 +121,26 @@ img {
   overflow: hidden;
 }
 
+.prof_ad .displayprof {
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.prof_ad .sponsor {
+  font-weight: bold;
+  color: #181818;
+  -webkit-text-stroke: 3px #fff;
+  text-stroke: 3px #FFF;
+  text-align: center;
+}
+
+.prof_ad .qrcode {
+  display: block;
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+}
+
 .bg_purple {
   background-color: #8a2be2;
   color: #fff;
