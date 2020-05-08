@@ -725,3 +725,16 @@ img.libig_img {
     margin: 1.75rem auto;
   }
 }
+
+/* Category Form */
+.category-container {
+  margin: 12px 0;
+  padding-left: 12px;
+}
+
+.category-container .category {
+  font-weight: bold;
+  font-style: italic;
+  display: inline-block;
+  /*width: 120px;*/
+}
