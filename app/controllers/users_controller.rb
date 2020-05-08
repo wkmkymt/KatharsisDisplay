@@ -40,12 +40,15 @@ class UsersController < ApplicationController
         DisplayChannel.broadcast_to('master',
           code: 'checkin',
           user: {
-            id: @user.id,
-            name: @user.name,
-            organization: @user.organization,
-            comment: @user.comment,
-            color: @user.color.name,
-            tags: @user.tag,
+            type: "user",
+            body: {
+              id: @user.id,
+              name: @user.name,
+              organization: @user.organization,
+              comment: @user.comment,
+              color: @user.color.name,
+              tags: @user.tag.map{ |tag| tag.name },
+            },
           },
         )
         if @user.shop.id == current_user.shop.id
@@ -137,9 +140,9 @@ class UsersController < ApplicationController
       panels = []
       if users.present? and ads.present?
         if users.size >= ads.size
-          panels = set_panel_order(users, ads)
+          panels = get_ordered_slides(users, ads)
         else
-          panels = set_panel_order(ads, users)
+          panels = get_ordered_slides(ads, users)
         end
       else
         panels = users + ads
@@ -148,8 +151,8 @@ class UsersController < ApplicationController
       return panels
     end
 
-    # Set Item Alternate
-    def set_panel_order(bases, items)
+    # Get Ordered Slide
+    def get_ordered_slides(bases, items)
       step = bases.size / items.size
 
       items.each.with_index do |item, index|

@@ -10,11 +10,11 @@
 
     <div class="prof_body">
       <div class="under">
-        <h1><%= user.name %></h1>
+        <h1 class="prof_name"><%= user.name %></h1>
       </div>
-      <h2><%= user.organization %></h2>
+      <h2 class="prof_org"><%= user.organization %></h2>
       <div class="multiline-text-container">
-        <h2 class="multiline-text">
+        <h2 class="prof_tag multiline-text">
           <% user.tag.each do |tag| %>
             #<%= tag.name %>&nbsp;
           <% end %>
