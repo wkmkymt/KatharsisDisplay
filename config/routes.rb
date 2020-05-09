@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   end
 
   # Advertisement Image
+  resource :advertisement, only: [:new, :create]
   get 'ads/:ad_id/image', to: 'advertisements#show_adimg', as: 'adimg'
 
   # Admin

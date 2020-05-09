@@ -59,6 +59,14 @@ ja:
         name: 名前
         email: メールアドレス
         message: お問い合わせ内容
+      advertisement:
+        sponsor: 名前
+        email: メールアドレス
+        adimg: 掲載画像
+        url: URL
+        start_date: 掲載開始日
+        end_date: 掲載終了日
+        placed_shop: 掲載先店舗
       admin:
         id: ID
   errors:
@@ -79,6 +87,17 @@ ja:
       message:
         blank: が空欄です
         too_long: が長すぎます
+      sponsor:
+        blank: が空欄です
+        too_long: が長すぎます
+      adimg:
+        blank: が空欄です
+      start_date:
+        blank: が空欄です
+      end_date:
+        blank: が空欄です
+      placed_shop:
+        blank: が空欄です
   enums:
     user:
       gender:

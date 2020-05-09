@@ -1,0 +1,52 @@
+<section>
+  <div class="wrap">
+    <h2>広告登録フォーム</h2>
+
+    <%= form_with model: @ad, url: advertisement_path, local: true do |f| %>
+      <%= render "devise/shared/error_messages", resource: @ad %>
+
+      <div class="field">
+        <%= f.label :sponsor %><i>(16文字以内)</i><br />
+        <%= f.text_field :sponsor, autocomplete: "name", autofocus: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autocomplete: "email" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :url %><br />
+        <%= f.text_field :url, autocomplete: "url" %>
+      </div>
+
+      <div class="field">
+        <p>掲載する店舗を選択してください(複数選択可)</p>
+        <%= f.collection_check_boxes :placed_shop_ids, Shop.all, :id, :name do |s| %>
+          <%= s.check_box + s.label{s.text} %>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label :start_date %><br />
+        <%= f.date_select :start_date, prompt: "--", use_month_numbers: true, start_year: Time.now.year, end_year: Time.now.year + 2 %>
+      </div>
+
+      <div class="field">
+        <%= f.label :end_date %><br />
+        <%= f.date_select :end_date, prompt: "--", use_month_numbers: true, start_year: Time.now.year, end_year: Time.now.year + 2 %>
+      </div>
+
+      <div class="field">
+        <%= f.label :adimg, class:"button_area_blue" %><br />
+        <%= f.file_field :adimg, accept: "image/jpg, image/jpeg, image/png, image/gif" %>
+      </div>
+
+      <div class="center_buttons">
+        <div class="actions">
+          <%= f.submit "送信", class:"button_area" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
