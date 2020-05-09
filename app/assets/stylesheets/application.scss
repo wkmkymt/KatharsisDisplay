@@ -605,7 +605,7 @@ img.libig_img {
   width: auto;
   margin: 0.5rem;
   pointer-events: none;
-  color: #181818;
+  color: #ffffff;
 }
 
 .modal.fade .modal-dialog {
@@ -623,7 +623,7 @@ img.libig_img {
   flex-direction: column;
   width: 100%;
   pointer-events: auto;
-  background-color: #fff;
+  background-color: #333333;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
@@ -648,7 +648,7 @@ img.libig_img {
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1;
-  color: #000;
+  color: #ffffff;
   text-shadow: 0 1px 0 #fff;
   opacity: .5;
   background-color: transparent;
@@ -689,7 +689,7 @@ img.libig_img {
 .modal-footer .btn {
   display: inline-block;
   font-weight: 400;
-  color: #181818;
+  color: #ffffff;
   text-align: center;
   vertical-align: middle;
   -webkit-user-select: none;
@@ -704,10 +704,11 @@ img.libig_img {
   border-radius: 8px;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   cursor: pointer;
+  outline: none;
 }
 
 .modal-footer .cancel {
-  border: solid 1px #181818;
+  border: solid 1px #dedede;
 }
 
 .modal-footer .commit {
@@ -716,7 +717,7 @@ img.libig_img {
 }
 
 .modal-footer > :not(:last-child) {
-  margin-right: .25rem;
+  margin-right: 1rem;
 }
 
 @media (min-width: 576px) {
