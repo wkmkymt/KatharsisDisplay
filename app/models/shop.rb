@@ -29,4 +29,9 @@ class Shop < ApplicationRecord
   def get_staffs
     user.joins(:roles).where(roles: {name: "staff"})
   end
+
+  # Get Advertisements within publication period
+  def get_ads_within_period
+    advertisement.where("start_date <= ? and end_date >= ?", Date.today, Date.today)
+  end
 end

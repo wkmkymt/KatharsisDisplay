@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:checkin, :checkout, :destroy, :destroy_confirmation]
   before_action :authorize_staff, only: [:checkin, :checkout, :display]
 
-  rescue_from Pundit::NotAuthorizedError, with: :not_authorized
+  rescue_from Pundit::NotAuthorizedError, with: :not_authorizeda
 
   # Profile
   def show
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     shop = Shop.find(params[:shop_id])
     users = shop.get_checkin_users
 
-    @panels = get_panel(users, shop.advertisement)
+    @panels = get_panel(users, shop.get_ads_within_period)
 
     users.map { |user| user.profimg = "" }
     DisplayChannel.broadcast_to('master', users)
