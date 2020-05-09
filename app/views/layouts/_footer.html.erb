@@ -5,7 +5,9 @@
       <p class="p_item footer_link"><small><%= link_to "利用規約", tos_path, target:"_blank" %></small></p>
       <p class="p_item footer_link"><small><%= link_to "プライバシーポリシー", privacy_path, target:"_blank" %></small></p>
       <p class="p_item footer_link"><small><%= link_to "お問い合わせ", contact_path %></small></p>
-      <p class="p_item footer_link"><small><%= link_to "広告の登録", new_advertisement_path %></small></p>
+      <% if current_user.has_role? :staff or current_user.has_role? :admin %>
+        <p class="p_item footer_link"><small><%= link_to "広告の登録", new_advertisement_path %></small></p>
+      <% end %>
       <% if user_signed_in? %>
         <p class="p_item footer_link"><small><%= link_to "退会", destroy_confirmation_path %></small></p>
       <% end %>

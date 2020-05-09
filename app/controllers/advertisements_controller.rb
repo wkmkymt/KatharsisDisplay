@@ -1,4 +1,8 @@
 class AdvertisementsController < ApplicationController
+  before_action :authorize_staff, only: [:new, :create]
+
+  rescue_from Pundit::NotAuthorizedError, with: :not_authorized
+
   # New
   def new
     @ad = Advertisement.new
@@ -23,6 +27,16 @@ class AdvertisementsController < ApplicationController
   end
 
   private
+    # Authorize
+    def authorize_staff
+      authorize Advertisement
+    end
+
+    # Not Authorized
+    def not_authorized
+      flash[:danger] = "許可されていないアカウントです"
+      redirect_to root_path
+    end
 
     def advertisement_params
       params.require(:advertisement).permit(:sponsor, :email, :adimg, :url, :start_date, :end_date, { placed_shop_ids: [] })
