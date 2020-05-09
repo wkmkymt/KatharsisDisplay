@@ -8,9 +8,11 @@ App.display = App.cable.subscriptions.create "DisplayChannel",
 
   received: (data) ->
     if data.code == 'checkin'
-      addProf(data.user, data.tags)
+      addUser(data.user)
+      setChangeFlag()
 
     if data.code == 'checkout'
-      removeProf(data.user)
+      removeUser(data.user)
+      setChangeFlag()
 
     return

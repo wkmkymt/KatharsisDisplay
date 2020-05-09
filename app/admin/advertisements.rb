@@ -1,6 +1,6 @@
 ActiveAdmin.register Advertisement do
   # Permit
-  permit_params :sponsor, :adimg, :url, :start_date, :end_date, ad_contract_attributes: [:shop_id, :_destroy, :id]
+  permit_params :sponsor, :email, :adimg, :url, :start_date, :end_date, ad_contract_attributes: [:shop_id, :_destroy, :id]
 
   # Controller
   controller do
@@ -26,6 +26,7 @@ ActiveAdmin.register Advertisement do
     selectable_column
     column :id
     column :sponsor
+    column :email
     column :url
     column :placed_shop
     column :start_date
@@ -40,6 +41,7 @@ ActiveAdmin.register Advertisement do
     attributes_table do
       row :id
       row :sponsor
+      row :email
       row :url
       row :start_date
       row :end_date
@@ -64,6 +66,7 @@ ActiveAdmin.register Advertisement do
   form do |f|
     f.inputs do
       f.input :sponsor
+      f.input :email
       f.input :url
       f.has_many :ad_contract, allow_destroy: true, new_record: true, heading: "掲載先" do |t|
         t.input :shop

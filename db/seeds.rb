@@ -108,13 +108,14 @@ end
 
 # Advertisement
 CSV.foreach("db/seeds/advertisements.csv") do |row|
-  file = File.open("./app/assets/images/ad/" + row[4], "r")
+  file = File.open("./app/assets/images/ad/" + row[5], "r")
 
   Advertisement.create(
     sponsor: row[0],
-    url: row[1],
-    start_date: row[2],
-    end_date: row[3],
+    email: row[1],
+    url: row[2],
+    start_date: row[3],
+    end_date: row[4],
     adimg: file.read,
   )
 end
