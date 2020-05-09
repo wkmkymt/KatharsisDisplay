@@ -20,8 +20,7 @@
       <% end %>
 
       <div class="field">
-        <%= f.label :password %><em>(<%= @minimum_password_length %>文字以上)</em><br />
-        <i>*パスワードを変更しない場合は空欄のままにしてください</i><br />
+        <%= f.label :password %>変更<em>(<%= @minimum_password_length %>文字以上)</em><br />
         <%= f.password_field :password, autocomplete: "new-password" %>
         <% if @minimum_password_length %>
         <% end %>
@@ -29,7 +28,6 @@
 
       <div class="field">
         <%= f.label :password_confirmation %><br />
-        <i>*パスワードを変更しない場合は空欄のままにしてください</i><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
 
