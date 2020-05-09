@@ -33,7 +33,9 @@
       <% end %>
 
       <% if not @user.has_role? "admin" %>
-        <p class="p_item"><b>マイショップ </b><%= @user.shop.name || "none" %></p>
+        <% if @user.shop.present? %>
+          <p class="p_item"><b>マイショップ </b><%= @user.shop.name || "none" %></p>
+        <% end %>
 
         <% if not @user.has_role? "staff" %>
           <p class="p_item"><b>所属 </b>
@@ -45,7 +47,7 @@
           </p>
 
           <% if user_signed_in? and @user.id == current_user.id %>
-            <p class="p_item"><b>性別 </b><%= I18n.t("enums.user.gender.#{@user.gender}") %></p>
+            <p class="p_item"><b>性別 </b><%= t("enums.user.gender.#{@user.gender || 'default'}", default: "未登録") %></p>
             <p class="p_item"><b>生年月日 </b>
               <% if !@user.birthday.nil? %>
                 <%= @user.birthday %>
