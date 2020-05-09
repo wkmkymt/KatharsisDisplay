@@ -10,6 +10,10 @@ class AdvertisementsController < ApplicationController
 
   # Create
   def create
+    if params[:advertisement][:adimg]
+      params[:advertisement][:adimg] = params[:advertisement][:adimg].read
+    end
+
     @ad = Advertisement.new(advertisement_params)
 
     if @ad.save
