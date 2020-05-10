@@ -122,23 +122,39 @@ img {
 }
 
 .prof_ad .displayprof {
-  background-size: 100%;
+  background-size: contain;
   background-repeat: no-repeat;
+  background-position: 50% 0;
 }
 
 .prof_ad .sponsor {
+  display: inline-block;
   font-weight: bold;
   color: #181818;
-  -webkit-text-stroke: 3px #fff;
-  text-stroke: 3px #FFF;
-  text-align: center;
+  background-color: rgba(255,255,255,0.7);
+  padding: 8px 16px;
+  text-align: left;
+  border-radius: 8px;
 }
 
-.prof_ad .qrcode {
-  display: block;
-  width: 50%;
-  height: 50%;
-  margin: 0 auto;
+h1.sponsor {
+  font-size: 32px;
+  margin-bottom: 2%;
+}
+
+.sponsor_info_area {
+  width: 27.5%;
+  position: absolute;
+  top: 2.5%;
+  right: 2.5%;
+  text-align: right;
+}
+
+.prof_ad .ad_qrcode {
+  display: inline;
+  width: 60%;
+  border: 1px solid #dfdfdf;
+  border-radius: 8px;
 }
 
 .bg_purple {
