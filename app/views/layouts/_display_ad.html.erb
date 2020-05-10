@@ -1,8 +1,6 @@
 <section class="displayprof bg_black" style="background-image: url(<%= adimg_path(ad.id) %>);">
     <div class="sponsor_info_area">
-      <div class="ad_sponsor_area">
-        <h1 class="sponsor">Powered by <%= ad.sponsor %></h1>
-      </div>
+      <h1 class="sponsor">Sponsored by <%= ad.sponsor %></h1>
       <% if ad.url.present? %>
         <div class="ad_qrcode_area">
           <%= image_tag qrcode(ad.url), class: "ad_qrcode" %>       
