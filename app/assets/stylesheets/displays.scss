@@ -131,14 +131,24 @@ img {
   color: #181818;
   -webkit-text-stroke: 3px #fff;
   text-stroke: 3px #FFF;
-  text-align: center;
+}
+
+h1.sponsor {
+  font-size: 48px;
+  margin-bottom: 2%;
+}
+
+.sponsor_info_area {
+  width: 27.5%;
+  position: absolute;
+  top: 2.5%;
+  right: 2.5%;
+  text-align: right;
 }
 
 .prof_ad .qrcode {
-  display: block;
+  display: inline;
   width: 50%;
-  height: 50%;
-  margin: 0 auto;
 }
 
 .bg_purple {
