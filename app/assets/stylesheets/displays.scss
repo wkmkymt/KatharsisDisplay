@@ -122,8 +122,9 @@ img {
 }
 
 .prof_ad .displayprof {
-  background-size: 100%;
+  background-size: auto 100%;
   background-repeat: no-repeat;
+  background-position: 50% 0;
 }
 
 .prof_ad .sponsor {
