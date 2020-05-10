@@ -739,3 +739,14 @@ img.libig_img {
   display: inline-block;
   /*width: 120px;*/
 }
+
+.ad_form_preview {
+  margin-top: 16px;
+  max-width: 460px;
+}
+
+.ad_form_preview img {
+  border-radius: 8px;
+  box-sizing: border-box;
+  border: 1px solid #1fdaff;
+}
