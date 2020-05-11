@@ -87,6 +87,16 @@ li {
   text-decoration-color: #1fdaff;
 }
 
+.bg_white {
+  color: #101010;
+  background-color: #eee;
+}
+
+.bg_black {
+  color: #efefef;
+  background-color: #333;
+}
+
 .bg_purple {
   color: #efefef;
   background-color: #8370ff;
@@ -825,6 +835,23 @@ textarea {
 
 .action_button_side {
   margin-right: 8px;
+}
+
+
+// ========================================
+//   Advertisement Page
+// ========================================
+
+.ad_form_preview {
+  max-width: 460px;
+  margin-top: 16px;
+}
+
+.ad_form_preview img {
+  box-sizing: border-box;
+
+  border: 1px solid #1fdaff;
+  border-radius: 8px;
 }
 
 

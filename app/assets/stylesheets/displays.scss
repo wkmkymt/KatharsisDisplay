@@ -139,6 +139,11 @@ body {
   background-color: #000;
 }
 
+.bg_purple {
+  color: #fff;
+  background-color: #8a2be2;
+}
+
 .bg_yellow {
   color: #fff;
   background-color: #e3c800;
@@ -256,41 +261,54 @@ body {
 .prof_ad {
   .displayprof {
     background-repeat: no-repeat;
-    background-position: 50% 0;
+    background-position: 50% 100%;
     background-size: contain;
 
     .sponsor_info_area {
       position: absolute;
-      top: 2.5%;
-      right: 2.5%;
+      top: 2vw;
+      right: 2vw;
 
-      width: 27.5%;
+      width: 28%;
 
       text-align: right;
 
       .sponsor {
-        font-size: 32px;
+        font-size: 28px;
         font-weight: bold;
 
         display: inline-block;
 
-        margin-bottom: 2%;
-        padding: 8px 16px;
+        margin-bottom: 1vw;
+        padding: 16px;
 
         text-align: left;
 
-        color: #181818;
+        color: #fff;
         border-radius: 8px;
-        background-color: rgba(255, 255, 255, .7);
+        background-color: rgba(0, 0, 0, .3);
+
+        -webkit-backdrop-filter: blur(20px);
+                backdrop-filter: blur(20px);
       }
 
-      .ad_qrcode {
+      .ad_qrcode_area {
         display: inline-block;
 
         width: 60%;
+        padding: 16px;
 
-        border: 1px solid #dfdfdf;
         border-radius: 8px;
+        background-color: rgba(0, 0, 0, .3);
+
+        -webkit-backdrop-filter: blur(20px);
+                backdrop-filter: blur(20px);
+
+        .ad_qrcode {
+          display: inline-block;
+
+          border-radius: 8px;
+        }
       }
     }
   }

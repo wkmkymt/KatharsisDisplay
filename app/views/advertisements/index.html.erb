@@ -2,7 +2,7 @@
   <div class="wrap">
     <h2>広告登録フォーム</h2>
 
-    <%= form_with model: @ad, url: advertisements_path, local: true do |f| %>
+    <%= form_with model: @ad, url: advertisements_path, local: true, class: "ad_form" do |f| %>
       <%= render "devise/shared/error_messages", resource: @ad %>
 
       <div class="field">
@@ -16,12 +16,12 @@
       </div>
 
       <div class="field">
-        <%= f.label :url %><br />
+        <%= f.label :url %><i>(任意)</i><br />
         <%= f.text_field :url, autocomplete: "url" %>
       </div>
 
       <div class="field">
-        <p>掲載する店舗を選択してください(複数選択可)</p>
+        <p>掲載する店舗を選択してください<i>(複数選択可)</i></p>
         <%= f.collection_check_boxes :placed_shop_ids, Shop.all, :id, :name do |s| %>
           <%= s.check_box + s.label{s.text} %>
         <% end %>
@@ -29,17 +29,18 @@
 
       <div class="field">
         <%= f.label :start_date %><br />
-        <%= f.date_select :start_date, prompt: "--", use_month_numbers: true, start_year: Time.now.year, end_year: Time.now.year + 2 %>
+        <%= f.date_select :start_date, prompt: "--", use_month_numbers: true, selected:Time.now, start_year: Time.now.year, end_year: Time.now.year + 2 %>
       </div>
 
       <div class="field">
         <%= f.label :end_date %><br />
-        <%= f.date_select :end_date, prompt: "--", use_month_numbers: true, start_year: Time.now.year, end_year: Time.now.year + 2 %>
+        <%= f.date_select :end_date, prompt: "--", use_month_numbers: true, selected:Time.now.since(7.days), start_year: Time.now.year, end_year: Time.now.year + 2 %>
       </div>
 
       <div class="field">
         <%= f.label :adimg, class:"button_area_blue" %><br />
         <%= f.file_field :adimg, accept: "image/jpg, image/jpeg, image/png, image/gif" %>
+        <div class="ad_form_preview"></div>
       </div>
 
       <div class="center_buttons">
@@ -50,3 +51,5 @@
     <% end %>
   </div>
 </section>
+
+<%= javascript_include_tag "form_img_preview" %>
