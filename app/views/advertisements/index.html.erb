@@ -2,7 +2,7 @@
   <div class="wrap">
     <h2>広告登録フォーム</h2>
 
-    <%= form_with model: @ad, url: advertisement_path, local: true do |f| %>
+    <%= form_with model: @ad, url: advertisements_path, local: true do |f| %>
       <%= render "devise/shared/error_messages", resource: @ad %>
 
       <div class="field">

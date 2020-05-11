@@ -89,7 +89,7 @@
       <div class="container">
         <div class="img-container">
           <% if @user.profimg %>
-            <%= image_tag show_profimg_user_path(@user.id), class:"p_item", id:"image" %>
+            <%= image_tag user_image_path(@user.id), class:"p_item", id:"image" %>
           <% else %>
             <%= image_tag '/assets/noavatar.png', id:"image" %>
           <% end %>

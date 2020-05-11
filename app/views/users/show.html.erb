@@ -6,7 +6,7 @@
         <div class="show_profimg p_item">
           <div class="show_mainimgframe">
             <% if @user.profimg %>
-              <%= image_tag show_profimg_user_path(@user.id)%>
+              <%= image_tag user_image_path(@user.id)%>
             <% else %>
               <p> Not Image</p>
             <% end %>

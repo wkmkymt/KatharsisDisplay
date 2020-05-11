@@ -50,7 +50,7 @@ ActiveAdmin.register Advertisement do
     end
 
     panel "Advertisement Image" do
-      image_tag adimg_path(ad.id)
+      image_tag advertisement_image_path(ad.id)
     end
 
     panel "Shops" do

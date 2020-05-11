@@ -1,18 +1,16 @@
 class ReviewsController < ApplicationController
+  # Create
   def create
     @review = Review.new(review_params)
-    respond_to do |format|
-      if @review.save
-        format.html { redirect_back(fallback_location: root_path) }
-      else
-        format.html { redirect_back(fallback_location: root_path) }
-      end
+
+    if @review.save
+      redirect_to user_path(params[:review][:reviewer_id])
     end
   end
 
   private
-
-  def review_params
-    params.require(:review).permit(:reviewer_id, :reviewed_id, :rate, :comment)
-  end
+    # Parmas
+    def review_params
+      params.require(:review).permit(:reviewer_id, :reviewed_id, :rate, :comment)
+    end
 end

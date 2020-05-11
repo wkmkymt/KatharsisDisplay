@@ -37,14 +37,14 @@
           <ul class="prof_list top_margin">
             <% current_shop.get_checkin_users(current_user.id).each do |user| %>
               <li class="prof_list_item ellipsis">
-                <%= link_to profile_path(user.id) do %>
+                <%= link_to user_path(user.id) do %>
                   <div class="list_profimg_body">
                     <div class="list_mainimgframe">
                       <% if user.profimg %>
                         <% if user.id == current_user.id %>
-                          <%= image_tag show_profimg_user_path(current_user.id), class: "border_img" %>
+                          <%= image_tag user_image_path(current_user.id), class: "border_img" %>
                         <% else %>
-                          <%= image_tag show_profimg_user_path(user.id) %>
+                          <%= image_tag user_image_path(user.id) %>
                         <% end %>
                       <% else %>
                         <p class="p_item"> Not Image</p>
@@ -77,7 +77,7 @@
         </div>
       <% end %>
       <div class="center_buttons">
-        <%= link_to "プロフィール確認", profile_path(current_user.id), class:"button_area_blue p_item" %>
+        <%= link_to "プロフィール確認", user_path(current_user.id), class:"button_area_blue p_item" %>
       </div>
 
       <% if current_user.check_in? %>
