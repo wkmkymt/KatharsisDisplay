@@ -1,27 +1,36 @@
 //画像圧縮
-resizeImage = function(base64, callback) {
-   const MIN_SIZE = 800;
-   var canvas = document.createElement('canvas');
-   var ctx = canvas.getContext('2d');
-   var image = new Image();
-   image.crossOrigin = "Anonymous";
-   image.onload = function(event){
-       var dstWidth, dstHeight;
-       if (this.width > this.height) {
-           dstWidth = Math.min(MIN_SIZE, this.width);
-           dstHeight = Math.min(this.height * MIN_SIZE / this.width, this.height);
-       } else {
-           dstHeight = Math.min(MIN_SIZE, this.height);
-           dstWidth = Math.min(this.width * MIN_SIZE / this.height, this.width);
-       }
-       canvas.width = dstWidth;
-       canvas.height = dstHeight;
-       ctx.drawImage(this, 0, 0, this.width, this.height, 0, 0, dstWidth, dstHeight);
-       callback(canvas.toDataURL());
-   };
-   image.src = base64;
-};
-
+resizeImage = function (base64, callback) {
+  const MIN_SIZE = 800
+  var canvas = document.createElement('canvas')
+  var ctx = canvas.getContext('2d')
+  var image = new Image()
+  image.crossOrigin = 'Anonymous'
+  image.onload = function (event) {
+    var dstWidth, dstHeight
+    if (this.width > this.height) {
+      dstWidth = Math.min(MIN_SIZE, this.width)
+      dstHeight = Math.min((this.height * MIN_SIZE) / this.width, this.height)
+    } else {
+      dstHeight = Math.min(MIN_SIZE, this.height)
+      dstWidth = Math.min((this.width * MIN_SIZE) / this.height, this.width)
+    }
+    canvas.width = dstWidth
+    canvas.height = dstHeight
+    ctx.drawImage(
+      this,
+      0,
+      0,
+      this.width,
+      this.height,
+      0,
+      0,
+      dstWidth,
+      dstHeight
+    )
+    callback(canvas.toDataURL())
+  }
+  image.src = base64
+}
 
 $(function () {
   'use strict'
@@ -49,16 +58,14 @@ $(function () {
       $dataScaleX.val(e.detail.scaleX)
       $dataScaleY.val(e.detail.scaleY)
 
-      var base64 = $image
-        .cropper('getCroppedCanvas')
-        .toDataURL('image/jpeg');
-      
-      resizeImage(base64, function(base64) {
-        base64 = base64.replace(/^.*,/, '');
-        $('#user_profimg_temp').val(base64);
-      });
-      
-      $('#user_profimg').value = "";
+      var base64 = $image.cropper('getCroppedCanvas').toDataURL('image/jpeg')
+
+      resizeImage(base64, function (base64) {
+        base64 = base64.replace(/^.*,/, '')
+        $('#user_profimg_temp').val(base64)
+      })
+
+      $('#user_profimg').value = ''
     },
   }
   var originalImageURL = $image.attr('src')
@@ -285,7 +292,6 @@ $(function () {
             .cropper('destroy')
             .attr('src', uploadedImageURL)
             .cropper(options)
-          //$inputImage.val('');
         } else {
           window.alert('Please choose an image file.')
         }
@@ -296,10 +302,8 @@ $(function () {
   }
 
   //prof_iamgeを送信しない
-  const submit_button = document.getElementsByName("commit");
+  const submit_button = document.getElementsByName('commit')
   $(submit_button).on('click', function () {
     $inputImage.attr('disabled', 'disabled')
   })
-
-
 })

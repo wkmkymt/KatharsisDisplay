@@ -1,14 +1,30 @@
 class User < ApplicationRecord
-  attr_accessor :profimg_temp
-  validates :comment, length:{maximum: 40}
-  validates :name, presence:true, length:{maximum: 16}
-
-  # Attribute
-  enum  gender:  { man: 0, woman: 1, others: 2 }
-  enum  personality:  {noanswer: 0, INTJ_A: 1, INTJ_T: 2, INTP_A: 3, INTP_T: 4, ENTJ_A: 5, ENTJ_T: 6, ENTP_A: 7, ENTP_T: 8, INFJ_A: 9, INFJ_T: 10, INFP_A: 11, INFP_T: 12, ENFJ_A: 13, ENFJ_T: 14, ENFP_A: 15, ENFP_T: 16, ISTJ_A: 17, ISTJ_T: 18, ISFJ_A: 19, ISFJ_T: 20, ESTJ_A: 21, ESTJ_T: 22, ESFJ_A: 23, ESFJ_T: 24, ISTP_A: 25, ISTP_T: 26, ISFP_A: 27, ISFP_T: 28, ESTP_A: 29, ESTP_T: 30, ESFP_A: 31, ESFP_T: 32}
+  # Include
+  include SnsAuthModule
+  include ProfileUpdateModule
 
   # Rollify
   rolify
+
+  # Devise
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, :confirmable,
+         :omniauthable, omniauth_providers: %i[google_oauth2 twitter facebook]
+
+  # Attribute
+  attr_accessor :profimg_temp
+  enum  gender:  { man: 0, woman: 1, others: 2 }
+  enum  personality: {
+    noanswer: 0,
+    INTJ_A: 1, INTJ_T: 2, INTP_A: 3, INTP_T: 4, ENTJ_A: 5, ENTJ_T: 6, ENTP_A: 7, ENTP_T: 8,
+    INFJ_A: 9, INFJ_T: 10, INFP_A: 11, INFP_T: 12, ENFJ_A: 13, ENFJ_T: 14, ENFP_A: 15, ENFP_T: 16,
+    ISTJ_A: 17, ISTJ_T: 18, ISFJ_A: 19, ISFJ_T: 20, ESTJ_A: 21, ESTJ_T: 22, ESFJ_A: 23, ESFJ_T: 24,
+    ISTP_A: 25, ISTP_T: 26, ISFP_A: 27, ISFP_T: 28, ESTP_A: 29, ESTP_T: 30, ESFP_A: 31, ESFP_T: 32
+  }
+
+  # Validation
+  validates :comment, length:{maximum: 40}
+  validates :name, presence:true, length:{maximum: 16}
 
   # CheckinRecord -> Shop
   has_many :checkin_record, dependent: :delete_all
@@ -38,81 +54,6 @@ class User < ApplicationRecord
 
   # SNS Credentials
   has_many :sns_credentials, dependent: :destroy
-
-  # Devise
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable,
-         :omniauthable, omniauth_providers: %i[google_oauth2 twitter facebook]
-
-  # Config for Updating Profile
-  def update_without_current_password(params, *options)
-    params.delete(:current_password)
-
-    if params[:password].blank? && params[:password_confirmation].blank?
-      params.delete(:password)
-      params.delete(:password_confirmation)
-    end
-
-    result = update_attributes(params, *options)
-    clean_up_passwords
-    result
-  end
-
-  # Find OAuth
-  def self.find_oauth(auth)
-    snscredential = SnsCredential.where(uid: auth.uid, provider: auth.provider).first
-
-    if snscredential.present?
-      info = {
-        user: with_sns_data(auth, snscredential),
-        sns: snscredential,
-      }
-    else
-      info = without_sns_data(auth)
-    end
-
-    return info
-  end
-
-  # Create with SNS Data
-  def self.with_sns_data(auth, snscredential)
-    user = User.find(snscredential.user_id)
-
-    unless user.present?
-      user = User.new(
-        name: auth.info.name,
-        email: auth.info.email,
-        password: Devise.friendly_token[0,20],
-      )
-    end
-
-    return user
-  end
-
-  # Create without SNS Data
-  def self.without_sns_data(auth)
-    user = User.where(email: auth.info.email).first
-
-    if user.present?
-      sns = SnsCredential.create(
-        uid: auth.uid,
-        provider: auth.provider,
-        user_id: user.id
-      )
-    else
-      user = User.new(
-        name: auth.info.name,
-        email: auth.info.email,
-        password: Devise.friendly_token[0,20],
-      )
-      sns = SnsCredential.new(
-        uid: auth.uid,
-        provider: auth.provider
-      )
-    end
-
-    return { user: user, sns: sns }
-  end
 
   # Review
   def review(other_user, rate, comment: "")

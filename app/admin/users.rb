@@ -84,7 +84,7 @@ ActiveAdmin.register User do
     end
 
     panel "Profile Image" do
-      image_tag show_profimg_user_path(user.id)
+      image_tag user_image_path(user.id)
     end
 
     panel "Tags" do

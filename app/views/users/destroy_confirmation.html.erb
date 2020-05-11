@@ -4,7 +4,7 @@
 
     <p class="p_item">本当に退会しますか？</p>
     <div class="center_buttons">
-      <%= link_to "退会", destroy_path, class:"button_area_blue p_item", data: {confirm: '本当に実行しますか？'} %>
+      <%= link_to "退会", user_path(current_user.id), method: "delete", class:"button_area_blue p_item", data: {confirm: '本当に実行しますか？'} %>
     </div>
   </div>
 </section>

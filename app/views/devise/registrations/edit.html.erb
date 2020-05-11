@@ -89,19 +89,19 @@
       <div class="container">
         <div class="img-container">
           <% if @user.profimg %>
-            <%= image_tag show_profimg_user_path(@user.id), class:"p_item", id:"image" %>
+            <%= image_tag user_image_path(@user.id), class:"p_item", id:"image" %>
           <% else %>
             <%= image_tag '/assets/noavatar.png', id:"image" %>
           <% end %>
         </div>
       </div>
 
-        <div class="center_buttons">
-          <%= link_to "キャンセル", :back, class:"button_area_blue action_button_side" %>
-          <%= f.submit "保存", class:"button_area" %>
-        </div>
-      <% end %>
-    </div>
+      <div class="center_buttons">
+        <%= link_to "キャンセル", :back, class:"button_area_blue action_button_side" %>
+        <%= f.submit "保存", class:"button_area" %>
+      </div>
+    <% end %>
+  </div>
 
-    <%= render "devise/shared/assets" %>
-  </section>
+  <%= render "devise/shared/assets" %>
+</section>

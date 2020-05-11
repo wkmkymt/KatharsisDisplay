@@ -2,7 +2,9 @@
 <p>Katharsis Digital Hub 運営です。</p>
 
 <% if @resource.try(:unconfirmed_email?) %>
-  <p>メールアドレスが下記に変更されることをお知らせします。<br><%= @resource.unconfirmed_email %></p>
+  <p>メールアドレスが下記に変更されることをお知らせします。<br>
+    <%= @resource.unconfirmed_email %></p>
 <% else %>
-  <p>メールアドレスが下記に変更されました。<br><%= @resource.email %>.</p>
+  <p>メールアドレスが下記に変更されました。<br>
+    <%= @resource.email %>.</p>
 <% end %>

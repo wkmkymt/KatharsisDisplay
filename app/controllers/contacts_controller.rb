@@ -1,8 +1,13 @@
 class ContactsController < ApplicationController
+  # Not Authentication
+  skip_before_action :authenticate_user!
+
+  # Show
   def show
     @contact = Contact.new
   end
 
+  # Create
   def create
     @contact = Contact.new(contact_params)
 
@@ -17,7 +22,7 @@ class ContactsController < ApplicationController
   end
 
   private
-
+    # Params
     def contact_params
       params.require(:contact).permit(:name, :email, :message)
     end
