@@ -1,256 +1,297 @@
 @import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
 
 
+// ================================================================================
+//   Base
+// ================================================================================
+
 body {
-  width: 100%;
-  font-family: "Century Gothic", "Futura", "Noto Sans Japanese", "ヒラギノ角ゴ Pro W5", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", Osaka, sans-serif;
-  font-weight: normal;
+  font-family: 'Century Gothic', 'Futura', 'Noto Sans Japanese', 'ヒラギノ角ゴ Pro W5', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', Osaka, sans-serif;
   font-size: 16px;
-  color: #333;
+  font-weight: normal;
+
   overflow: hidden;
+
+  width: 100%;
+
+  cursor: none;
+
+  color: #333;
 }
 
-h1, h2 {
-  font-weight: normal;
-}
 
-p {
-  font-size: 16px;
-  line-height: 28px;
-}
-
-img {
-  max-width: 100%;
-}
+// ================================================================================
+//   Slide
+// ================================================================================
 
 .wrap {
+  overflow: hidden;
+  zoom: 1;
+
   max-width: 2040px;
   margin: 0 auto;
   padding: 56px;
-  overflow: hidden;
-  zoom: 1;
-}
 
-.wrap h1 {
-  font-size: 120px;
-  line-height: 130px;
-  margin-bottom: 16px;
-}
+  h1, h2 {
+    font-weight: normal;
+  }
 
-.under {
-  padding-bottom: 0;
-  border-bottom: 4px solid #fff;
-  margin-bottom: 24px;
-}
+  h1 {
+    font-size: 120px;
+    line-height: 130px;
 
-.wrap h2 {
-  font-size: 48px;
-  margin-bottom: 8px;
-}
+    margin-bottom: 16px;
+  }
 
-.wrap p {
-  margin-bottom: 16px;
-}
+  h2 {
+    font-size: 48px;
 
-.wrap p:last-of-type {
-  margin-bottom: 0;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 28px;
+
+    margin-bottom: 16px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
 }
 
 @media screen and (max-width: 650px) {
-  .wrap h1 {
-    font-size: 26px;
-  }
+  .wrap {
+    h1 {
+      font-size: 26px;
+    }
 
-  .wrap h2 {
-    font-size: 22px;
+    h2 {
+      font-size: 22px;
+    }
   }
 }
+
+
+.displayprof {
+  overflow: hidden;
+
+  height: 100vh;
+}
+
+
+// ========================================
+//   Background
+// ========================================
 
 .bg_white {
-  background: #ecf0f1;
   color: #000;
-}
+  background: #ecf0f1;
 
-.bg_white .under {
-  border-bottom: 4px solid #000;
+  .under {
+    border-bottom: 4px solid #000;
+  }
 }
 
 .bg_dot {
+  color: #000;
   background: url(../img/dot_bg.png) left top repeat;
   background-size: 19px 57px;
-  color: #000;
 }
 
 .bg_midnightblue {
-  background: #2c3e50;
   color: #fff;
+  background: #2c3e50;
 }
 
 .bg_red {
-  background: #ff6670;
   color: #fff;
+  background: #ff6670;
 }
 
 .bg_green {
-  background: #1abc9c;
   color: #fff;
+  background: #1abc9c;
 }
 
 .bg_gray {
-  background: #f6f7f8;
   color: #000;
+  background: #f6f7f8;
 }
 
 .bg_blue {
-  background: #1e90ff;
   color: #fff;
+  background: #1e90ff;
 }
 
 .bg_yellow {
-  background: #ffdb00;
   color: #000;
+  background: #ffdb00;
 }
 
 .bg_black {
+  color: #fff;
   background-color: #000;
-  color: #fff;
-}
-
-.displayprof {
-  height: 100vh;
-  overflow: hidden;
-}
-
-.prof_ad .displayprof {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: 50% 0;
-}
-
-.prof_ad .sponsor {
-  display: inline-block;
-  font-weight: bold;
-  color: #181818;
-  background-color: rgba(255,255,255,0.7);
-  padding: 8px 16px;
-  text-align: left;
-  border-radius: 8px;
-}
-
-h1.sponsor {
-  font-size: 32px;
-  margin-bottom: 2%;
-}
-
-.sponsor_info_area {
-  width: 27.5%;
-  position: absolute;
-  top: 2.5%;
-  right: 2.5%;
-  text-align: right;
-}
-
-.prof_ad .ad_qrcode {
-  display: inline;
-  width: 60%;
-  border: 1px solid #dfdfdf;
-  border-radius: 8px;
-}
-
-.bg_purple {
-  background-color: #8a2be2;
-  color: #fff;
 }
 
 .bg_yellow {
-  background-color: #e3c800;
   color: #fff;
+  background-color: #e3c800;
 }
 
 .bg_orange {
-  background-color: #ed6f2f;
   color: #fff;
+  background-color: #ed6f2f;
 }
 
 .bg_magenta {
-  background-color: #e4007f;
   color: #fff;
+  background-color: #e4007f;
 }
 
 .bg_turquoise {
-  background-color: #009b9f;
   color: #fff;
+  background-color: #009b9f;
 }
 
-.prof_body {
-  float: left;
-  width: 56%;
+
+// ================================================================================
+//   User Slide
+// ================================================================================
+
+.prof_user {
+  .prof_body {
+    float: left;
+
+    width: 56%;
+
+    .under {
+      margin-bottom: 24px;
+      padding-bottom: 0;
+
+      border-bottom: 4px solid #fff;
+    }
+  }
+
+  .post_profimg {
+    position: relative;
+
+    float: left;
+    overflow: hidden;
+    zoom: 1;
+
+    width: 40%;
+    margin-right: 4%;
+
+    .mainimgframe {
+      position: relative;
+
+      &:before {
+        display: block;
+
+        padding-top: 100%;
+
+        content: '';
+      }
+
+      img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        width: 100%;
+        max-width: 400px;
+        height: 100%;
+        max-height: 400px;
+        margin: auto;
+
+        border-radius: 50%;
+
+        object-fit: cover;
+      }
+    }
+  }
+
+  .prof_msg {
+    margin-top: 32px;
+
+    p {
+      font-size: 64px;
+      line-height: 80px;
+    }
+  }
+
+  //複数行省略設定(ChromeやSafari、Firefox(macは確認)などのみで動作)
+  .multiline-text-container {
+    overflow: hidden;
+
+    .multiline-text {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+
+      -webkit-line-clamp: 6;
+    }
+
+    .multiline-text-3 {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+
+      -webkit-line-clamp: 3;
+    }
+  }
 }
 
-.post_profimg {
-  float: left;
-  width: 40%;
-  margin-right: 4%;
-  overflow: hidden;
-  zoom: 1;
-  position: relative;
-}
 
-.post_profimg img {
-  border-radius: 50%;
-}
+// ================================================================================
+//   Ad Slide
+// ================================================================================
 
-.post_profimg img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  object-fit: cover;
-  border-radius: 50%;
-  max-width: 400px;
-  max-height: 400px;
-}
+.prof_ad {
+  .displayprof {
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: contain;
 
-.mainimgframe {
-  position: relative;
-}
+    .sponsor_info_area {
+      position: absolute;
+      top: 2.5%;
+      right: 2.5%;
 
-.mainimgframe:before {
-  content: "";
-  display: block;
-  padding-top: 100%;
-}
+      width: 27.5%;
 
-.prof_msg {
-  margin-top: 32px;
-}
+      text-align: right;
 
-.prof_msg p {
-  font-size: 64px;
-  line-height: 80px;
-}
+      .sponsor {
+        font-size: 32px;
+        font-weight: bold;
 
-.cursor_none {
-  cursor: none;
-}
+        display: inline-block;
 
-//複数行省略設定(ChromeやSafari、Firefox(macは確認)などのみで動作)
-.multiline-text-container {
-  overflow: hidden;
-}
+        margin-bottom: 2%;
+        padding: 8px 16px;
 
-.multiline-text {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 6;
-}
+        text-align: left;
 
-.multiline-text-3 {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+        color: #181818;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, .7);
+      }
+
+      .ad_qrcode {
+        display: inline-block;
+
+        width: 60%;
+
+        border: 1px solid #dfdfdf;
+        border-radius: 8px;
+      }
+    }
+  }
 }

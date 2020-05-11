@@ -1,113 +1,110 @@
 <section>
-    <div class="wrap">
+  <div class="wrap">
+    <h2>サインアップ</h2>
 
-<h2>サインアップ</h2>
-<div class="center_buttons p_item">
-  <%= link_to "#{OmniAuth::Utils.camelize('Google')}でサインアップ", omniauth_authorize_path(resource_name, 'google_oauth2'), class:"button_area button_side p_item" %>
-  <%= link_to "#{OmniAuth::Utils.camelize('Twitter')}でサインアップ", omniauth_authorize_path(resource_name, 'twitter'), class:"button_area button_side p_item" %>
-  <%= link_to "#{OmniAuth::Utils.camelize('Facebook')}でサインアップ", omniauth_authorize_path(resource_name, 'facebook'), class:"button_area button_side p_item" %>
-</div>
+    <div class="center_buttons p_item">
+      <%= link_to "#{OmniAuth::Utils.camelize('Google')}でサインアップ", omniauth_authorize_path(resource_name, 'google_oauth2'), class:"button_area button_side p_item" %>
+      <%= link_to "#{OmniAuth::Utils.camelize('Twitter')}でサインアップ", omniauth_authorize_path(resource_name, 'twitter'), class:"button_area button_side p_item" %>
+      <%= link_to "#{OmniAuth::Utils.camelize('Facebook')}でサインアップ", omniauth_authorize_path(resource_name, 'facebook'), class:"button_area button_side p_item" %>
+    </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><i>(非公開)</i><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div class="field">
+        <%= f.label :email %><i>(非公開)</i><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :name %><i>(16文字以内)</i><br />
-    <%= f.text_field :name, autocomplete: "name" %>
-  </div>
+      <div class="field">
+        <%= f.label :name %><i>(16文字以内)</i><br />
+        <%= f.text_field :name, autocomplete: "name" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %>文字以上)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %>文字以上)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :gender %><i>(非公開)</i><br />
-    <%= f.select :gender, User.genders.keys.map {|k| [I18n.t("enums.user.gender.#{k}"), k]} %>
-  </div>
+      <div class="field">
+        <%= f.label :gender %><i>(非公開)</i><br />
+        <%= f.select :gender, User.genders.keys.map {|k| [I18n.t("enums.user.gender.#{k}"), k]} %>
+      </div>
 
-  <div class="field">
-    <%= f.label :birthday %><i>(非公開)</i><br />
-    <%= f.date_select :birthday, prompt: "--", use_month_numbers: true, start_year: Time.now.year, end_year:1900 %>
-  </div>
+      <div class="field">
+        <%= f.label :birthday %><i>(非公開)</i><br />
+        <%= f.date_select :birthday, prompt: "--", use_month_numbers: true, start_year: Time.now.year, end_year:1900 %>
+      </div>
 
-  <div class="field">
-    <%= f.label :personality %><a href="https://www.16personalities.com/ja" target="_blank" class="blue_text blue_underline label_supplement"><i>16Personalites診断を受けたことがない人はこちら</i></a>*外部サイトに飛びます<br>
-    <!-- <%= f.select :personality, User.personalities.keys.map {|k| [I18n.t("enums.user.personality.#{k}"), k]} %> -->
+      <div class="field">
+        <%= f.label :personality %><a href="https://www.16personalities.com/ja" target="_blank" class="blue_text blue_underline label_supplement"><i>16Personalites診断を受けたことがない人はこちら</i></a>*外部サイトに飛びます<br>
+        <!-- <%= f.select :personality, User.personalities.keys.map {|k| [I18n.t("enums.user.personality.#{k}"), k]} %> -->
         <%= select_tag "user_personality", grouped_options_for_select(Constants::PERSONALITY_SELECT_OPTIONS), name:"user[personality]" %>
-  </div>
+      </div>
 
-  <div class="field">
-    <%= f.label :color_id %><br />
-    <%= f.select :color_id, Color.all.map {|k| [I18n.t("enums.user.color.#{k.name}"), k.id]} %>
-  </div>
+      <div class="field">
+        <%= f.label :color_id %><br />
+        <%= f.select :color_id, Color.all.map {|k| [I18n.t("enums.user.color.#{k.name}"), k.id]} %>
+      </div>
 
-  <div class="field">
-    <%= f.label :shop_id %><br />
-    <%= f.select :shop_id, Shop.all.map {|k| [k.name, k.id]} %>
-  </div>
+      <div class="field">
+        <%= f.label :shop_id %><br />
+        <%= f.select :shop_id, Shop.all.map {|k| [k.name, k.id]} %>
+      </div>
 
-  <div class="field">
-    <p>興味あるタグを選択してください(複数選択可)</p>
-    <% Category.all.each do |category| %>
-      <div class="category-container">
-        <span class="category"><%= category.name %></span><br>
-        <%= f.collection_check_boxes :tag_ids, Tag.where(category_id: category.id), :id, :name do |t| %>
-          <%= t.check_box + t.label{t.text} %>
+      <div class="field">
+        <p>興味あるタグを選択してください(複数選択可)</p>
+        <% Category.all.each do |category| %>
+          <div class="category-container">
+            <span class="category"><%= category.name %></span><br>
+            <%= f.collection_check_boxes :tag_ids, Tag.where(category_id: category.id), :id, :name do |t| %>
+              <%= t.check_box + t.label{t.text} %>
+            <% end %>
+          </div>
         <% end %>
       </div>
+
+      <div class="field">
+        <%= f.label :organization %><br />
+        <%= f.text_field :organization, autocomplete: "organization" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :comment %><i>(40文字以内)</i><br />
+        <%= f.text_area :comment %>
+      </div>
+
+      <div class="field">
+        <%= f.label :profimg, class:"button_area_blue" %><br />
+        <%= f.file_field :profimg, accept: "image/jpg, image/jpeg, image/png, image/gif" %>
+        <%= f.hidden_field :profimg_temp, id:"user_profimg_temp" %>
+      </div>
+
+      <div class="container">
+        <div class="img-container">
+          <%= image_tag '/assets/noavatar.png', id:"image" %>
+        </div>
+      </div>
+
+      <p>サインアップ前に下記の利用規約をお読みください。サインアップおよび本サービス利用にて、下記規約に同意したものとします。</p>
+      <p><%= link_to '利用規約', tos_path, class:"blue_text blue_underline", target:"_blank" %></p>
+
+      <div class="center_buttons">
+        <div class="actions">
+          <%= f.submit "サインアップ", class:"button_area" %>
+        </div>
+      </div>
     <% end %>
+
+    <%= render "devise/shared/links" %>
   </div>
-
-  <div class="field">
-    <%= f.label :organization %><br />
-    <%= f.text_field :organization, autocomplete: "organization" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :comment %><i>(40文字以内)</i><br />
-    <%= f.text_area :comment %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :profimg, class:"button_area_blue" %><br />
-    <%= f.file_field :profimg, accept: "image/jpg, image/jpeg, image/png, image/gif" %>
-    <%= f.hidden_field :profimg_temp, id:"user_profimg_temp" %>
-  </div>
-
-  <div class="container">
-    <div class="img-container">
-      <%= image_tag '/assets/noavatar.png', id:"image" %>
-    </div>
-  </div>
-
-  <p>サインアップ前に下記の利用規約をお読みください。サインアップおよび本サービス利用にて、下記規約に同意したものとします。</p>
-  <p><%= link_to '利用規約', tos_path, class:"blue_text blue_underline", target:"_blank" %></p>
-
-  <div class="center_buttons">
-    <div class="actions">
-      <%= f.submit "サインアップ", class:"button_area" %>
-    </div>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
-  </div>
-
   <%= render "devise/shared/assets" %>
 </section>

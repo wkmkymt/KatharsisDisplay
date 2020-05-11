@@ -1,16 +1,18 @@
 /* Cropper */
 
 .img-container, .img-preview {
-  background-color: #f7f7f7;
-  text-align: center;
   width: 100%;
   max-width: 460px;
+
+  text-align: center;
+
+  background-color: #f7f7f7;
 }
 
 .img-container {
-  margin-bottom: 1rem;
-  max-height: 2000px;
   min-height: 200px;
+  max-height: 2000px;
+  margin-bottom: 1rem;
 }
 
 .img-container > img {
@@ -19,9 +21,10 @@
 
 .img-preview {
   float: left;
-  margin-bottom: .5rem;
-  margin-right: .5rem;
   overflow: hidden;
+
+  margin-right: .5rem;
+  margin-bottom: .5rem;
 }
 
 .img-preview > img {
@@ -29,6 +32,6 @@
 }
 
 .preview-lg {
-  height: 9rem;
   width: 16rem;
+  height: 9rem;
 }
