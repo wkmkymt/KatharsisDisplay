@@ -19,7 +19,7 @@ class AdvertisementsController < ApplicationController
       flash[:success] = "広告の登録を受け付けました"
       redirect_to root_path
     else
-      render :new
+      render :index
     end
   end
 

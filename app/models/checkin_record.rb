@@ -2,6 +2,7 @@ class CheckinRecord < ApplicationRecord
   # Attribute
   enum  check_in:  { out: false, in: true }
 
+  # User <-> Shop
   belongs_to :user
   belongs_to :shop
 
