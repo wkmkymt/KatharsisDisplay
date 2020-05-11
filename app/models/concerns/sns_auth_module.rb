@@ -3,7 +3,7 @@ module SnsAuthModule
 
   class_methods do
     # Find OAuth
-    def self.find_oauth(auth)
+    def find_oauth(auth)
       snscredential = SnsCredential.where(uid: auth.uid, provider: auth.provider).first
 
       if snscredential.present?
@@ -19,7 +19,7 @@ module SnsAuthModule
     end
 
     # Create with SNS Data
-    def self.with_sns_data(auth, snscredential)
+    def with_sns_data(auth, snscredential)
       user = User.find(snscredential.user_id)
 
       unless user.present?
@@ -34,7 +34,7 @@ module SnsAuthModule
     end
 
     # Create without SNS Data
-    def self.without_sns_data(auth)
+    def without_sns_data(auth)
       user = User.where(email: auth.info.email).first
 
       if user.present?
