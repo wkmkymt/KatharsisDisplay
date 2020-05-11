@@ -27,8 +27,11 @@ let initSwiperSlides = () => {
           type: 'ad',
           body: {
             id: slide.id.replace('prof_ad_', ''),
-            sponsor: $(slide).find('.sponsor').text(),
-            url: $(slide).find('.qrcode').attr('src'),
+            sponsor: $(slide)
+              .find('.sponsor')
+              .text()
+              .replace('Sponsored by ', ''),
+            url: $(slide).find('.ad_qrcode').attr('src'),
           },
         })
       }
@@ -100,7 +103,7 @@ let addUserSlide = (user) => {
   $(post_profimg).append(mainimgframe)
 
   let pic = $(document.createElement('img'))
-  $(pic).attr('src', '/users/' + user.id + '/show_profimg')
+  $(pic).attr('src', '/users/' + user.id + '/image')
   $(mainimgframe).append(pic)
 
   let prof_body = $(document.createElement('div'))
@@ -153,23 +156,27 @@ let addAdSlide = (ad) => {
 
   let section = $(document.createElement('section'))
   $(section).addClass('displayprof bg_black')
-  $(section).css('background-image', 'url(/ads/' + ad.id + '/image')
+  $(section).css('background-image', 'url(/advertisements/' + ad.id + '/image')
   $(slide).append(section)
 
-  let wrap = $(document.createElement('div'))
-  $(wrap).addClass('wrap')
-  $(section).append(wrap)
+  let sponsor_info_area = $(document.createElement('div'))
+  $(sponsor_info_area).addClass('sponsor_info_area')
+  $(section).append(sponsor_info_area)
 
   let sponsor = $(document.createElement('h1'))
-  $(sponsor).html(ad.sponsor)
+  $(sponsor).html('Sponsored by ' + ad.sponsor)
   $(sponsor).addClass('sponsor')
-  $(wrap).append(sponsor)
+  $(sponsor_info_area).append(sponsor)
 
   if (ad.url) {
+    let ad_qrcode_area = $(document.createElement('div'))
+    $(ad_qrcode_area).addClass("ad_qrcode_area")
+    $(sponsor_info_area).append(ad_qrcode_area)
+
     let adimg = $(document.createElement('img'))
     $(adimg).attr('src', ad.url)
-    $(adimg).addClass('qrcode')
-    $(wrap).append(adimg)
+    $(adimg).addClass('ad_qrcode')
+    $(ad_qrcode_area).append(adimg)
   }
 
   swiper.appendSlide(slide)
