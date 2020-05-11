@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   # User
   resources :users, only: [:show, :destroy] do
     get "image", to: "users#show_image"
+
+    # User Password
+    resource :pass, only: [:edit, :update]
   end
   get "user/destroy_confirmation", to: "users#destroy_confirmation"
 

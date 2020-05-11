@@ -12,7 +12,9 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[google_oauth2 twitter facebook]
 
   # Attribute
+  attr_accessor :current_password
   attr_accessor :profimg_temp
+
   enum  gender:  { man: 0, woman: 1, others: 2 }
   enum  personality: {
     noanswer: 0,
@@ -25,6 +27,7 @@ class User < ApplicationRecord
   # Validation
   validates :comment, length:{maximum: 40}
   validates :name, presence:true, length:{maximum: 16}
+  validates :password, presence: { if: :current_password }
 
   # CheckinRecord -> Shop
   has_many :checkin_record, dependent: :delete_all
