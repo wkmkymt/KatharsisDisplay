@@ -4,58 +4,47 @@ module SnsAuthModule
   class_methods do
     # Find OAuth
     def find_oauth(auth)
-      snscredential = SnsCredential.where(uid: auth.uid, provider: auth.provider).first
+      new_flag = false
+      sns = SnsCredential.find_or_initialize_by(uid: auth.uid, provider: auth.provider)
 
-      if snscredential.present?
-        info = {
-          user: with_sns_data(auth, snscredential),
-          sns: snscredential,
-        }
+      if sns.persisted?
+        user = User.find_or_initialize_by(id: sns.user_id)
       else
-        info = without_sns_data(auth)
+        user = User.find_or_initialize_by(email: auth.info.email)
       end
 
-      return info
-    end
+      if user.new_record?
+        new_flag = true
 
-    # Create with SNS Data
-    def with_sns_data(auth, snscredential)
-      user = User.find(snscredential.user_id)
+        user.add_role :guest
+        user.skip_confirmation!
 
-      unless user.present?
-        user = User.new(
+        user.update_attributes({
           name: auth.info.name,
           email: auth.info.email,
           password: Devise.friendly_token[0,20],
-        )
+          profimg: get_sns_image(auth.info.image, auth.provider),
+        })
       end
 
-      return user
+      if sns.new_record?
+        sns.update_attributes({ user_id: user.id })
+      end
+
+      return { user: user, new: new_flag }
     end
 
-    # Create without SNS Data
-    def without_sns_data(auth)
-      user = User.where(email: auth.info.email).first
+    # Get SNS Image
+    def get_sns_image(image, provider)
+      require "open-uri"
 
-      if user.present?
-        sns = SnsCredential.create(
-          uid: auth.uid,
-          provider: auth.provider,
-          user_id: user.id
-        )
-      else
-        user = User.new(
-          name: auth.info.name,
-          email: auth.info.email,
-          password: Devise.friendly_token[0,20],
-        )
-        sns = SnsCredential.new(
-          uid: auth.uid,
-          provider: auth.provider
-        )
+      if provider == "twitter"
+        image = image.gsub("_normal", "")
+      elsif provider == "facebook"
+        image = image.gsub("picture", "picture?type=large")
       end
 
-      return { user: user, sns: sns }
+      return open(image).read
     end
   end
 end

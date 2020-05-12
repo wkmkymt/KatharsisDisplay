@@ -17,18 +17,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   # Callback Base
   def callback_for(provider)
-    @omniauth = request.env["omniauth.auth"]
-    info = User.find_oauth(@omniauth)
-    @user = info[:user]
+    info = User.find_oauth(request.env["omniauth.auth"])
 
-    if @user.persisted?
-      sign_in_and_redirect @user, event: :authentication
-      set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
+    if info[:new]
+      sign_in(:user, info[:user])
+      redirect_to edit_user_registration_path(info[:user].id)
     else
-      @user.skip_confirmation!
-      @user.save
-      sign_in(:user, @user)
-      redirect_to edit_user_registration_path(@user.id)
+      sign_in_and_redirect info[:user], event: :authentication
+      set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
     end
   end
 
