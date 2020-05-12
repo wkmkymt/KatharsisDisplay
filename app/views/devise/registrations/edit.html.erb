@@ -15,22 +15,6 @@
         <%= f.text_field :name, autocomplete: "name" %>
       </div>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
-
-      <div class="field">
-        <%= f.label :password %>変更<em>(<%= @minimum_password_length %>文字以上)</em><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
-        <% if @minimum_password_length %>
-        <% end %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-      </div>
-
       <div class="field">
         <%= f.label :gender %><i>(非公開)</i><br />
         <%= f.select :gender, User.genders.keys.map {|k| [I18n.t("enums.user.gender.#{k}"), k]} %>
@@ -39,7 +23,6 @@
       <div class="field">
         <%= f.label :personality %><a href="https://www.16personalities.com/ja" target="_blank"
         class="blue_text blue_underline label_supplement"><i>16Personalites診断を受けたことがない人はこちら</i></a>*外部サイトに飛びます<br>
-        <!-- <%= f.select :personality, User.personalities.keys.map {|k| [I18n.t("enums.user.personality.#{k}"), k]} %> -->
         <%= f.select :personality, grouped_options_for_select(Constants::PERSONALITY_SELECT_OPTIONS, @user.personality) %>
       </div>
 
