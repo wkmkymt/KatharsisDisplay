@@ -10,8 +10,9 @@ class PassesController < ApplicationController
       if @user.valid_password?(params[:user][:current_password])
         @user.assign_attributes(password_params)
         if @user.save
+          sign_in(:user, @user, bypass: true)
           flash[:success] = "パスワードを変更しました"
-          redirect_to user_path(@user.id)
+          redirect_to root_path
         else
           render :edit
         end
