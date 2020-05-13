@@ -2,7 +2,7 @@
   <div class="wrap">
     <h2>パスワード変更</h2>
 
-    <%= form_for @user, url: user_pass_path, html: { method: :put } do |f| %>
+    <%= form_for @user, url: pass_path, html: { method: :put } do |f| %>
       <%= render "devise/shared/error_messages", resource: @user %>
 
       <div class="field">
