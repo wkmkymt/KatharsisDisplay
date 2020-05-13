@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   end
   get "user/destroy_confirmation", to: "users#destroy_confirmation"
 
+  # User Password
+  resource :pass, only: [:edit, :update]
+
   # Advertisement Image
   resources :advertisements, only: [:index, :create] do
     get "image", to: "advertisements#show_image"

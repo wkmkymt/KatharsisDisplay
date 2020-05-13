@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     if @user.destroy
       flash[:success] = "#{user_name}: 退会処理が完了しました"
     else
-      flash[:success] = "#{user_name}: 退会処理に失敗しました"
+      flash[:danger] = "#{user_name}: 退会処理に失敗しました"
     end
 
     redirect_to root_path
