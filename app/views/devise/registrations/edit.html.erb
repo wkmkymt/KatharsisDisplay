@@ -1,5 +1,13 @@
 <section>
   <div class="wrap">
+    <% flash.each do |key, value| %>
+      <div class="alert_area">
+        <p class="alert alert-<%= key %>">
+          <%= value.html_safe %>
+        </p>
+      </div>
+    <% end %>
+
     <h2>プロフィール編集</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
