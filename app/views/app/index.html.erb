@@ -77,7 +77,10 @@
         </div>
       <% end %>
       <div class="center_buttons">
-        <%= link_to "プロフィール確認", user_path(current_user.id), class:"button_area_blue p_item" %>
+        <%= link_to user_path(current_user.id), class:"button_area_blue p_item" do %>
+          <span class="material-icons">account_box</span>
+          プロフィール確認
+        <% end %>
       </div>
 
       <% if current_user.check_in? %>

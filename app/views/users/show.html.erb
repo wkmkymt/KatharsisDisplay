@@ -16,8 +16,14 @@
 
       <% if user_signed_in? and @user.id == current_user.id %>
         <div class="center_buttons">
-          <%= link_to "プロフィール編集", edit_user_registration_path, class:"button_area prof_edit_button button_side" %>
-          <%= link_to "パスワード変更", edit_pass_path(current_user.id), class:"button_area prof_edit_button button_side" %>
+          <%= link_to edit_user_registration_path, class:"button_area prof_edit_button button_side" do %>
+            <span class="material-icons">edit</span>
+            プロフィール編集
+          <% end %>
+          <%= link_to edit_pass_path(current_user.id), class:"button_area prof_edit_button button_side" do %>
+            <span class="material-icons">vpn_key</span>
+            パスワード変更
+          <% end %>
         </div>
       <% end %>
 
