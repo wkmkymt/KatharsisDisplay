@@ -21,8 +21,14 @@
       </div>
 
       <div class="center_buttons">
-        <%= link_to "キャンセル", :back, class:"button_area_blue action_button_side" %>
-        <%= f.submit "パスワードを変更する", class:"button_area" %>
+        <%= link_to :back, class:"button_area_blue action_button_side" do%>
+          <span class="material-icons">backspace</span>
+          キャンセル
+        <% end %>
+        <%= button_tag :type => "submit", :class =>"button_area" do %>
+          <span class="material-icons">save</span>
+          パスワードを変更する
+        <% end %>
       </div>
     <% end %>
   </div>
