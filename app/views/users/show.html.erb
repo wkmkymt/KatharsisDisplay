@@ -1,6 +1,9 @@
 <section>
   <div class="wrap">
-    <%= link_to "戻る", root_path, class:"button_area_blue back_btn" %>
+    <%= link_to root_path, class:"button_area_blue back_btn" do%>
+      <span class="material-icons">arrow_back_ios</span>
+      戻る
+    <% end %>
     <div class="prof_info">
       <% if @user.has_role? "guest" %>
         <div class="show_profimg p_item">
