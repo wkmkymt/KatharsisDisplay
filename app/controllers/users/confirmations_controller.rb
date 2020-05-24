@@ -3,6 +3,6 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
     def after_confirmation_path_for(resource_name, resource)
       sign_in(:user, resource)
-      root_path
+      edit_user_registration_path
     end
 end

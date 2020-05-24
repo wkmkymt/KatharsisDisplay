@@ -21,7 +21,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if info[:new]
       sign_in(:user, info[:user])
-      redirect_to edit_user_registration_path(info[:user].id)
+      flash[:success] = "アカウントを登録しました。"
+      redirect_to edit_user_registration_path
     else
       sign_in_and_redirect info[:user], event: :authentication
       set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?

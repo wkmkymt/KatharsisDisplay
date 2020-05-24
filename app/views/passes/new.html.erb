@@ -1,0 +1,25 @@
+<section>
+  <div class="wrap">
+    <h2>パスワード登録</h2>
+
+    <%= form_for @user, url: pass_path, html: { method: :post } do |f| %>
+      <%= render "devise/shared/error_messages", resource: @user %>
+
+      <div class="field">
+        新しい<%= f.label :password %><em>(<%= User.password_length.min %>文字以上)</em><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+
+      <div class="field">
+        新しい<%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <div class="center_buttons">
+        <%= f.submit "パスワードを登録する", class:"button_area" %>
+      </div>
+    <% end %>
+  </div>
+
+  <%= render "devise/shared/assets" %>
+</section>
