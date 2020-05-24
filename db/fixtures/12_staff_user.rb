@@ -4,7 +4,7 @@
 
 require "csv"
 
-CSV.foreach("db/fixtures/csv/development/12_staff_user.csv") do |row|
+CSV.foreach("db/fixtures/csv/12_staff_user.csv") do |row|
   User.seed do |s|
     s.name = row[0]
     s.email = row[1]
