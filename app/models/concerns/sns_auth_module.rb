@@ -10,7 +10,7 @@ module SnsAuthModule
       if sns.persisted?
         user = User.find_or_initialize_by(id: sns.user_id)
       else
-        user = User.find_or_initialize_by(email: auth.info.email)
+        user = User.new
       end
 
       if user.new_record?
@@ -20,14 +20,14 @@ module SnsAuthModule
         user.skip_confirmation!
 
         user.update_attributes({
-          name: auth.info.name,
+          name: auth.info.name[0..23],
           email: auth.info.email,
-          password: Devise.friendly_token[0,20],
           profimg: get_sns_image(auth.info.image, auth.provider),
+          create_by_sns: true,
         })
-      end
+       end
 
-      if sns.new_record?
+       if sns.new_record?
         sns.update_attributes({ user_id: user.id })
       end
 

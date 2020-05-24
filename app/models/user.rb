@@ -14,6 +14,7 @@ class User < ApplicationRecord
   # Attribute
   attr_accessor :current_password
   attr_accessor :profimg_temp
+  attr_accessor :create_by_sns
 
   enum  gender:  { man: 0, woman: 1, others: 2 }
   enum  personality: {
@@ -57,6 +58,9 @@ class User < ApplicationRecord
 
   # SNS Credentials
   has_many :sns_credentials, dependent: :destroy
+
+  # 
+
 
   # Review
   def review(other_user, rate, comment: "")
@@ -122,4 +126,8 @@ class User < ApplicationRecord
       checkin_record.where(shop_id: shop_id, created_at: Date.today.all_day).present?
     end
 
+    # Require Password?
+    def password_required?
+      super && !create_by_sns
+    end
 end
