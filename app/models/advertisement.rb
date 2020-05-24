@@ -1,6 +1,6 @@
 class Advertisement < ApplicationRecord
   # Validation
-  validates :sponsor, presence: true, length: { maximum: 16 }
+  validates :sponsor, presence: true, length: { maximum: 24 }
   validates :email, presence: true
   validates :adimg, presence: true
   validates :start_date, presence: true

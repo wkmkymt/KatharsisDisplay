@@ -19,7 +19,7 @@
       </div>
 
       <div class="field">
-        <%= f.label :name %><i>(16文字以内)</i><br />
+        <%= f.label :name %><i>(24文字以内)</i><br />
         <%= f.text_field :name, autocomplete: "name" %>
       </div>
 
@@ -88,8 +88,14 @@
       </div>
 
       <div class="center_buttons">
-        <%= link_to "キャンセル", :back, class:"button_area_blue action_button_side" %>
-        <%= f.submit "保存", class:"button_area" %>
+        <%= link_to :back, class:"button_area_blue action_button_side" do%>
+          <span class="material-icons">backspace</span>
+          キャンセル
+        <% end %>
+        <%= button_tag :type => "submit", :class =>"button_area" do %>
+          <span class="material-icons">save</span>
+          保存
+        <% end %>
       </div>
     <% end %>
   </div>

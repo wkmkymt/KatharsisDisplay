@@ -27,7 +27,7 @@ class User < ApplicationRecord
 
   # Validation
   validates :comment, length:{maximum: 40}
-  validates :name, presence:true, length:{maximum: 16}
+  validates :name, presence:true, length:{maximum: 24}
   validates :password, presence: { if: :current_password }
 
   # CheckinRecord -> Shop

@@ -22,6 +22,11 @@ body {
   background-color: #181818;
 }
 
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+}
+
 a {
   text-decoration: none;
 
@@ -871,4 +876,13 @@ textarea {
   .footer_link:last-of-type {
     margin-right: 0;
   }
+}
+
+
+// ================================================================================
+//   Icons
+// ================================================================================
+.material-icons {
+  font-size: 22px !important;
+  vertical-align: top;
 }
