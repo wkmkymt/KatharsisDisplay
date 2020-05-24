@@ -1,4 +1,7 @@
 class PassesController < ApplicationController
+  # Authentication
+  before_action :valid_password
+
   # New
   def new
     @user = User.new
@@ -48,6 +51,11 @@ class PassesController < ApplicationController
   end
 
   private
+    # Valid Password?
+    def valid_password
+      authorize Pass
+    end
+
     # Params
     def password_params
       params.require(:user).permit(:password, :password_confirmation)
