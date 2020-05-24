@@ -59,8 +59,10 @@ class User < ApplicationRecord
   # SNS Credentials
   has_many :sns_credentials, dependent: :destroy
 
-  # 
-
+  # Has Password?
+  def has_password?
+    return encrypted_password.present?
+  end
 
   # Review
   def review(other_user, rate, comment: "")
