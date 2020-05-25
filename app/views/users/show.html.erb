@@ -85,12 +85,12 @@
           <p class="p_item"><b>プロフィールカラー </b><%= I18n.t("enums.user.color.#{@user.color.name}") %></p>
 
           <% if !@user.tag.nil? and @user.tag != [] %>
-            <p><b>タグ</b></p>
-            <ul class="taglist p_item">
+            <p class="taglist_label"><b>タグ</b></p>
+            <div class="p_item">
               <% @user.tag.each do |tag| %>
-                <li><%= tag.name %></li>
+                <div class="button_area_blue show_tag"><%= tag.name %></div>
               <% end %>
-            </ul>
+            </div>
           <% else %>
             <p class="p_item"><b>タグ </b><i>未登録</i></p>
           <% end %>
