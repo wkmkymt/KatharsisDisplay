@@ -73,12 +73,15 @@
             <% @shops.each do |shop| %>
               <%= link_to display_path(shop.id), target: "_blank" , class:"button_area button_side p_item" do %>
                 <span class="material-icons">tv</span>
-                <%= shop.name %> Display
+                <%= shop.name %>
               <% end %>
             <% end %>
           <% end %>
           <% if current_user.has_role? :staff %>
-            <%= link_to current_user.shop.name + " Display", display_path(current_user.shop.id), target: "_blank" , class:"button_area button_side p_item" %>
+            <%= link_to display_path(current_user.shop.id), target: "_blank" , class:"button_area button_side p_item" do %>
+              <span class="material-icons">tv</span>
+              <%=current_user.shop.name%>
+            <% end %>
           <% end%>
         </div>
       <% end %>
