@@ -78,7 +78,7 @@
             <% end %>
           <% end %>
           <% if current_user.has_role? :staff %>
-            <%= link_to current_user.shop.name + " Display", display_path(current_user.shop.id), target: "_blank" , class:"button_area button_side p_item" %>
+            <%= link_to current_user.shop.name, display_path(current_user.shop.id), target: "_blank" , class:"button_area button_side p_item" %>
           <% end%>
         </div>
       <% end %>
