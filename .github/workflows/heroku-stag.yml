@@ -12,7 +12,7 @@ jobs:
 
     env:
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      HEROKU_APP: ${{ secrets.HEROKU_APP }}
+      HEROKU_APP: ${{ secrets.HEROKU_APP_STAGING }}
 
     steps:
       - uses: actions/checkout@master
@@ -25,14 +25,14 @@ jobs:
       - name: Push to Heroku
         uses: actions/heroku@master
         with:
-          args: container:push -a ${{ secrets.HEROKU_APP_STAGING }} web
+          args: container:push -a ${{ secrets.HEROKU_APP }} web
 
       - name: Release to Hetoku
         uses: actions/heroku@master
         with:
-          args: container:release -a ${{ secrets.HEROKU_APP_STAGING }} web
+          args: container:release -a ${{ secrets.HEROKU_APP }} web
 
       - name: Migrate
         uses: actions/heroku@master
         with:
-          args: run rails db:migrate -a ${{ secrets.HEROKU_APP_STAGING }}
+          args: run rails db:migrate -a ${{ secrets.HEROKU_APP }}
