@@ -7817,7 +7817,7 @@
     params: {
       autoplay: {
         enabled: false,
-        delay: 3000,
+        delay: 5000,
         waitForTransition: true,
         disableOnInteraction: true,
         stopOnLastSlide: false,
