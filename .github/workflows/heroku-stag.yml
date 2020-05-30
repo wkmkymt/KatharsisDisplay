@@ -1,0 +1,38 @@
+name: Deploy to Staging
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy_to_heroku:
+    name: Deploy to Heoku
+    runs-on: ubuntu-16.04
+
+    env:
+      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      HEROKU_APP: ${{ secrets.HEROKU_APP_STAGING }}
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Login to Heroku
+        uses: actions/heroku@master
+        with:
+          args: container:login
+
+      - name: Push to Heroku
+        uses: actions/heroku@master
+        with:
+          args: container:push -a ${{ secrets.HEROKU_APP_STAGING }} web
+
+      - name: Release to Hetoku
+        uses: actions/heroku@master
+        with:
+          args: container:release -a ${{ secrets.HEROKU_APP_STAGING }} web
+
+      - name: Migrate
+        uses: actions/heroku@master
+        with:
+          args: run rails db:migrate -a ${{ secrets.HEROKU_APP_STAGING }}

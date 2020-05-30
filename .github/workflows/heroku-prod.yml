@@ -1,6 +1,6 @@
-name: Deploy
+name: Deploy to Production
 
-on: 
+on:
   push:
     branches:
       - master
@@ -9,24 +9,24 @@ jobs:
   deploy_to_heroku:
     name: Deploy to Heoku
     runs-on: ubuntu-16.04
-    
+
     env:
       HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       HEROKU_APP: ${{ secrets.HEROKU_APP }}
-    
+
     steps:
       - uses: actions/checkout@master
-        
+
       - name: Login to Heroku
         uses: actions/heroku@master
         with:
           args: container:login
-          
+
       - name: Push to Heroku
         uses: actions/heroku@master
         with:
           args: container:push -a ${{ secrets.HEROKU_APP }} web
- 
+
       - name: Release to Hetoku
         uses: actions/heroku@master
         with:
@@ -36,4 +36,3 @@ jobs:
         uses: actions/heroku@master
         with:
           args: run rails db:migrate -a ${{ secrets.HEROKU_APP }}
-  
