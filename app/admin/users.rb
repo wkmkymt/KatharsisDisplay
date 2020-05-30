@@ -21,6 +21,8 @@ ActiveAdmin.register User do
         params[:user][:profimg] = permitted_params[:user][:profimg].read
       end
 
+      @user.skip_reconfirmation!
+
       if permitted_params[:user][:password].blank?
         @user.update_without_password(permitted_params[:user])
       else
