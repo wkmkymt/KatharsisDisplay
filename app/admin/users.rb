@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   # Permit
-  permit_params :name, :email, :password, :organization, :comment, :point, :gender, :personality, :birthday, :profimg, :color_id, :shop_id, role_ids: [], tag_ids: []
+  permit_params :name, :email, :password, :organization, :comment, :point, :gender, :personality, :birthday, :profimg, :color_id, :shop_id, :confirmed_at, role_ids: [], tag_ids: []
 
   # Controller
   controller do
@@ -8,6 +8,8 @@ ActiveAdmin.register User do
       if permitted_params[:user][:profimg]
         params[:user][:profimg] = permitted_params[:user][:profimg].read
       end
+
+      params[:user][:confirmed_at] = Time.now
 
       super
     end
