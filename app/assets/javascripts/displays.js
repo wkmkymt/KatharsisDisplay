@@ -194,7 +194,7 @@ let swiperSlides = []
 let swiper = new Swiper('.swiper-container', {
   loop: true,
   autoplay: {
-    delay: 2000,
+    delay: 8000,
     disableOnInteraction: false,
   },
   speed: 800,
