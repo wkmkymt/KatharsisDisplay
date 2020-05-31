@@ -62,8 +62,9 @@
       </div>
 
       <div class="field">
-        <%= f.label :organization %><br />
-        <%= f.text_field :organization, autocomplete: "organization" %>
+        <%= f.label :organization %>
+        <i>(大学・部局・サークル・会社など)</i><br />
+        <%= f.text_field :organization, placeholder: "XX大学YY学部 / 株式会社XX", autocomplete: "organization" %>
       </div>
 
       <div class="field">
