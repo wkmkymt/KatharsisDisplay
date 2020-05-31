@@ -47,7 +47,7 @@ ja:
         email: メールアドレス
         password: パスワード
         current_password: 現在のパスワード
-        remember_me: サインインを保存
+        remember_me: サインインしたままにする
         password_confirmation: パスワード確認
         interest_tag: タグ
         gender: 性別

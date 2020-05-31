@@ -212,9 +212,9 @@ body {
         left: 0;
 
         width: 100%;
-        max-width: 400px;
+        max-width: 600px;
         height: 100%;
-        max-height: 400px;
+        max-height: 600px;
         margin: auto;
 
         border-radius: 50%;
@@ -222,6 +222,12 @@ body {
         object-fit: cover;
       }
     }
+  }
+
+  .prof_org, .prog_name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   .prof_msg {
@@ -241,7 +247,7 @@ body {
       display: -webkit-box;
       -webkit-box-orient: vertical;
 
-      -webkit-line-clamp: 6;
+      -webkit-line-clamp: 5;
     }
 
     .multiline-text-3 {
@@ -251,6 +257,18 @@ body {
       -webkit-line-clamp: 3;
     }
   }
+}
+
+.prof_msg_body::before {
+    content: "\22";      /* 記号 */
+    display: inline-block;
+    font-size: 100%;    /* 表示サイズ */
+}
+
+.prof_msg_body::after {
+    content: "\22";      /* 記号 */
+    display: inline-block;
+    font-size: 100%;    /* 表示サイズ */
 }
 
 
