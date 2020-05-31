@@ -18,7 +18,7 @@
       <% end %>
 
       <% if user_signed_in? and @user.id == current_user.id %>
-        <div class="center_buttons">
+        <div class="center_buttons p_item">
           <%= link_to edit_user_registration_path, class:"button_area prof_edit_button button_side" do %>
             <span class="material-icons">edit</span>
             プロフィール編集
