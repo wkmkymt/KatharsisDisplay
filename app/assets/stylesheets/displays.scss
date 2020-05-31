@@ -224,6 +224,12 @@ body {
     }
   }
 
+  .prof_org, .prog_name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
   .prof_msg {
     margin-top: 32px;
 
