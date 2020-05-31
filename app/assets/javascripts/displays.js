@@ -124,6 +124,9 @@ let addUserSlide = (user) => {
   $(prof_org).addClass('prof_org')
   $(prof_body).append(prof_org)
 
+  let prof_tag_div = $(document.createElement('div'))
+  $(prof_tag_div).addClass('multiline-text-container')
+
   let prof_tag = $(document.createElement('h2'))
   let temp = ''
   for (tag of user.tags) {
@@ -131,7 +134,9 @@ let addUserSlide = (user) => {
   }
   $(prof_tag).html(temp)
   $(prof_tag).addClass('prof_tag')
-  $(prof_body).append(prof_tag)
+  $(prof_tag).addClass('multiline-text')
+  $(prof_tag_div).append(prof_tag)
+  $(prof_body).append(prof_tag_div)
 
   let clearfix = $(document.createElement('div'))
   $(clearfix).addClass('clearfix')
@@ -139,9 +144,12 @@ let addUserSlide = (user) => {
 
   let prof_msg = $(document.createElement('div'))
   $(prof_msg).addClass('prof_msg')
+  $(prof_msg).addClass('multiline-text-container')
   $(wrap).append(prof_msg)
 
   let prof_msg_p = $(document.createElement('p'))
+   $(prof_msg_p).addClass('prof_msg_body')
+  $(prof_msg_p).addClass('multiline-text-3')
   let msg = user.comment ? '&quot;' + user.comment + '&quot;' : ''
   $(prof_msg_p).html(msg)
   $(prof_msg).append(prof_msg_p)
