@@ -25,7 +25,7 @@
     <div class="clearfix"></div>
 
     <div class="prof_msg multiline-text-container">
-      <p class="prof_msg_body multiline-text-3"><% if user.comment? %><%= user.comment %><% end %></p>
+      <% if user.comment? %><p class="prof_msg_body multiline-text-3"><%= user.comment %></p><% end %>
     </div>
   </div>
 </section>

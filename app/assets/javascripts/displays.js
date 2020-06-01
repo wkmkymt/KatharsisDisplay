@@ -150,9 +150,9 @@ let addUserSlide = (user) => {
   let prof_msg_p = $(document.createElement('p'))
    $(prof_msg_p).addClass('prof_msg_body')
   $(prof_msg_p).addClass('multiline-text-3')
-  let msg = user.comment ? '&quot;' + user.comment + '&quot;' : ''
+  let msg = user.comment ? user.comment: ''
   $(prof_msg_p).html(msg)
-  $(prof_msg).append(prof_msg_p)
+  if (user.comment) {$(prof_msg).append(prof_msg_p)}
 
   swiper.appendSlide(slide)
 }
