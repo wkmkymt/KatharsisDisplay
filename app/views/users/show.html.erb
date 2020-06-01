@@ -11,7 +11,7 @@
             <% if @user.profimg %>
               <%= image_tag user_image_path(@user.id)%>
             <% else %>
-              <p> Not Image</p>
+              <%= image_tag '/assets/noavatar.png' %>
             <% end %>
           </div>
         </div>
