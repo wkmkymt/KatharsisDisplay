@@ -224,10 +224,14 @@ body {
     }
   }
 
-  .prof_org, .prog_name {
+  .prog_name {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+
+  .prof_tag {
+    margin-top: 16px;
   }
 
   .prof_msg {
@@ -247,7 +251,14 @@ body {
       display: -webkit-box;
       -webkit-box-orient: vertical;
 
-      -webkit-line-clamp: 5;
+      -webkit-line-clamp: 4;
+    }
+
+    .multiline-text-2 {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+
+      -webkit-line-clamp: 2;
     }
 
     .multiline-text-3 {
