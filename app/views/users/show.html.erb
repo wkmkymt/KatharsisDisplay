@@ -8,11 +8,7 @@
       <% if @user.has_role? "guest" %>
         <div class="show_profimg p_item">
           <div class="show_mainimgframe">
-            <% if @user.profimg %>
-              <%= image_tag user_image_path(@user.id)%>
-            <% else %>
-              <%= image_tag '/assets/noavatar.png' %>
-            <% end %>
+            <%= image_tag user_image_path(@user.id)%>
           </div>
         </div>
       <% end %>

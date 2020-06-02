@@ -40,18 +40,10 @@
                 <%= link_to user_path(user.id) do %>
                   <div class="list_profimg_body">
                     <div class="list_mainimgframe">
-                      <% if user.profimg %>
-                        <% if user.id == current_user.id %>
-                          <%= image_tag user_image_path(current_user.id), class: "border_img" %>
-                        <% else %>
-                          <%= image_tag user_image_path(user.id) %>
-                        <% end %>
+                      <% if user.id == current_user.id %>
+                        <%= image_tag user_image_path(current_user.id), class: "border_img" %>
                       <% else %>
-                        <% if user.id == current_user.id %>
-                          <%= image_tag '/assets/noavatar.png', class: "border_img" %>
-                        <% else %>
-                          <%= image_tag '/assets/noavatar.png' %>
-                        <% end %>
+                        <%= image_tag user_image_path(user.id) %>
                       <% end %>
                     </div>
                   </div>

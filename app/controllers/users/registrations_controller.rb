@@ -2,8 +2,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     if params[:user][:profimg_temp]
       file = trans_file(params[:user][:profimg_temp])
-      params[:user][:profimg] = file.read
+    else
+      file = File.open("./app/assets/images/noavatar.png", "r")
     end
+    params[:user][:profimg] = file.read
 
     super
 

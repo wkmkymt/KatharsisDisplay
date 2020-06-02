@@ -2,9 +2,7 @@
   <div class="wrap">
     <div class="post_profimg">
       <div class="mainimgframe">
-        <% if user.profimg %>
-          <%= image_tag user_image_path(user.id) %>
-        <% end %>
+        <%= image_tag user_image_path(user.id) %>
       </div>
     </div>
 
@@ -27,7 +25,9 @@
     <div class="clearfix"></div>
 
     <div class="prof_msg multiline-text-container">
-      <% if user.comment? %><p class="prof_msg_body multiline-text-3"><%= user.comment %></p><% end %>
+      <% if user.comment? %>
+        <p class="prof_msg_body multiline-text-3"><%= user.comment %></p>
+      <% end %>
     </div>
   </div>
 </section>

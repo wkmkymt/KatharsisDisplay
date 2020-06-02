@@ -6,8 +6,11 @@ ActiveAdmin.register User do
   controller do
     def create
       if permitted_params[:user][:profimg]
-        params[:user][:profimg] = permitted_params[:user][:profimg].read
+        file = permitted_params[:user][:profimg]
+      else
+        file = File.open("./app/assets/images/noavatar.png", "r")
       end
+      params[:user][:profimg] = file.read
 
       params[:user][:confirmed_at] = Time.now
 
