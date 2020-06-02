@@ -272,13 +272,13 @@ body {
 
 .prof_msg_body::before {
     content: "\22";      /* 記号 */
-    display: inline-block;
+    display: inline;
     font-size: 100%;    /* 表示サイズ */
 }
 
 .prof_msg_body::after {
     content: "\22";      /* 記号 */
-    display: inline-block;
+    display: inline;
     font-size: 100%;    /* 表示サイズ */
 }
 
