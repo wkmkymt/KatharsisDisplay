@@ -12,7 +12,9 @@
       <div class="under">
         <h1 class="prof_name"><%= user.name %></h1>
       </div>
-      <h2 class="prof_org"><%= user.organization %></h2>
+      <div class="multiline-text-container">
+        <h2 class="prof_org multiline-text-2"><%= user.organization %></h2>
+      </div>
       <div class="multiline-text-container">
         <h2 class="prof_tag multiline-text">
           <% user.tag.each do |tag| %>
@@ -25,7 +27,7 @@
     <div class="clearfix"></div>
 
     <div class="prof_msg multiline-text-container">
-      <p class="prof_msg_body multiline-text-3"><% if user.comment? %><%= user.comment %><% end %></p>
+      <% if user.comment? %><p class="prof_msg_body multiline-text-3"><%= user.comment %></p><% end %>
     </div>
   </div>
 </section>

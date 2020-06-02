@@ -119,10 +119,15 @@ let addUserSlide = (user) => {
   $(prof_name).addClass('prof_name')
   $(under).append(prof_name)
 
+  let prof_org_div = $(document.createElement('div'))
+  $(prof_org_div).addClass('multiline-text-container')
+
   let prof_org = $(document.createElement('h2'))
   $(prof_org).html(user.organization)
   $(prof_org).addClass('prof_org')
-  $(prof_body).append(prof_org)
+  $(prof_org).addClass('multiline-text-2')
+  $(prof_org_div).append(prof_org)
+  $(prof_body).append(prof_org_div)
 
   let prof_tag_div = $(document.createElement('div'))
   $(prof_tag_div).addClass('multiline-text-container')
@@ -150,9 +155,9 @@ let addUserSlide = (user) => {
   let prof_msg_p = $(document.createElement('p'))
    $(prof_msg_p).addClass('prof_msg_body')
   $(prof_msg_p).addClass('multiline-text-3')
-  let msg = user.comment ? '&quot;' + user.comment + '&quot;' : ''
+  let msg = user.comment ? user.comment: ''
   $(prof_msg_p).html(msg)
-  $(prof_msg).append(prof_msg_p)
+  if (user.comment) {$(prof_msg).append(prof_msg_p)}
 
   swiper.appendSlide(slide)
 }

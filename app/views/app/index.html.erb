@@ -47,7 +47,11 @@
                           <%= image_tag user_image_path(user.id) %>
                         <% end %>
                       <% else %>
-                        <p class="p_item"> Not Image</p>
+                        <% if user.id == current_user.id %>
+                          <%= image_tag '/assets/noavatar.png', class: "border_img" %>
+                        <% else %>
+                          <%= image_tag '/assets/noavatar.png' %>
+                        <% end %>
                       <% end %>
                     </div>
                   </div>
