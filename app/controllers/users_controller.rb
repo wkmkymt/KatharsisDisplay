@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   # Show Image
   def show_image
-    @user = User.find(params[:user_id])
-    send_data(@user.profimg)
+    profimg = User.find(params[:user_id]).profimg
+    send_data(profimg)
   end
 end
