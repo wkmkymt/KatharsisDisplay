@@ -25,8 +25,8 @@ class AdvertisementsController < ApplicationController
 
   # Show Image
   def show_image
-    @ad = Advertisement.find(params[:advertisement_id])
-    send_data(@ad.adimg)
+    adimg = Advertisement.find(params[:advertisement_id]).adimg
+    send_data(adimg)
   end
 
   private

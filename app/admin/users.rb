@@ -101,17 +101,6 @@ ActiveAdmin.register User do
         end
       end
     end
-
-    panel "Reviews" do
-      table_for user.reviewer_relationships do
-        column :reviewer do |review|
-          link_to review.reviewer.name, admin_user_path(review.reviewer)
-        end
-        column :rate
-        column :comment
-      end
-    end
-
   end
 
   # Form

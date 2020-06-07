@@ -1,0 +1,44 @@
+# --- Base Image ---
+FROM ruby:2.5.8-alpine as builder
+
+# Env
+ENV RAILS_ENV production
+
+# Update Gem
+RUN gem update --system
+RUN gem update bundler --pre
+RUN bundle config set without development:test
+
+
+# --- Build Image ---
+FROM base as builder
+
+# Workdir
+WORKDIR /build
+
+# Install Packages
+RUN apk add --no-cache build-base postgresql-dev git tzdata
+
+# Install Gem
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+
+# Compile Assets
+COPY . ./
+RUN bin/rails assets:precompile
+
+
+# --- Deploy Image ---
+FROM base
+
+# Workdir
+WORKDIR /app
+
+# Install Packages
+RUN apk add --no-cache postgresql-libs tzdata
+
+# Copy
+COPY . ./
+COPY --from=builder /usr/local/bundle /usr/local/bundle
+COPY --from=builder /build/public/assets ./public/assets
+COPY --from=builder /build/public/packs ./public/packs

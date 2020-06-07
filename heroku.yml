@@ -1,0 +1,9 @@
+build:
+  docker:
+    web: Dockerfile.prod
+release:
+  command:
+    - rails db:migrate
+  image: web
+run:
+  web: bin/rails server -e $RAILS_ENV
