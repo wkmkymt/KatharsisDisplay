@@ -38,18 +38,6 @@ class User < ApplicationRecord
   has_many :interest, dependent: :delete_all
   has_many :tag, through: :interest
 
-  # Reviewings
-  has_many :reviewing_relationships, class_name:  "Review",
-                                     foreign_key: "reviewer_id",
-                                     dependent:   :destroy
-  has_many :reviewings, through: :reviewing_relationships, source: :reviewed
-
-  # Reviewers
-  has_many :reviewer_relationships, class_name:  "Review",
-                                    foreign_key: "reviewed_id",
-                                    dependent:   :destroy
-  has_many :reviewers, through: :reviewer_relationships, source: :reviewer
-
   # Color
   belongs_to :color
 
@@ -62,23 +50,6 @@ class User < ApplicationRecord
   # Has Password?
   def has_password?
     return encrypted_password.present?
-  end
-
-  # Review
-  def review(other_user, rate, comment: "")
-    unless self == other_user
-      reviewing_relationships.create(reviewed_id: other_user.id, rate: rate, comment: comment)
-    end
-  end
-
-  # Unreview
-  def unreview(other_user)
-    reviewing_relationships.find_by(reviewed_id: other_user.id).destroy
-  end
-
-  # Is Reviewing?
-  def reviewing?(other_user)
-    reviewings.include?(other_user)
   end
 
   # Get Record Checked In
@@ -100,8 +71,8 @@ class User < ApplicationRecord
   def checkin(shop_id)
     unless check_in?
       if not has_checkined_today? shop_id
-        shop = Shop.find(shop_id)
-        set_point shop.checkin_point
+        checkin_point = Shop.find(shop_id).checkin_point
+        set_point checkin_point
       end
 
       checkin_record.create(user_id: self.id, shop_id: shop_id)
