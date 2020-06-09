@@ -33,7 +33,5 @@ environment ENV.fetch("RAILS_ENV") { "production" }
 #
 # preload_app!
 
-ld_preload ENV.fetch("LD_PRELOAD") { "/usr/lib/x86_64-linux-gnu/libjemalloc.so.1" }
-
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
