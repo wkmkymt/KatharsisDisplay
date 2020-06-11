@@ -13,9 +13,9 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.12'
 
 # execjs
-gem 'libv8', '~> 3.11.8'
-gem 'execjs'
-gem 'therubyracer'
+# gem 'libv8', '~> 3.11.8'
+# gem 'execjs'
+# gem 'therubyracer'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
