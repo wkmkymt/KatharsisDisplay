@@ -2,6 +2,26 @@ ActiveAdmin.register User do
   # Permit
   permit_params :name, :email, :password, :organization, :comment, :point, :gender, :personality, :birthday, :profimg, :color_id, :shop_id, :confirmed_at, role_ids: [], tag_ids: []
 
+  collection_action :download_users, method: :get do
+    csv_data = CSV.generate do |csv|
+      csv << [
+        "id", "name", "email", "organization", "comment", "point",
+        "gender", "personality", "birthday", "color_id", "shop_id"
+      ]
+      User.find_each(batch_size: 500) do |user|
+        csv << [
+          user.id, user.name, user.email, user.organization, user.comment, user.point,
+          user.gender, user.personality, user.birthday, user.color_id, user.shop_id
+        ]
+      end
+    end
+    send_data csv_data, type: 'text/csv; header=present', disposition: 'attachment; filename=users.csv'
+  end
+
+  action_item only: :index do
+    link_to "Export CSV", {:controller => "admin/users", action: :download_users}
+  end
+
   # Controller
   controller do
     def create
@@ -41,7 +61,7 @@ ActiveAdmin.register User do
   end
 
   # Index
-  index do
+  index download_links: false do
     selectable_column
     column :id
     column :name
