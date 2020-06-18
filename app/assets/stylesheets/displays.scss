@@ -28,7 +28,7 @@ body {
   overflow: hidden;
   zoom: 1;
 
-  max-width: 2040px;
+  max-width: 2560px;
   margin: 0 auto;
   padding: 56px;
 
@@ -69,10 +69,12 @@ body {
   .wrap {
     h1 {
       font-size: 26px;
+      line-height: 38px;
     }
 
     h2 {
       font-size: 22px;
+      line-height: 30px;
     }
   }
 }
@@ -181,6 +183,20 @@ body {
 
       border-bottom: 4px solid;
     }
+
+    @media screen and (min-width: 2500px) {
+      .under {
+        margin-bottom: 48px;
+        border-bottom: 5px solid;
+      }
+    }
+
+    @media screen and (min-width: 2500px) {
+      .under {
+        margin-bottom: 56px;
+        border-bottom: 6px solid;
+      }
+    }
   }
 
   .post_profimg {
@@ -221,6 +237,14 @@ body {
 
         object-fit: cover;
       }
+
+      @media screen and (min-width: 2500px) {
+        img {
+          max-width: 860px;
+          max-height: 860px;
+        }
+      }
+
     }
   }
 
@@ -243,11 +267,67 @@ body {
     }
   }
 
+  @media screen and (max-width: 650px) {
+    .prof_msg{
+      p {
+          font-size: 26px;
+          line-height: 38px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1900px) {
+    .wrap {
+      h1 {
+        font-size: 140px;
+        line-height: 164px;
+        margin-bottom: 24px;
+      }
+
+      h2 {
+        font-size: 62px;
+        line-height: 86px;
+        margin-bottom: 12px;
+      }
+    }
+    
+    .prof_msg{
+      p {
+          font-size: 72px;
+          line-height: 88px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 2500px) {
+    .wrap {
+      h1 {
+        font-size: 168px;
+        line-height: 188px;
+        margin-bottom: 36px;
+      }
+
+      h2 {
+        font-size: 80px;
+        line-height: 116px;
+        margin-bottom: 24px;
+      }
+    }
+    
+    .prof_msg{
+      p {
+          font-size: 112px;
+          line-height: 156px;
+      }
+    }
+  }
+
   //複数行省略設定(ChromeやSafari、Firefox(macは確認)などのみで動作)
   .multiline-text-container {
     overflow: hidden;
 
     .multiline-text {
+      overflow: hidden;
       display: -webkit-box;
       -webkit-box-orient: vertical;
 
@@ -255,6 +335,7 @@ body {
     }
 
     .multiline-text-2 {
+      overflow: hidden;
       display: -webkit-box;
       -webkit-box-orient: vertical;
 
@@ -262,6 +343,7 @@ body {
     }
 
     .multiline-text-3 {
+      overflow: hidden;
       display: -webkit-box;
       -webkit-box-orient: vertical;
 
@@ -342,3 +424,33 @@ body {
     }
   }
 }
+
+// ================================================================================
+//   Icons
+// ================================================================================
+.material-icons {
+  font-size: 48px !important;
+  vertical-align: text-top;
+  margin-top: 8px;
+}
+
+@media screen and (max-width: 650px) {
+    .material-icons {
+      font-size: 22px !important;
+      margin-top: 6px;
+    }    
+  }
+
+  @media screen and (min-width: 1900px) {
+    .material-icons {
+      font-size: 62px !important;
+      margin-top: 10px;
+    } 
+  }
+
+  @media screen and (min-width: 2500px) {
+    .material-icons {
+      font-size: 80px !important;
+      margin-top: 12px;
+    } 
+  }
