@@ -424,3 +424,33 @@ body {
     }
   }
 }
+
+// ================================================================================
+//   Icons
+// ================================================================================
+.material-icons {
+  font-size: 48px !important;
+  vertical-align: text-top;
+  margin-top: 8px;
+}
+
+@media screen and (max-width: 650px) {
+    .material-icons {
+      font-size: 22px !important;
+      margin-top: 6px;
+    }    
+  }
+
+  @media screen and (min-width: 1900px) {
+    .material-icons {
+      font-size: 62px !important;
+      margin-top: 10px;
+    } 
+  }
+
+  @media screen and (min-width: 2500px) {
+    .material-icons {
+      font-size: 80px !important;
+      margin-top: 12px;
+    } 
+  }
