@@ -92,6 +92,8 @@
           <% end %>
 
           <p class="p_item"><span class="material-icons">card_giftcard</span><b>ポイント </b><%= @user.point %> pt</p>
+
+          <p class="p_item"><span class="material-icons">send</span><b>メールの受信設定 </b><%= @user.receiving_email ? "受信する" : "受信しない" %></p>
         <% end %>
       <% end %>
       <% if current_user.has_role? :staff and @user.check_in? and current_user.shop.id == @user.get_checkin_shop.id %>

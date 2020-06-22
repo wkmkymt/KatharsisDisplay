@@ -88,6 +88,11 @@
         </div>
       </div>
 
+      <div class="field">
+        <%= f.check_box :receiving_email %>
+        <%= f.label :receiving_email, "メールを受信する" %>
+      </div>
+
       <div class="center_buttons">
         <%= link_to :back, class:"button_area_blue action_button_side" do%>
           <span class="material-icons">backspace</span>
