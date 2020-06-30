@@ -1,17 +1,17 @@
 ActiveAdmin.register User do
   # Permit
-  permit_params :name, :email, :password, :organization, :comment, :point, :gender, :personality, :birthday, :profimg, :color_id, :shop_id, :confirmed_at, role_ids: [], tag_ids: []
+  permit_params :name, :email, :password, :organization, :comment, :point, :gender, :personality, :birthday, :profimg, :color_id, :shop_id, :confirmed_at, :receiving_email, role_ids: [], tag_ids: []
 
   collection_action :download_users, method: :get do
     csv_data = CSV.generate do |csv|
       csv << [
         "id", "name", "email", "organization", "comment", "point",
-        "gender", "personality", "birthday", "color_id", "shop_id"
+        "gender", "personality", "birthday", "color_id", "shop_id", "receiving_email"
       ]
       User.find_each(batch_size: 500) do |user|
         csv << [
           user.id, user.name, user.email, user.organization, user.comment, user.point,
-          user.gender, user.personality, user.birthday, user.color_id, user.shop_id
+          user.gender, user.personality, user.birthday, user.color_id, user.shop_id, user.receiving_email
         ]
       end
     end
@@ -83,6 +83,7 @@ ActiveAdmin.register User do
     column 'Checkin' do |user|
       user.check_in?
     end
+    column :receiving_email
     column :created_at
     column :updated_at
     actions
@@ -106,6 +107,7 @@ ActiveAdmin.register User do
       row 'Checkin' do |user|
         user.check_in?
       end
+      row :receiving_email
       row :created_at
       row :updated_at
     end
@@ -142,6 +144,7 @@ ActiveAdmin.register User do
       f.input :roles
       f.input :shop
       f.input :point
+      f.input :receiving_email
     end
     f.actions
   end
