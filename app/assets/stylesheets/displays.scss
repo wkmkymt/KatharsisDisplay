@@ -94,76 +94,75 @@ body {
 .bg_white {
   color: #000;
   background: #ecf0f1;
+  background-image: url("kdisplay_bg/polygonal-background_white.png");
+  background-size: cover;
 
   .under {
     border-bottom: 4px solid #000;
   }
 }
 
-.bg_dot {
-  color: #000;
-  background: url(../img/dot_bg.png) left top repeat;
-  background-size: 19px 57px;
-}
-
 .bg_midnightblue {
   color: #fff;
   background: #2c3e50;
+  background-image: url("kdisplay_bg/polygonal-background_midnightblue.png");
+  background-size: cover;
 }
 
 .bg_red {
   color: #fff;
   background: #ff6670;
+  background-image: url("kdisplay_bg/polygonal-background_red.png");
+  background-size: cover;
 }
 
 .bg_green {
   color: #fff;
   background: #1abc9c;
-}
-
-.bg_gray {
-  color: #000;
-  background: #f6f7f8;
+  background-image: url("kdisplay_bg/polygonal-background_green.png");
+  background-size: cover;
 }
 
 .bg_blue {
   color: #fff;
   background: #1e90ff;
-}
-
-.bg_yellow {
-  color: #000;
-  background: #ffdb00;
-}
-
-.bg_black {
-  color: #fff;
-  background-color: #000;
+  background-image: url("kdisplay_bg/polygonal-background_blue.png");
+  background-size: cover;
 }
 
 .bg_purple {
   color: #fff;
   background-color: #8a2be2;
+  background-image: url("kdisplay_bg/polygonal-background_purple.png");
+  background-size: cover;
 }
 
 .bg_yellow {
   color: #fff;
   background-color: #e3c800;
+  background-image: url("kdisplay_bg/polygonal-background_yellow.png");
+  background-size: cover;
 }
 
 .bg_orange {
   color: #fff;
   background-color: #ed6f2f;
+  background-image: url("kdisplay_bg/polygonal-background_orange.png");
+  background-size: cover;
 }
 
 .bg_magenta {
   color: #fff;
   background-color: #e4007f;
+  background-image: url("kdisplay_bg/polygonal-background_magenta.png");
+  background-size: cover;
 }
 
 .bg_turquoise {
   color: #fff;
   background-color: #009b9f;
+  background-image: url("kdisplay_bg/polygonal-background_turquoise.png");
+  background-size: cover;
 }
 
 
