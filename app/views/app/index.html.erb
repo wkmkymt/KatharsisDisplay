@@ -33,7 +33,13 @@
         <% end %>
 
         <% if !current_shop.get_checkin_users.empty? %>
-          <p><span class="material-icons">supervisor_account</span>現在「<%= current_user.get_checkin_shop.name %>」にチェックインしているユーザ</p>
+          <p><span class="material-icons">supervisor_account</span>現在「
+            <% if current_user.has_role? :guest %>
+              <%= current_user.get_checkin_shop.name %>
+            <% else %>
+              <%= current_user.shop.name %>
+            <% end %>
+          」にチェックインしているユーザ</p>
           <p class="explain">アイコンをタップしてプロフィールを確認</p>
           <ul class="prof_list top_margin">
             <% current_shop.get_checkin_users(current_user.id).each do |user| %>
