@@ -37,6 +37,9 @@ Rails.application.routes.draw do
     get "image", to: "advertisements#show_image"
   end
 
+  # Book
+  resources :books, only: [:index, :create]
+
   # Display
   resources :displays, only: [:show]
 
