@@ -30,15 +30,15 @@ body {
 
   max-width: 2560px;
   margin: 0 auto;
-  padding: 56px;
+  padding: 56px 56px 0 56px;
 
   h1, h2 {
     font-weight: normal;
   }
 
   h1 {
-    font-size: 120px;
-    line-height: 130px;
+    font-size: 110px;
+    line-height: 120px;
 
     margin-bottom: 16px;
   }
@@ -278,14 +278,14 @@ body {
   @media screen and (min-width: 1900px) {
     .wrap {
       h1 {
-        font-size: 140px;
-        line-height: 164px;
+        font-size: 120px;
+        line-height: 144px;
         margin-bottom: 24px;
       }
 
       h2 {
-        font-size: 62px;
-        line-height: 86px;
+        font-size: 60px;
+        line-height: 82px;
         margin-bottom: 12px;
       }
     }
@@ -331,6 +331,14 @@ body {
       -webkit-box-orient: vertical;
 
       -webkit-line-clamp: 4;
+    }
+
+    .multiline-text-1 {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+
+      -webkit-line-clamp: 1;
     }
 
     .multiline-text-2 {
