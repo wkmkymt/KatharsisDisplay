@@ -88,10 +88,17 @@
           <% end%>
         </div>
       <% end %>
+
       <div class="center_buttons">
         <%= link_to user_path(current_user.id), class:"button_area_blue p_item" do %>
           <span class="material-icons">account_box</span>
           プロフィール確認
+        <% end %>
+      </div>
+      <div class="center_buttons">
+        <%= link_to books_path, class:"button_area_blue p_item" do %>
+          <span class="material-icons">menu_book</span>
+          デジタルコンテンツ
         <% end %>
       </div>
 
