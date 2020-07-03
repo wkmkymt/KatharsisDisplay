@@ -30,3 +30,6 @@
 
 # Env
 .env
+
+# Digital Contens raw file
+/public/uploads/books/*
