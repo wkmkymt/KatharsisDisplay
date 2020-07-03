@@ -38,7 +38,9 @@ Rails.application.routes.draw do
   end
 
   # Book
-  resources :books, only: [:index, :create]
+  get "books/form", to: "books#form"
+  resources :books, only: [:index, :create, :show]
+
 
   # Display
   resources :displays, only: [:show]

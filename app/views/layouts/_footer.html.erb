@@ -7,7 +7,7 @@
       <p class="p_item footer_link"><small><%= link_to "お問い合わせ", contact_path %></small></p>
       <% if user_signed_in? and (current_user.has_role? :staff or current_user.has_role? :admin) %>
         <p class="p_item footer_link"><small><%= link_to "広告の登録", advertisements_path %></small></p>
-        <p class="p_item footer_link"><small><%= link_to "デジタルコンテンツの登録", books_path %></small></p>
+        <p class="p_item footer_link"><small><%= link_to "デジタルコンテンツの登録", books_form_path %></small></p>
       <% end %>
       <% if user_signed_in? %>
         <p class="p_item footer_link"><small><%= link_to "退会", user_destroy_confirmation_path %></small></p>

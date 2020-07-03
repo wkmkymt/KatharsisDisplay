@@ -1,27 +1,28 @@
 class BooksController < ApplicationController
   require 'RMagick'
-  
-  # Authentication
-  before_action :authorize_staff
 
-  # Index
-  def index
+  # Form
+  def form
     @book = Book.new
   end
 
   # Create
   def create
 
-    if params[:book][:book_file]
-      file = params[:book][:book_file]
-      pdf = Magick::ImageList.new(file.path + '[0]') #=> 1ページ目のみ抽出
-      cover_tmp = Rails.root.join('public', file.original_filename)
-      pdf[0].write(cover_tmp)
-    end
-
     @book = Book.new(book_params)
 
     if @book.save
+      if params[:book][:book_file]
+        file = params[:book][:book_file]
+        pdf = Magick::Image.read(file.path)
+        i = 1
+        Dir.mkdir('public/uploads/books/' + @book.id.to_s)
+        pdf.each do |pdf_page|
+          cover_tmp = Rails.root.join('public/uploads/books/' + @book.id.to_s, i.to_s + ".jpg")
+          pdf_page.write cover_tmp
+          i += 1
+        end
+      end
       flash[:success] = "デジタルコンテンツの登録を受け付けました"
       redirect_to root_path
     else
@@ -29,13 +30,18 @@ class BooksController < ApplicationController
     end
   end
 
+  # Index
+  def index
+    @book_list = Book.all
+  end
+
+  # Show
+  def show
+    @book = Book.find(params[:id])
+  end
+
 
   private
-    # Authorize
-    def authorize_staff
-      authorize User
-    end
-
     # Params
     def book_params
       params.require(:book).permit(:name, :author, :abstract, :required_point)

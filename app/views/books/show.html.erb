@@ -1,0 +1,19 @@
+<section>
+  <div class="wrap">
+    <%= link_to :back, class:"button_area_blue back_btn" do%>
+      <span class="material-icons">arrow_back_ios</span>
+      戻る
+    <% end %>
+    <div>
+      <h1><%= @book.name %> - <%= @book.author %></h1>
+      <p><%= @book.abstract %></p>
+
+      <% Dir.glob(Rails.root.join('public/uploads/books/'+ @book.id.to_s + '/') + '*').sort.each do |file| %>
+          <%= image_tag file.split('app/public')[1] %>
+      <% end %>
+    </div>
+
+     
+    
+  </div>
+</section>

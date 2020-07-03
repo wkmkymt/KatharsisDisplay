@@ -1,0 +1,41 @@
+<section>
+  <div class="wrap">
+    <h2>デジタルコンテンツ登録フォーム</h2>
+
+    <%= form_with model: @book, url: books_path, local: true, class: "book_form" do |f| %>
+      <%= render "devise/shared/error_messages", resource: @book %>
+
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, autofocus: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :author %><br />
+        <%= f.text_field :author %>
+      </div>
+
+      <div class="field">
+        <%= f.label :abstract %><br />
+        <%= f.text_field :abstract %>
+      </div>
+
+      <div class="field">
+        <%= f.label :required_point %><br />
+        <%= f.text_field :required_point %>
+      </div>
+
+      <div class="field">
+        <%= f.label :book_file, class:"button_area_blue" %><br />
+        <%= f.file_field :book_file, accept: "pdf" %>
+        <div class="ad_form_preview"></div>
+      </div>
+
+      <div class="center_buttons">
+        <div class="actions">
+          <%= f.submit "送信", class:"button_area" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
