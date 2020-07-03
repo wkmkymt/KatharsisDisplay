@@ -7,10 +7,11 @@
     <h1>デジタルコンテンツ</h1>
 
     <% @book_list.each do |book|%>
-      <% if book.required_point <= current_user.point %>
+      <% if book.required_point <= current_user.point or current_user.has_role? :admin or current_user.has_role? :staff %>
         <%= link_to book_path(book.public_uid) do %>
           <%= book.name %><br>
           <%= book.author %><br>
+          <%= book.required_point %>ポイント取得で解放<br>
           <%= book.abstract %><br>
           <% Dir.glob(Rails.root.join('public/uploads/books/'+ book.public_uid + '/') + '0001.jpg') do |file| %>
               <%= image_tag file.split('app/public')[1] %>

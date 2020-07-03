@@ -1,14 +1,18 @@
 class BooksController < ApplicationController
   require 'RMagick'
 
-  # Form
+  # form
   def form
-    @book = Book.new
+    if current_user.has_role? :admin or current_user.has_role? :staff
+      @book = Book.new
+    else
+      flash[:danger] = "アクセス権限がありません"
+      redirect_to root_path
+    end
   end
 
   # Create
   def create
-
     @book = Book.new(book_params)
 
     if @book.save
@@ -38,6 +42,10 @@ class BooksController < ApplicationController
   # Show
   def show
     @book = Book.find_by(public_uid: params[:id])
+    if current_user.point < @book.required_point
+      flash[:danger] = "閲覧に必要なポイントが足りていません"
+      redirect_to root_path
+    end
   end
 
 
