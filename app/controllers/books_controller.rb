@@ -16,9 +16,9 @@ class BooksController < ApplicationController
         file = params[:book][:book_file]
         pdf = Magick::Image.read(file.path)
         i = 1
-        Dir.mkdir('public/uploads/books/' + @book.id.to_s)
+        Dir.mkdir('public/uploads/books/' + @book.public_uid.to_s)
         pdf.each do |pdf_page|
-          cover_tmp = Rails.root.join('public/uploads/books/' + @book.id.to_s, i.to_s + ".jpg")
+          cover_tmp = Rails.root.join('public/uploads/books/' + @book.public_uid.to_s, format("%04d",i) + ".jpg")
           pdf_page.write cover_tmp
           i += 1
         end
@@ -37,7 +37,7 @@ class BooksController < ApplicationController
 
   # Show
   def show
-    @book = Book.find(params[:id])
+    @book = Book.find_by(public_uid: params[:id])
   end
 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_173716) do
+ActiveRecord::Schema.define(version: 2020_07_03_065507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 2020_07_02_173716) do
     t.integer "required_point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "public_uid"
+    t.index ["public_uid"], name: "index_books_on_public_uid", unique: true
   end
 
   create_table "categories", force: :cascade do |t|

@@ -15,6 +15,6 @@ ActiveAdmin.register Book do
   #   permitted
   # end
 
-  permit_params :name, :author, :abstract, :required_point
+  permit_params :name, :author, :abstract, :required_point, :public_uid
   
 end

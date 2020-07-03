@@ -238,6 +238,8 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.5)
+    public_uid (2.1.1)
+      activerecord (> 4.2)
     puma (3.12.6)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
@@ -413,6 +415,7 @@ DEPENDENCIES
   pry-byebug
   pry-doc
   pry-rails
+  public_uid
   puma (~> 3.12)
   pundit
   rails (~> 5.2.4, >= 5.2.4.1)

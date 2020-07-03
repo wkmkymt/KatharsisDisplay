@@ -124,3 +124,6 @@ gem 'tzinfo-data'
 #pdf file
 gem 'carrierwave'
 gem 'rmagick'
+
+#random string id
+gem 'public_uid'

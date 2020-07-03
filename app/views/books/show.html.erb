@@ -8,7 +8,7 @@
       <h1><%= @book.name %> - <%= @book.author %></h1>
       <p><%= @book.abstract %></p>
 
-      <% Dir.glob(Rails.root.join('public/uploads/books/'+ @book.id.to_s + '/') + '*').sort.each do |file| %>
+      <% Dir.glob(Rails.root.join('public/uploads/books/'+ @book.public_uid + '/') + '*').sort.each do |file| %>
           <%= image_tag file.split('app/public')[1] %>
       <% end %>
     </div>
