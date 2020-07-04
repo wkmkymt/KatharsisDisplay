@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   require 'RMagick'
+  require "aws-sdk-s3"
 
   # form
   def form
@@ -20,12 +21,24 @@ class BooksController < ApplicationController
         file = params[:book][:book_file]
         pdf = Magick::Image.read(file.path)
         i = 1
-        #Dir.mkdir('public/uploads/books/' + @book.public_uid.to_s)
-        Dir.mkdir('http://127.0.0.1:9000/minio/kdh/' + @book.public_uid.to_s)
+
+        options = {:access_key_id => 'minioadmin',
+                   :secret_access_key => 'minioadmin',
+                   :region => "ap-northeast-1",
+                   :endpoint => "http://host.docker.internal:9000",
+                   :force_path_style => true}
+        s3 = Aws::S3::Resource.new(options)
+        #s3.create_bucket(bucket: @book.public_uid)
+        #bucket = s3.bucket(@book.public_uid)
+        bucket = s3.bucket("kdh")
+
+        Dir.mkdir('public/uploads/books/' + @book.public_uid.to_s)
         pdf.each do |pdf_page|
-          #cover_tmp = Rails.root.join('public/uploads/books/' + @book.public_uid.to_s, format("%04d",i) + ".jpg")
-          cover_tmp = "http://127.0.0.1:9000/minio/kdh/" + @book.public_uid.to_s + "/" + format("%04d",i) + ".jpg"
+          cover_tmp = Rails.root.join('public/uploads/books/' + @book.public_uid.to_s, format("%04d",i) + ".jpg")
           pdf_page.write cover_tmp
+
+          
+          bucket.object(@book.public_uid + "/" + i.to_s + ".jpg").upload_file(cover_tmp)
           i += 1
         end
       end
@@ -39,14 +52,42 @@ class BooksController < ApplicationController
   # Index
   def index
     @book_list = Book.all
+
+    options = {:access_key_id => 'minioadmin',
+                   :secret_access_key => 'minioadmin',
+                   :region => "ap-northeast-1",
+                   :endpoint => "http://host.docker.internal:9000",
+                   :force_path_style => true}
+    
+    
+    @book_thumbnails = []
+    @book_list.each do |each_book|
+      #bucket = Aws::S3::Resource.new(options).bucket(each_book.public_uid)
+      bucket = Aws::S3::Resource.new(options).bucket("kdh")
+      @book_thumbnails.push("http://localhost" + bucket.object(each_book.public_uid + '/1.jpg').public_url.split("http://host.docker.internal")[1])
+    end
   end
 
   # Show
   def show
     @book = Book.find_by(public_uid: params[:id])
+
     if current_user.point < @book.required_point
       flash[:danger] = "閲覧に必要なポイントが足りていません"
       redirect_to root_path
+    end
+
+    options = {:access_key_id => 'minioadmin',
+                   :secret_access_key => 'minioadmin',
+                   :region => "ap-northeast-1",
+                   :endpoint => "http://host.docker.internal:9000",
+                   :force_path_style => true}
+    bucket = Aws::S3::Resource.new(options).bucket("kdh")
+    @book_pages = []
+    i = 1
+    bucket.objects(prefix: @book.public_uid + "/").each do |object|
+      @book_pages.push("http://localhost" + bucket.object(@book.public_uid + '/' + i.to_s + '.jpg').public_url.split("http://host.docker.internal")[1])
+      i += 1
     end
   end
 

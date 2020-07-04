@@ -8,7 +8,7 @@
 
     <div class="book_list">
 
-    <% @book_list.each do |book|%>
+    <% @book_list.zip(@book_thumbnails) do |book, thumbnail|%>
       <% if book.required_point <= current_user.point or current_user.has_role? :admin or current_user.has_role? :staff %>
         <div class="book_item">
         <%= link_to book_path(book.public_uid) do %>
@@ -17,8 +17,8 @@
             <p class="book_author"><%= book.author %></p>
             <p class="book_required_point"><%= book.required_point %>ポイント取得で解放</p>
             <div class="trim_book_thumbnail">
-            <%= image_tag '/uploads/books/'+ book.public_uid + '/0001.jpg' ,class:'book_thumbnail'%>
-            </div>
+            <%= image_tag thumbnail ,class:'book_thumbnail'%>
+            </div>            
             <p class="book_abstract"><%= book.abstract %></p>
         
         <% end %>
