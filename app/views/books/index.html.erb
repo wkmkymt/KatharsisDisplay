@@ -1,24 +1,32 @@
 <section>
   <div class="wrap">
-    <%= link_to root_path, class:"button_area_blue back_btn" do%>
+    <%= link_to root_path, class:"button_area_blue back_btn p_item" do%>
       <span class="material-icons">arrow_back_ios</span>
       戻る
     <% end %>
-    <h1>デジタルコンテンツ</h1>
+    <h1 class="p_item">デジタルコンテンツ</h1>
+
+    <div class="book_list">
 
     <% @book_list.each do |book|%>
       <% if book.required_point <= current_user.point or current_user.has_role? :admin or current_user.has_role? :staff %>
+        <div class="book_item">
         <%= link_to book_path(book.public_uid) do %>
-          <%= book.name %><br>
-          <%= book.author %><br>
-          <%= book.required_point %>ポイント取得で解放<br>
-          <%= book.abstract %><br>
-          <% Dir.glob(Rails.root.join('public/uploads/books/'+ book.public_uid + '/') + '0001.jpg') do |file| %>
-              <%= image_tag file.split('app/public')[1] %>
-          <% end %>
+          
+            <p class="book_name"><%= book.name %></p>
+            <p class="book_author"><%= book.author %></p>
+            <p class="book_required_point"><%= book.required_point %>ポイント取得で解放</p>
+            <div class="trim_book_thumbnail">
+            <%= image_tag '/uploads/books/'+ book.public_uid + '/0001.jpg' ,class:'book_thumbnail'%>
+            </div>
+            <p class="book_abstract"><%= book.abstract %></p>
+        
         <% end %>
+        </div>
       <% end %>
     <% end %>
+
+    </div>
    
   </div>
 </section>

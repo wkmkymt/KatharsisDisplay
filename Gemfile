@@ -125,5 +125,8 @@ gem 'tzinfo-data'
 gem 'carrierwave'
 gem 'rmagick'
 
+#S3
+gem "aws-sdk-s3", require: false
+
 #random string id
 gem 'public_uid'

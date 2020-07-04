@@ -877,6 +877,67 @@ textarea {
 }
 
 
+
+// ========================================
+//   Books Page
+// ========================================
+
+.book_list {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ .book_item {
+  width: 48%;
+  margin-right: 2%;
+  margin-bottom: 64px;
+}
+
+ .book_item:nth-of-type(2n) {
+  margin-right: 0;
+}
+
+.book_item:nth-last-of-type(1), .book_item:nth-last-of-type(2) {
+  margin-bottom: 0;
+}
+
+.book_name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.book_author, .book_required_point{
+  color: #cdcdcd;
+}
+
+.trim_book_thumbnail {
+  position: relative;
+  overflow: hidden;
+  margin: 8px 0 8px 0;
+}
+
+.trim_book_thumbnail:before{
+  content: "";
+  display: block;
+  padding-top: 56.25%;
+}
+
+img.book_thumbnail {
+  position: absolute;
+  height: 100%;
+  width: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+
 // ================================================================================
 //   Footer
 // ================================================================================
