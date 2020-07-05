@@ -22,13 +22,14 @@ class BooksController < ApplicationController
         pdf = Magick::Image.read(file.path)
         i = 1
 
-        options = {:access_key_id => 'minioadmin',
-                   :secret_access_key => 'minioadmin',
-                   :region => "ap-northeast-1",
-                   :endpoint => "http://host.docker.internal:9000",
-                   :force_path_style => true}
+        options = {:access_key_id => ENV['S3_ACCESS_KEY'],
+                   :secret_access_key => ENV['S3_SECRET_KEY'],
+                   :region => ENV['S3_REGION'],
+                   :endpoint => ENV['S3_ENDPOINT'],
+                   :force_path_style => ENV['S3_PATH_STYLE']}
+
         s3 = Aws::S3::Resource.new(options)
-        bucket = s3.bucket("kdh")
+        bucket = s3.bucket(ENV['S3_BUCKET'])
 
         Dir.mkdir('public/uploads/books/' + @book.public_uid.to_s)
         pdf.each do |pdf_page|
@@ -51,17 +52,15 @@ class BooksController < ApplicationController
   def index
     @book_list = Book.all
 
-    options = {:access_key_id => 'minioadmin',
-               :secret_access_key => 'minioadmin',
-               :region => "ap-northeast-1",
-               :endpoint => "http://host.docker.internal:9000",
-               :force_path_style => true}
-    
+    options = {:access_key_id => ENV['S3_ACCESS_KEY'],
+               :secret_access_key => ENV['S3_SECRET_KEY'],
+               :region => ENV['S3_REGION'],
+               :endpoint => ENV['S3_ENDPOINT'],
+               :force_path_style => ENV['S3_PATH_STYLE']}
     
     @book_thumbnails = []
     @book_list.each do |each_book|
-      #bucket = Aws::S3::Resource.new(options).bucket(each_book.public_uid)
-      bucket = Aws::S3::Resource.new(options).bucket("kdh")
+      bucket = Aws::S3::Resource.new(options).bucket(ENV['S3_BUCKET'])
       @book_thumbnails.push("http://localhost" + bucket.object(each_book.public_uid + '/0001.jpg').public_url.split("http://host.docker.internal")[1])
     end
   end
@@ -75,12 +74,13 @@ class BooksController < ApplicationController
       redirect_to root_path
     end
 
-    options = {:access_key_id => 'minioadmin',
-               :secret_access_key => 'minioadmin',
-               :region => "ap-northeast-1",
-               :endpoint => "http://host.docker.internal:9000",
-               :force_path_style => true}
-    bucket = Aws::S3::Resource.new(options).bucket("kdh")
+    options = {:access_key_id => ENV['S3_ACCESS_KEY'],
+               :secret_access_key => ENV['S3_SECRET_KEY'],
+               :region => ENV['S3_REGION'],
+               :endpoint => ENV['S3_ENDPOINT'],
+               :force_path_style => ENV['S3_PATH_STYLE']}
+
+    bucket = Aws::S3::Resource.new(options).bucket(ENV['S3_BUCKET'])
     @book_pages = []
     i = 1
     bucket.objects(prefix: @book.public_uid + "/").sort_by{|obj| obj.key}.each do |object|
