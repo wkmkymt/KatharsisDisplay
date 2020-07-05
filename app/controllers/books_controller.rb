@@ -48,7 +48,9 @@ class BooksController < ApplicationController
     @book_thumbnails = []
     @book_list.each do |each_book|
       bucket = Aws::S3::Resource.new(options).bucket(ENV['S3_BUCKET'])
-      @book_thumbnails.push("http://localhost" + bucket.object(each_book.public_uid + '/0001.jpg').public_url.split("http://host.docker.internal")[1])
+      if Rails.env == 'development'
+        @book_thumbnails.push("http://localhost" + bucket.object(each_book.public_uid + '/0001.jpg').public_url.split("http://host.docker.internal")[1])
+      end
     end
   end
 
@@ -65,7 +67,9 @@ class BooksController < ApplicationController
     @book_pages = []
     i = 1
     bucket.objects(prefix: @book.public_uid + "/").sort_by{|obj| obj.key}.each do |object|
-      @book_pages.push("http://localhost" + object.public_url.split("http://host.docker.internal")[1])
+      if Rails.env == 'development'
+        @book_pages.push("http://localhost" + object.public_url.split("http://host.docker.internal")[1])
+      end
       i += 1
     end
   end
@@ -73,11 +77,14 @@ class BooksController < ApplicationController
 
   private
     def set_options
-      {:access_key_id => ENV['S3_ACCESS_KEY'],
+      option = {:access_key_id => ENV['S3_ACCESS_KEY'],
        :secret_access_key => ENV['S3_SECRET_KEY'],
        :region => ENV['S3_REGION'],
-       :endpoint => ENV['S3_ENDPOINT'],
-       :force_path_style => ENV['S3_PATH_STYLE']}
+       :endpoint => ENV['S3_ENDPOINT']}
+       if Rails.env == 'development'
+        option[:force_path_style ] = true
+      end
+       option
     end
 
     # Params

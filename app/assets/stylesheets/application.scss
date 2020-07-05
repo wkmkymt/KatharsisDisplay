@@ -490,12 +490,16 @@ input:-webkit-autofill {
   -webkit-text-fill-color: #fff !important;
 }
 
-input[type='text'], input[type='email'], input[type='password'] {
+input[type='text'], input[type='email'], input[type='password'], input[type='number'] {
   width: 100%;
 
   color: #fff;
   border: 1px solid #1fdaff;
   background: none;
+}
+
+input[type='number'] {
+  max-width: 100px;
 }
 
 input[type='file'] {
@@ -626,6 +630,16 @@ textarea {
     line-height: 32px;
 
     margin-bottom: 4px;
+  }
+}
+
+// Preview
+.file_name_preview {
+  margin-top: 8px;
+
+  p {
+    font-size: 14px;
+    color: #cdcdcd;
   }
 }
 

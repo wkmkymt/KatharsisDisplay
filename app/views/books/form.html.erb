@@ -7,7 +7,7 @@
 
       <div class="field">
         <%= f.label :name %><br />
-        <%= f.text_field :name, autofocus: true %>
+        <%= f.text_field :name, autofocus: true, required: true %>
       </div>
 
       <div class="field">
@@ -22,13 +22,13 @@
 
       <div class="field">
         <%= f.label :required_point %><br />
-        <%= f.text_field :required_point %>
+        <%= f.number_field :required_point, min:0, value:0, required: true %>
       </div>
 
       <div class="field">
         <%= f.label :book_file, class:"button_area_blue" %><br />
-        <%= f.file_field :book_file, accept: "pdf" %>
-        <div class="ad_form_preview"></div>
+        <%= f.file_field :book_file, accept: "pdf", required: true %>
+        <div class="file_name_preview"><p>ファイルが選択されていません</p></div>
       </div>
 
       <div class="center_buttons">
@@ -39,3 +39,5 @@
     <% end %>
   </div>
 </section>
+
+<%= javascript_include_tag "form_file_name_preview" %>
