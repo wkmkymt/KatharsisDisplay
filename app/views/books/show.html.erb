@@ -4,8 +4,9 @@
       <span class="material-icons">arrow_back_ios</span>
       戻る
     <% end %>
-      <h1 class="p_item"><%= @book.name %> - <%= @book.author %></h1>
-      <p class="book_abstract p_item"><%= @book.abstract %></p>
+      <h1><%= @book.name %></h1>
+      <p class="book_author"><%= @book.author %></p>
+      <p class="book_abstract border_sandwich"><%= @book.abstract %></p>
       <% @book_pages.each do |page| %>
           <%= image_tag page ,class:"book_page"%>
       <% end %>

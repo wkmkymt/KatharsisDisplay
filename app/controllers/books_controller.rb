@@ -43,10 +43,10 @@ class BooksController < ApplicationController
 
   # Index
   def index
-    @book_list = Book.all
+    @book_list = Book.all.sort_by{|obj| [ obj.required_point, obj.updated_at]}.reverse
     options = set_options
     @book_thumbnails = []
-    @book_list.each do |each_book|
+    @book_list.sort_by{|obj| [ obj.required_point, obj.updated_at]}.reverse.each do |each_book|
       bucket = Aws::S3::Resource.new(options).bucket(ENV['S3_BUCKET'])
       if Rails.env == 'development'
         @book_thumbnails.push("http://localhost" + bucket.object(each_book.public_uid + '/0001.jpg').public_url.split("http://host.docker.internal")[1])

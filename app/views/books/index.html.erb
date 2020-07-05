@@ -4,28 +4,24 @@
       <span class="material-icons">arrow_back_ios</span>
       戻る
     <% end %>
-    <h1 class="p_item">デジタルコンテンツ</h1>
+    <h1>デジタルコンテンツ</h1>
+    <p class="gray_text top_margin_half">累計獲得ポイントがコンテンツごとに設定された条件ポイントを越えていれば、そのコンテンツを無料で読むことができます。</p>
 
     <div class="book_list">
-
-    <% @book_list.zip(@book_thumbnails) do |book, thumbnail|%>
-      <% if book.required_point <= current_user.point or current_user.has_role? :admin or current_user.has_role? :staff %>
-        <div class="book_item">
-        <%= link_to book_path(book.public_uid) do %>
-          
-            <p class="book_name"><%= book.name %></p>
-            <p class="book_author"><%= book.author %></p>
-            <p class="book_required_point"><%= book.required_point %>ポイント取得で解放</p>
-            <div class="trim_book_thumbnail">
-            <%= image_tag thumbnail ,class:'book_thumbnail'%>
-            </div>            
-            <p class="book_abstract"><%= book.abstract %></p>
-        
+      <% @book_list.zip(@book_thumbnails) do |book, thumbnail|%>
+        <% if book.required_point <= current_user.point or current_user.has_role? :admin or current_user.has_role? :staff %>
+          <div class="book_item">
+          <%= link_to book_path(book.public_uid) do %>
+              <p class="book_name"><%= book.name %></p>
+              <p class="book_author"><%= book.author %></p>
+              <div class="trim_book_thumbnail">
+              <%= image_tag thumbnail ,class:'book_thumbnail'%>
+              <p class="book_required_point book_thumbnail_overlay_text"><%= book.required_point %>ptで解放</p>
+              </div>            
+          <% end %>
+          </div>
         <% end %>
-        </div>
       <% end %>
-    <% end %>
-
     </div>
    
   </div>

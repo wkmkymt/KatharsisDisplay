@@ -72,12 +72,29 @@ li {
   margin-bottom: 32px;
 }
 
+.top_margin_half {
+  margin-top: 8px;
+}
+
+.border_sandwich {
+  padding-top: 24px;
+  margin-top: 16px;
+  padding-bottom: 24px;
+  margin-bottom: 40px;
+  border-top: 1px solid #cdcdcd;
+  border-bottom: 1px solid #cdcdcd;
+}
+
 .purple_text {
   color: #8370ff !important;
 }
 
 .blue_text {
   color: #1fdaff !important;
+}
+
+.gray_text {
+  color: #cdcdcd !important;
 }
 
 .purple_underline {
@@ -903,20 +920,44 @@ textarea {
   display: -webkit-flex;
   display: flex;
   flex-wrap: wrap;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #cdcdcd;
 }
 
- .book_item {
+.book_item {
   width: 48%;
   margin-right: 2%;
   margin-bottom: 64px;
 }
 
- .book_item:nth-of-type(2n) {
+.book_item:nth-of-type(2n) {
   margin-right: 0;
 }
 
 .book_item:nth-last-of-type(1), .book_item:nth-last-of-type(2) {
   margin-bottom: 0;
+}
+
+@media only screen and (max-width: 375px) {
+  .book_item {
+    margin-bottom: 48px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .book_item {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 32px;
+  }
+
+  .book_item:nth-last-of-type(1) {
+    margin-bottom: 0;
+  }
+  .book_item:nth-last-of-type(2) {
+    margin-bottom: 32px;
+  }
 }
 
 .book_name {
@@ -949,6 +990,19 @@ img.book_thumbnail {
   bottom: 0;
   left: 0;
   margin: auto;
+}
+
+.book_thumbnail_overlay_text {
+  position: absolute;
+  z-index: 2;
+  font-size: 12px;
+  line-height: 14px;
+  right: 4px;
+  bottom: 4px;
+  padding: 4px 6px;
+  color: #ffffff;
+  background-color: rgba(0,0,0,0.8);
+  border-radius: 4px;
 }
 
 img.book_page {
