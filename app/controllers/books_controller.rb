@@ -21,17 +21,10 @@ class BooksController < ApplicationController
         file = params[:book][:book_file]
         pdf = Magick::Image.read(file.path)
         i = 1
-
-        options = {:access_key_id => ENV['S3_ACCESS_KEY'],
-                   :secret_access_key => ENV['S3_SECRET_KEY'],
-                   :region => ENV['S3_REGION'],
-                   :endpoint => ENV['S3_ENDPOINT'],
-                   :force_path_style => ENV['S3_PATH_STYLE']}
-
+        Dir.mkdir('public/uploads/books/' + @book.public_uid.to_s)
+        options = set_options
         s3 = Aws::S3::Resource.new(options)
         bucket = s3.bucket(ENV['S3_BUCKET'])
-
-        Dir.mkdir('public/uploads/books/' + @book.public_uid.to_s)
         pdf.each do |pdf_page|
           cover_tmp = Rails.root.join('public/uploads/books/' + @book.public_uid, format("%04d",i) + ".jpg")
           pdf_page.write cover_tmp
@@ -51,13 +44,7 @@ class BooksController < ApplicationController
   # Index
   def index
     @book_list = Book.all
-
-    options = {:access_key_id => ENV['S3_ACCESS_KEY'],
-               :secret_access_key => ENV['S3_SECRET_KEY'],
-               :region => ENV['S3_REGION'],
-               :endpoint => ENV['S3_ENDPOINT'],
-               :force_path_style => ENV['S3_PATH_STYLE']}
-    
+    options = set_options
     @book_thumbnails = []
     @book_list.each do |each_book|
       bucket = Aws::S3::Resource.new(options).bucket(ENV['S3_BUCKET'])
@@ -68,18 +55,12 @@ class BooksController < ApplicationController
   # Show
   def show
     @book = Book.find_by(public_uid: params[:id])
-
     if current_user.point < @book.required_point and current_user.has_role? :guest
       flash[:danger] = "閲覧に必要なポイントが足りていません"
       redirect_to root_path
     end
 
-    options = {:access_key_id => ENV['S3_ACCESS_KEY'],
-               :secret_access_key => ENV['S3_SECRET_KEY'],
-               :region => ENV['S3_REGION'],
-               :endpoint => ENV['S3_ENDPOINT'],
-               :force_path_style => ENV['S3_PATH_STYLE']}
-
+    options = set_options
     bucket = Aws::S3::Resource.new(options).bucket(ENV['S3_BUCKET'])
     @book_pages = []
     i = 1
@@ -91,6 +72,14 @@ class BooksController < ApplicationController
 
 
   private
+    def set_options
+      {:access_key_id => ENV['S3_ACCESS_KEY'],
+       :secret_access_key => ENV['S3_SECRET_KEY'],
+       :region => ENV['S3_REGION'],
+       :endpoint => ENV['S3_ENDPOINT'],
+       :force_path_style => ENV['S3_PATH_STYLE']}
+    end
+
     # Params
     def book_params
       params.require(:book).permit(:name, :author, :abstract, :required_point)
