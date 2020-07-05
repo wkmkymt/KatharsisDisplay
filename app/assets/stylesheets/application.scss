@@ -910,7 +910,7 @@ textarea {
   font-weight: bold;
 }
 
-.book_author, .book_required_point{
+.book_author, .book_required_point, .book_abstract{
   color: #cdcdcd;
 }
 
@@ -935,6 +935,11 @@ img.book_thumbnail {
   bottom: 0;
   left: 0;
   margin: auto;
+}
+
+img.book_page {
+  vertical-align: bottom;
+  margin-bottom: 8px;
 }
 
 

@@ -4,12 +4,10 @@
       <span class="material-icons">arrow_back_ios</span>
       戻る
     <% end %>
-    <div>
       <h1 class="p_item"><%= @book.name %> - <%= @book.author %></h1>
-      <p><%= @book.abstract %></p>
+      <p class="book_abstract p_item"><%= @book.abstract %></p>
       <% @book_pages.each do |page| %>
-          <%= image_tag page %>
+          <%= image_tag page ,class:"book_page"%>
       <% end %>
-    </div>
   </div>
 </section>
