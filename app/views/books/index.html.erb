@@ -12,8 +12,8 @@
         <% if book.required_point <= current_user.point or current_user.has_role? :admin or current_user.has_role? :staff %>
           <div class="book_item">
           <%= link_to book_path(book.public_uid) do %>
-              <p class="book_name"><%= book.name %></p>
-              <p class="book_author"><%= book.author %></p>
+              <p class="book_name ellipsis"><%= book.name %></p>
+              <p class="book_author book_list_author ellipsis"><%= book.author %></p>
               <div class="trim_book_thumbnail">
               <%= image_tag thumbnail ,class:'book_thumbnail'%>
               <p class="book_required_point book_thumbnail_overlay_text"><%= book.required_point %>ptで解放</p>

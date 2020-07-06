@@ -85,6 +85,13 @@ li {
   border-bottom: 1px solid #cdcdcd;
 }
 
+.ellipsis {
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .purple_text {
   color: #8370ff !important;
 }
@@ -962,7 +969,45 @@ textarea {
 
 .book_name {
   font-size: 20px;
+  line-height: 24px;
   font-weight: bold;
+}
+
+p.book_list_author {
+  font-size: 14px;
+  line-height: 18px;
+  margin-top: 4px;
+}
+
+@media only screen and (max-width: 600px) {
+  .book_name {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .book_name {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  p.book_list_author {
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .book_name {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  p.book_list_author {
+    font-size: 14px;
+    line-height: 16px;
+  }
 }
 
 .book_author, .book_required_point, .book_abstract{
