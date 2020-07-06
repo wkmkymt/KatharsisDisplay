@@ -43,10 +43,10 @@ class BooksController < ApplicationController
 
   # Index
   def index
-    @book_list = Book.all.sort_by{|obj| [ obj.required_point, obj.updated_at]}.reverse
+    @book_list = Book.all.sort do |a, b| (a.required_point <=> b.required_point).nonzero? || (b.updated_at <=> a.updated_at) end
     options = set_options
     @book_thumbnails = []
-    @book_list.sort_by{|obj| [ obj.required_point, obj.updated_at]}.reverse.each do |each_book|
+    @book_list.each do |each_book|
       bucket = Aws::S3::Resource.new(options).bucket(ENV['S3_BUCKET'])
       if Rails.env == 'development'
         @book_thumbnails.push("http://localhost" + bucket.object(each_book.public_uid + '/0001.jpg').public_url.split("http://host.docker.internal")[1])
@@ -59,7 +59,7 @@ class BooksController < ApplicationController
     @book = Book.find_by(public_uid: params[:id])
     if current_user.point < @book.required_point and current_user.has_role? :guest
       flash[:danger] = "閲覧に必要なポイントが足りていません"
-      redirect_to root_path
+      redirect_to books_path
     end
 
     options = set_options

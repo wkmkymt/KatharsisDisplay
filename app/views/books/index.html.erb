@@ -1,24 +1,42 @@
 <section>
   <div class="wrap">
+    <% flash.each do |key, value| %>
+      <div class="alert_area">
+        <p class="alert alert-<%= key %>">
+          <%= value.html_safe %>
+        </p>
+      </div>
+    <% end %>
     <%= link_to root_path, class:"button_area_blue back_btn p_item" do%>
       <span class="material-icons">arrow_back_ios</span>
       戻る
     <% end %>
     <h1>デジタルコンテンツ</h1>
     <p class="gray_text top_margin_half">累計獲得ポイントがコンテンツごとに設定された条件ポイントを越えていれば、そのコンテンツを無料で読むことができます。</p>
+    <p class="gray_text">ポイントは、KDH導入店舗へ来店時にQRチェックインによって、獲得することができます。</p>
+    <p class="gray_text top_margin_half">現在の獲得ポイント: <%= current_user.point %></p>
 
     <div class="book_list">
       <% @book_list.zip(@book_thumbnails) do |book, thumbnail|%>
         <% if book.required_point <= current_user.point or current_user.has_role? :admin or current_user.has_role? :staff %>
           <div class="book_item">
-          <%= link_to book_path(book.public_uid) do %>
+            <%= link_to book_path(book.public_uid) do %>
               <p class="book_name ellipsis"><%= book.name %></p>
               <p class="book_author book_list_author ellipsis"><%= book.author %></p>
               <div class="trim_book_thumbnail">
-              <%= image_tag thumbnail ,class:'book_thumbnail'%>
-              <p class="book_required_point book_thumbnail_overlay_text"><%= book.required_point %>ptで解放</p>
+                <%= image_tag thumbnail ,class:'book_thumbnail copy-guard'%>
+                <p class="book_required_point book_thumbnail_overlay_text"><span class="material-icons">lock_open</span><%= book.required_point %>ポイント</p>
               </div>            
-          <% end %>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="book_item">
+            <p class="book_name ellipsis"><%= book.name %></p>
+            <p class="book_author book_list_author ellipsis"><%= book.author %></p>
+            <div class="trim_book_thumbnail">
+              <%= image_tag thumbnail ,class:'book_thumbnail copy-guard img_gray'%>
+              <p class="book_required_point book_thumbnail_overlay_text"><span class="material-icons">lock</span><%= book.required_point %>ポイント</p>
+            </div>            
           </div>
         <% end %>
       <% end %>

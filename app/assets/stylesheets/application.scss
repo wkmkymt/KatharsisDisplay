@@ -85,6 +85,10 @@ li {
   border-bottom: 1px solid #cdcdcd;
 }
 
+.copy-guard {
+  pointer-events: none;
+}
+
 .ellipsis {
   overflow: hidden;
 
@@ -1010,6 +1014,14 @@ p.book_list_author {
   }
 }
 
+.img_gray {
+-webkit-filter: grayscale(100%);
+-moz-filter: grayscale(100%);
+-ms-filter: grayscale(100%);
+-o-filter: grayscale(100%);
+filter: grayscale(100%);
+}
+
 .book_author, .book_required_point, .book_abstract{
   color: #cdcdcd;
 }
@@ -1048,6 +1060,12 @@ img.book_thumbnail {
   color: #ffffff;
   background-color: rgba(0,0,0,0.8);
   border-radius: 4px;
+
+  .material-icons {
+    font-size: 14px !important;
+    vertical-align: bottom;
+    margin-right: 2px;
+  }
 }
 
 img.book_page {

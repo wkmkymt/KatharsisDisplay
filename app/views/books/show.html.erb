@@ -8,7 +8,7 @@
       <p class="book_author"><%= @book.author %></p>
       <p class="book_abstract border_sandwich"><%= @book.abstract %></p>
       <% @book_pages.each do |page| %>
-          <%= image_tag page ,class:"book_page"%>
+          <%= image_tag page ,class:"book_page copy-guard"%>
       <% end %>
   </div>
 </section>
