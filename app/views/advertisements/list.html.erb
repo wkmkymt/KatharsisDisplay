@@ -1,0 +1,8 @@
+<section>
+  <div class="wrap">
+    <h2>広告一覧</h2>
+    <% @advertisements.each do |ad| %>
+        <img src=<%= advertisement_image_path(ad.id) %>>
+    <% end %>
+  </div>
+</section>

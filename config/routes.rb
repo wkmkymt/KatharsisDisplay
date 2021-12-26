@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'operations/ads_list', to: "operations#ads_list"
   # Root
   root to: "app#index"
 
@@ -33,7 +34,7 @@ Rails.application.routes.draw do
   resource :pass, only: [:new, :create, :edit, :update]
 
   # Advertisement Image
-  resources :advertisements, only: [:index, :create] do
+  resources :advertisements, only: [:index, :create, :destroy] do
     get "image", to: "advertisements#show_image"
   end
 
