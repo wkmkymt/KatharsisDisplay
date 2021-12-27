@@ -1,0 +1,23 @@
+<section>
+  <div class="wrap">
+    <% flash.each do |key, value| %>
+      <div class="alert_area">
+        <p class="alert alert-<%= key %>">
+          <%= value.html_safe %>
+        </p>
+      </div>
+    <% end %>
+    <h2>広告一覧</h2>
+    <% @advertisements.each do |ad| %>
+        <img src=<%= advertisement_image_path(ad.id) %>>
+        <p><%= ad.sponsor %></p>
+        <%= link_to advertisements_path + "/" + String(ad.id), method: "delete", data: {
+            confirm: "本当に削除しますか？",
+            cancel: "キャンセル",
+            commit: "削除"
+          }, title: "確認" do %>
+          <p class="p_item"><span class="material-icons">delete</span>削除する</p>
+        <% end %>
+    <% end %>
+  </div>
+</section>

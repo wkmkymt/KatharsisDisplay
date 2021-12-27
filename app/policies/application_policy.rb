@@ -34,6 +34,18 @@ class ApplicationPolicy
     false
   end
 
+  def ads_list?
+    is_admin_or_staff();
+  end
+
+  def is_admin_or_staff
+    if @user.has_role? :admin or @user.has_role? :staff
+      return true
+    else
+      return false
+    end
+  end
+
   class Scope
     attr_reader :user, :scope
 
