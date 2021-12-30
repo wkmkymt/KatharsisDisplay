@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'operations/ads_list', to: "operations#ads_list"
+  get 'operations/users_list', to: "operations#users_list"
   # Root
   root to: "app#index"
 

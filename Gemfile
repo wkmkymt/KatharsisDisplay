@@ -64,6 +64,9 @@ gem 'rqrcode'
 gem 'rqrcode_png'
 gem 'chunky_png'
 
+# Pager
+gem 'kaminari'
+
 # Enum Help
 gem 'enum_help'
 

@@ -11,6 +11,15 @@ class OperationsController < ApplicationController
     end
   end
 
+  def users_list
+    pager_per = 20
+    if current_user.has_role? :admin
+      @users = User.joins(:roles).where("roles.id = 2").page(params[:page]).per(pager_per)
+    elsif current_user.has_role? :staff
+      @users = User.joins(:roles).where("shop_id = ? and roles.id = 2", current_user.shop_id).page(params[:page]).per(pager_per)
+    end
+  end
+
   private
     # Authorize
     def authorize_staff

@@ -38,6 +38,10 @@ class ApplicationPolicy
     is_admin_or_staff();
   end
 
+  def users_list?
+    is_admin_or_staff();
+  end
+
   def is_admin_or_staff
     if @user.has_role? :admin or @user.has_role? :staff
       return true
