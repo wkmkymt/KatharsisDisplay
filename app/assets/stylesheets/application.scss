@@ -339,7 +339,7 @@ img.libig_img {
   }
 }
 
-.show_mainimgframe, .list_mainimgframe {
+.show_mainimgframe, .list_mainimgframe, .item_mainimgframe {
   img {
     position: absolute;
     top: 0;
@@ -875,6 +875,83 @@ textarea {
   border: 1px solid #1fdaff;
   border-radius: 8px;
 }
+
+// ========================================
+//   Users List
+// ========================================
+.users_list {
+  padding: 16px 32px;
+
+  list-style: none;
+
+  border: 1px solid #1fdaff;
+  border-radius: 8px;
+
+
+  .item_mainimgframe {
+    flex-shrink: 0;
+    width: 80px;
+    position: relative;
+    margin-bottom: 4px;
+    float: left;
+  }
+
+  .item_name {
+    margin-left: 16px;
+  }
+
+  .item {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 16px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// ========================================
+//   Pager
+// ========================================
+.pagination {
+  margin-top: 16px;
+  text-align: center;
+
+  .page {
+    display: inline-block;
+    border: solid 1px #1fdaff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-right: 4px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  .current {
+    color: #1fdaff;
+    font-weight: bold;
+  }
+
+  .next, .last, .prev, .first {
+    display: inline-block;
+    border: solid 1px #1fdaff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-right: 4px;
+  }
+
+  .next, .prev {
+    display: none;
+  }
+
+  .last {
+    margin-right: 0;
+  }
+}
+
 
 
 // ================================================================================

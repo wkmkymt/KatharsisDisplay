@@ -410,6 +410,7 @@ DEPENDENCIES
   hirb
   hirb-unicode
   jquery-rails
+  kaminari
   letter_opener_web
   listen (>= 3.0.5, < 3.2)
   omniauth-facebook
