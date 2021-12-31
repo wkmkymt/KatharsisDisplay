@@ -1,6 +1,9 @@
 <section class="bg_purple">
   <div class="wrap">
     <h2>Katharsis Digital Hubへようこそ</h2>
+    <div class="img_center">
+      <%= image_tag 'connection.png', class:"libig_img" %>
+    </div>
     <p class="p_item">語りバー「Katharsis」や連盟店舗に集う人々や企業をデジタルで繋げるシステムです。</p>
     <p>メール認証のほかに、GoogleやTwitterアカウントを認証することによってもアカウントを作成頂くことが可能です。</p>
   </div>
@@ -18,16 +21,25 @@
 <section class="bg_purple">
   <div class="wrap">
     <h2 class="slogan">QRコードを提示してチェックイン</h2>
+    <div class="img_center">
+      <%= image_tag 'active.png', class:"libig_img" %>
+    </div>
     <p class="p_item">チェックインするとポイントを貯めることができます。<br>
       ポイントを貯めると、様々な特典が得られる予定です。ぜひチェックインしましょう。<br>
       ポイント加算は1店舗あたり1日1回までです。</p>
     <p>退店の際にQRコードを提示するとチェックアウトすることができます。</p>
 
     <h2 class="slogan">店内にどんなユーザがいるのかを確認</h2>
+    <div class="img_center">
+      <%= image_tag 'fans.png', class:"libig_img" %>
+    </div>
     <p>店内のチェックインしているユーザの情報を確認することができます。<br>
       交流したい人が見つかれば、ぜひ積極的に声をかけてみましょう。</p>
 
     <h2 class="slogan">K-Displayとの連携</h2>
+    <div class="img_center">
+      <%= image_tag 'creativity.png', class:"libig_img" %>
+    </div>
     <p>K-Display設置店舗では、店内にいるチェックインしているユーザの情報がK-Displayに表示されます。<br>
       ふとした瞬間に視界に入った情報が新たな語りを生み出します。</p>
   </div>
@@ -36,7 +48,7 @@
 <section>
   <div class="wrap">
     <div class="center_buttons">
-      <p class="p_item">サインイン / サインアップはこちらから</p>
+      <p class="p_item">始めるにはサインアップ</p>
       <%= link_to "サインイン", new_user_session_path , class:"button_area button_side" %>
       <%= link_to "サインアップ", new_registration_path(User) , class:"button_area_blue" %>
     </div>
