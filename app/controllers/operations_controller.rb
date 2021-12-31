@@ -14,9 +14,9 @@ class OperationsController < ApplicationController
   def users_list
     pager_per = 20
     if current_user.has_role? :admin
-      @users = User.joins(:roles).where("roles.id = 3").page(params[:page]).per(pager_per).order(id: "DESC")
+      @users = User.joins(:roles).where("roles.name = ?", :guest).page(params[:page]).per(pager_per).order(id: "DESC")
     elsif current_user.has_role? :staff
-      @users = User.joins(:roles).where("shop_id = ? and roles.id = 3", current_user.shop_id).page(params[:page]).per(pager_per).order(id: "DESC")
+      @users = User.joins(:roles).where("shop_id = ? and roles.name = ?", current_user.shop_id, :guest).page(params[:page]).per(pager_per).order(id: "DESC")
     end
   end
 
