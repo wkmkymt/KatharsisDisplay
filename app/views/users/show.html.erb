@@ -41,7 +41,7 @@
         </p>
       <% end %>
 
-      <% if user_signed_in? and @user.id == current_user.id %>
+      <% if user_signed_in? and (@user.id == current_user.id or (current_user.has_role? :staff and current_user.shop_id == @user.shop_id) or current_user.has_role? :admin) %>
         <p class="p_item"><span class="material-icons">mail_outline</span><b>メールアドレス </b><%= @user.email %></p>
       <% end %>
 
