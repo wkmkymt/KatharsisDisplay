@@ -49,6 +49,7 @@ gem 'devise'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem "omniauth-rails_csrf_protection"
 
 # rolify
 gem 'rolify'

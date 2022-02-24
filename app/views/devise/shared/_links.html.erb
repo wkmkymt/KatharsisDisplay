@@ -1,8 +1,8 @@
 <div class="_links">
   <%- if devise_mapping.omniauthable? && controller_name != "registrations" %>
     <div class="smltopmargin">
-      <%= link_to "#{OmniAuth::Utils.camelize('Google')}でサインイン", omniauth_authorize_path(resource_name, 'google_oauth2'), class:"button_area_blue button_side p_item" %>
-      <%= link_to "#{OmniAuth::Utils.camelize('Twitter')}でサインイン", omniauth_authorize_path(resource_name, 'twitter'), class:"button_area_blue button_side p_item" %>
+      <%= link_to "#{OmniAuth::Utils.camelize('Google')}でサインイン", omniauth_authorize_path(resource_name, 'google_oauth2'), method: :post, class:"button_area_blue button_side p_item" %>
+      <%= link_to "#{OmniAuth::Utils.camelize('Twitter')}でサインイン", omniauth_authorize_path(resource_name, 'twitter'), method: :post, class:"button_area_blue button_side p_item" %>
       <%# <%= link_to "#{OmniAuth::Utils.camelize('Facebook')}でサインイン", omniauth_authorize_path(resource_name, 'facebook'), class:"button_area_blue button_side p_item" %>
     </div>
   <% end %>
